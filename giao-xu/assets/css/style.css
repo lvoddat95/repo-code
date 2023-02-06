@@ -1,6 +1,6 @@
 @charset "UTF-8";
 @import 'base.css';
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 
 /*Theme Name: GiaoXu
 Theme URI: 
@@ -22,7 +22,7 @@ Tags:
   --gray: #999;
   --border-color: rgb(67 87 133 / 20%);
   --border-light: #eee;
-  --dark: #111;
+  --dark: #0a0a0a;
   --border: 1px solid rgb(67 87 133 / 20%);
   --border-silver: 1px solid var(--silver);
   --border-dark: 1px solid var(--dark);
@@ -84,7 +84,7 @@ Tags:
   /* typography */
   --font-family-sans-serif: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   --font-family-fa: "Font Awesome 6 Pro";
-  --font-family-opensans: "Open Sans", sans-serif;
+  --font-family-roboto: "Roboto", sans-serif;
 
   font-family: "Font Awesome 6 Pro";
 
@@ -113,7 +113,7 @@ body {
   font-synthesis: none;
   color: var(--dark);
   font-family: var(--font-family-sans-serif);
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 1.4rem;
 }
 
@@ -121,7 +121,7 @@ input,
 select,
 textarea {
   color: var(--dark);
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 1.4rem;
 }
 
@@ -153,6 +153,7 @@ h5,
 h6 {
   clear: both;
   color: var(--dark);
+  line-height: 1.4;
 }
 
 h1 {
@@ -208,11 +209,8 @@ figure img {
   height: auto !important;
 }
 
-iframe {
-  background: #eee;
-  border-color: #111;
-  /* border-width: 2px; */
-  border-style: dashed;
+embed, iframe, object {
+  max-width: 100%;
 }
 
 select {
@@ -1478,7 +1476,7 @@ table.table-bordered tr th.dtfc-fixed-right~.dtfc-fixed-right {
 }
 
 .hc-offcanvas-nav {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .hc-offcanvas-nav .nav-content>h2 {
@@ -1750,6 +1748,23 @@ input:checked+label.rdo-tile-label {
   }
 }
 
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  background-color: #F5F5F5;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgb(0 0 0 / 20%);
+  background-color: #999;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgb(0 0 0 / 30%);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+
 
 /* Trang chủ */
 .content {
@@ -1940,7 +1955,13 @@ input[type='search'] {
   text-overflow: ellipsis;
 }
 
+.post-video {
+  margin-bottom: 20px;
+}
+
 .box-post-list {
+  max-height: 450px;
+  overflow-y: auto;
   padding: 0 8px;
   border: 1px solid #ffe1e2;
 }
@@ -1963,6 +1984,201 @@ input[type='search'] {
 
 .post-list-item__title:hover {
   color: #6d1315;
+}
+
+.box-post-title {
+  font-size: 14px;
+  margin: 15px 0 5px 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+  -moz-background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  overflow: hidden;
+  clear: both;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 5px;
+}
+
+.box-post-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #eee;
+  margin-top: 0px;
+  margin-bottom: 14px;
+}
+
+.box-post-title>h4 span {
+  display: inline-block;
+  padding: 0 10px;
+  height: 34px;
+  background: #981b1e;
+  color: #fff;
+  padding-top: 7px;
+  box-sizing: border-box;
+  -webkit-border-top-right-radius: 0;
+  -webkit-border-bottom-right-radius: 0;
+  -webkit-border-bottom-left-radius: 4px;
+  -webkit-border-top-left-radius: 4px;
+  -moz-border-radius-topright: 0;
+  -moz-border-radius-bottomright: 0;
+  -moz-border-radius-bottomleft: 4px;
+  -moz-border-radius-topleft: 4px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+  -moz-background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  position: relative;
+  padding-right: 10px;
+  float: left;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.box-post-title>h4 span:after {
+  border-color: #eee;
+  border-left-color: #981b1e;
+}
+
+.box-post-title>h4 span:after {
+  left: 100%;
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: #eee;
+  border-left-color: #981b1e;
+  border-width: 17px;
+  margin-top: -17px;
+}
+
+.category-link {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.category-link li a {
+  color: #484848;
+  padding: 0 10px;
+  border-right: 1px solid #999;
+}
+
+.category-link li:last-child a {
+  border: 0;
+}
+
+.widget {
+  margin-bottom: 30px;
+}
+
+.widget-img-link {
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--main-color);
+}
+
+.widget-title {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  background: #981b1e;
+  color: white;
+  padding-left: 10px;
+  padding: 6px 10px;
+  margin-bottom: 0;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.widget-content:not(.non-style) {
+  padding: 10px;
+  border: 1px solid #eeeeee;
+  background: white;
+}
+
+.widget-content> :last-child {
+  margin-bottom: 0;
+}
+
+.display-table {
+  display: table;
+}
+
+.display-table>* {
+  display: table-cell;
+}
+
+.post-img {
+  vertical-align: top;
+  padding-bottom: 12px;
+}
+
+.post-info {
+  vertical-align: middle;
+  padding-left: 12px;
+  padding-bottom: 12px;
+}
+
+.box-post-left {
+  position: relative;
+}
+
+.line-shadow::after {
+  background: url(../../assets/img/grd-border.png) top right repeat-y;
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -5px;
+  width: 10px;
+  box-shadow: inset 5px 0px 20px 0px rgb(51 51 51 / 4%);
+  height: 100%;
+  z-index: -1;
+  border-left: 1px solid #ececec;
+  border-right: 1px solid #ececec;
+}
+
+.post-right-list-title {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px dashed #eeeeee;
+  margin: 1px 0;
+}
+
+.post-right-list-title:hover {
+  color: #004980;
+}
+
+.block-post {
+  position: relative;
+}
+
+.block-post::after {
+  content: "";
+  box-shadow: 10px 0 20px -2px rgb(136 136 136 / 24%);
+  height: 100%;
+  width: 14px;
+  position: absolute;
+  top: 0;
+  right: 0px;
+  z-index: -1;
+}
+
+.block-post-inner {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  background: #fff;
 }
 
 /* END - Trang chủ */
