@@ -277,6 +277,9 @@ Tags:
   --orange7: var(--color-orange-7);
   --orange8: var(--color-orange-8);
   --orange9: var(--color-orange-9);
+
+    /* fix HC canvas  */
+    scroll-behavior: auto;
 }
 
 .w1p {

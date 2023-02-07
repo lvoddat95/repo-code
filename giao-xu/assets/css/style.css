@@ -1844,7 +1844,7 @@ input:checked+label.rdo-tile-label {
 }
 
 .menu-search-form,
-ul.sub-menu {
+.nav ul.sub-menu {
   display: flex;
   flex-direction: column;
   background: #fff;
