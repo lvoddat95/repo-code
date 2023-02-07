@@ -57,34 +57,8 @@
   font-family: "Roboto", sans-serif;
 }
 
-.blog .post-item {
-  padding-bottom: 4px;
-  padding-top: 4px;
-  border-bottom: 1px dotted #ececec;
-  margin-right: 10px;
-}
-
-
-
 
 /* More */
-
-
-.footer-top {
-  padding: 30px 0;
-  color: #fff;
-  background: #323232;
-}
-
-.footer-bottom {
-  background: var(--main-color);
-  border-bottom: 5px solid #6d1315;
-  padding: 10px 0 10px;
-}
-
-.copyright {
-  color: rgba(255, 255, 255, .5);
-}
 
 /* ----------------------------------------------- */
 @media (min-width: 1400px) {
@@ -108,7 +82,12 @@
 
 @media (max-width: 1199px) {}
 
-@media (max-width: 767px) {}
+@media (max-width: 767px) {
+  .box-post.large .post-img {
+    width: 100%;
+  }
+
+}
 
 @media (max-width: 575px) {}
 
@@ -116,7 +95,8 @@
 
 @media (min-width: 992px) {}
 
-@media (min-width: 768px) {}
+@media (min-width: 768px) {
+}
 
 @media (min-width: 600px) {}
 

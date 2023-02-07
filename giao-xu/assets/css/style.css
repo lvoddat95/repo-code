@@ -1444,7 +1444,7 @@ table.table-bordered tr th.dtfc-fixed-right~.dtfc-fixed-right {
   width: 42px;
   text-align: center;
   padding: 9px 10px;
-  margin-top: 3px;
+  margin: 6px 0;
   background-color: #fff;
 }
 
@@ -1459,7 +1459,7 @@ table.table-bordered tr th.dtfc-fixed-right~.dtfc-fixed-right {
   width: 22px;
   height: 2px;
   border-radius: 1px;
-  background-color: var(--sub-color);
+  background-color: var(--main-color);
   transition: var(--transition-25);
 }
 
@@ -2179,6 +2179,23 @@ input[type='search'] {
   overflow: hidden;
   z-index: 1;
   background: #fff;
+}
+
+
+.footer-top {
+  padding: 30px 0;
+  color: #fff;
+  background: #323232;
+}
+
+.footer-bottom {
+  background: var(--main-color);
+  border-bottom: 5px solid #6d1315;
+  padding: 10px 0 10px;
+}
+
+.copyright {
+  color: rgba(255, 255, 255, .5);
 }
 
 /* END - Trang chủ */
