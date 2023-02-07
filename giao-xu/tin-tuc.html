@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Giao xứ</title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/css/hc-offcanvas-nav.carbon.css">
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <div id="master-container">
+
+        <div id="header" class="header">
+            <!-- <div class="header-top" style=" background-image: url(assets/img/backgro.jpg); ">
+                <div class="container">
+                    <div class="logo">
+                        <a href="" title="">
+                            <img class="img-fluid" width="700" height="108"
+                                src="https://giaoxudongtri.com/wp-content/uploads/2018/06/logo-gxdt.png" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div> -->
+            <div class="header-nav">
+                <div class="container">
+                    <nav id="nav" class="nav"></nav>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="content" class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <main class="content-main">
+                            
+                            <div class="post-item">
+
+                            </div>
+
+
+                        </main>
+                    </div>
+
+
+                    <div class="col-lg-3">
+                        <aside class="sidebar">
+                        </aside>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div id="footer" class="footer"></div>
+
+    </div>
+</body>
+
+
+<script src="assets/js/jquery-3.6.3.slim.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/hc-offcanvas-nav.js"></script>
+<script src="assets/js/hc-sticky.js"></script>
+<script src="assets/js/swiper-bundle.min.js"></script>
+
+<script src="assets/js/app.js"></script>
+<script src="assets/js/script.js"></script>
+
+<script>
+    (function () {
+
+        // Fetch Header
+        // fetch('patials/header.html')
+        //     .then(response => response.text())
+        //     .then(html => {
+        //         document.querySelector('#header').innerHTML = html;
+        //     });
+
+        // Fetch Nav
+        fetch('patials/nav.html')
+            .then(response => response.text())
+            .then(html => {
+                document.querySelector('#nav').innerHTML = html;
+            });
+
+        // Fetch Footer
+        fetch('patials/footer.html')
+            .then(response => response.text())
+            .then(html => {
+                document.querySelector('#footer').innerHTML = html;
+            });
+    })();
+</script>
+
+</html>
