@@ -83,13 +83,33 @@
 @media (max-width: 1199px) {}
 
 @media (max-width: 767px) {
+  .blog-post{
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+  }
+  .blog-post .post-img{
+    width: 100%;
+    margin-bottom: 14px;
+  }
+  .blog-post .post-info{
+    padding-left: 0;
+    padding-bottom: 0;
+  }
   .box-post.large .post-img {
     width: 100%;
   }
 
 }
 
-@media (max-width: 575px) {}
+@media (max-width: 575px) {
+  .content{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .single-title{
+    font-size: 18px;
+  }
+}
 
 @media (max-width: 475px) {}
 

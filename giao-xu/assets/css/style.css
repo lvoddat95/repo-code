@@ -477,6 +477,49 @@ input[type="radio"] {
   }
 }
 
+.no-click {
+  pointer-events: none;
+}
+
+.x50 {
+  left: 50%;
+  -webkit-transform: translateX(-50%) !important;
+  -ms-transform: translateX(-50%) !important;
+  transform: translateX(-50%) !important;
+}
+
+.y50 {
+  top: 50%;
+  -webkit-transform: translateY(-50%) !important;
+  -ms-transform: translateY(-50%) !important;
+  transform: translateY(-50%) !important;
+}
+
+.overlay-icon {
+  background-color: rgba(0, 0, 0, .2);
+  width: 3em;
+  color: #fff;
+  height: 3em;
+  line-height: 2.8em;
+  border-radius: 100%;
+  text-align: center;
+  border: 2px solid #FFF;
+  opacity: .8;
+  -webkit-transition: opacity .2s, -webkit-transform .2s;
+  transition: opacity .2s, -webkit-transform .2s;
+  -o-transition: transform .2s, opacity .2s;
+  transition: transform .2s, opacity .2s;
+  transition: transform .2s, opacity .2s, -webkit-transform .2s;
+}
+
+.overlay-icon i {
+  font-size: var(--fz-14);
+  -webkit-transition: color .3s;
+  -o-transition: color .3s;
+  transition: color .3s;
+  top: 3px;
+}
+
 .btn {
   padding: 5px 10px;
   min-height: 28px;
@@ -1418,11 +1461,6 @@ table.table-bordered tr th.dtfc-fixed-right~.dtfc-fixed-right {
   flex: 1;
 }
 
-/* Pagination */
-.pagination {
-  display: block;
-  margin-top: 20px;
-}
 
 /* Nav mobile */
 .navbar-nav {
@@ -2130,6 +2168,33 @@ input[type='search'] {
   padding-bottom: 12px;
 }
 
+.blog-post {
+  position: relative;
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+  border-bottom: 1px dotted #ececec;
+}
+
+.blog-post .post-img {
+  position: relative;
+  padding-bottom: 0;
+}
+
+.blog-post .post-img:hover .overlay-icon {
+  opacity: 1;
+  -webkit-transform: scale(1.15);
+  -ms-transform: scale(1.15);
+  transform: scale(1.15);
+}
+
+.blog-post .post-info {
+  padding-left: 20px;
+}
+
+.blog-post .post-info__title {
+  color: #005dbd;
+}
+
 .box-post-left {
   position: relative;
 }
@@ -2159,10 +2224,12 @@ input[type='search'] {
   color: #004980;
 }
 
+.shadow-right,
 .block-post {
   position: relative;
 }
 
+.shadow-right::after,
 .block-post::after {
   content: "";
   box-shadow: 10px 0 20px -2px rgb(136 136 136 / 24%);
@@ -2198,4 +2265,133 @@ input[type='search'] {
   color: rgba(255, 255, 255, .5);
 }
 
+
 /* END - Trang chủ */
+
+.pagination {
+  margin: 0 -10px;
+}
+
+.pagination>li>a {
+  font-size: var(--fz-14);
+  display: block;
+  height: 32px;
+  line-height: 30px;
+  min-width: 32px;
+  text-align: center;
+  font-weight: bolder;
+  border-radius: 100% !important;
+  border: 2px solid currentColor;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+  color: var(--dark);
+  margin: 0 10px;
+  padding: 0;
+}
+
+.pagination>li>a:hover,
+.pagination>li>a.current {
+  border-color: var(--main-color);
+  background-color: var(--main-color);
+  color: #fff;
+}
+
+.single {
+  background: white;
+  border: 1px solid #ececec;
+  padding: 10px;
+}
+
+.single-line {
+  height: 1px;
+  display: block;
+  background-color: rgba(0, 0, 0, .1);
+  margin: 1em 0 1em;
+  width: 100%;
+}
+
+.single-tags {
+  margin-bottom: 4px;
+}
+
+.single-tags a {
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: bold;
+  color: var(--main-color);
+  letter-spacing: .05em;
+}
+
+.single-title {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 14px;
+}
+
+.single-share ul {
+  display: inline-block;
+  margin: -2.5px;
+}
+
+.single-share ul li {
+  display: inline-block;
+  margin: 2.5px;
+}
+
+.sd-title {
+  display: block;
+  font-size: var(--fz-12);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 1em;
+}
+
+.sd-button {
+  background: #f8f8f8;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgb(0 0 0 / 8%);
+  color: #656565 !important;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 23px;
+  padding: 1px 8px 0 5px;
+  text-decoration: none !important;
+  text-shadow: none;
+}
+
+.sd-button:hover {
+  background: #f6f7f7;
+  border: 1px solid #999;
+  color: #555;
+}
+
+.sd-button:before {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font: normal 18px/1 social-logos;
+  text-align: center;
+  vertical-align: top;
+}
+
+.sd-button:before {
+  position: relative;
+  top: 2px;
+}
+
+.widget-news a {
+  display: inline-block;
+  padding: 6px 0;
+  color: var(--main-color);
+}
+
+.widget-news a:hover {
+  color: var(--dark);
+}
+
+.widget-news ul>li+li, .widget-news>ul>li+li {
+  border-top: 1px solid #ececec;
+}
