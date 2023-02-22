@@ -1,15 +1,45 @@
 $(function () {
 	if ($(".ks-adv-slider").length > 0) {
-		var swiper_slider = new Swiper(".ks-adv-slider", {
+		var main_slider = new Swiper(".ks-adv-slider", {
 			slidesPerView: 1,
-			// spaceBetween: 10,
 			loop: true,
 			pagination: {
 				el: ".swiper-pagination",
 				clickable: true,
 			},
+			navigation: {
+				nextEl: ".swiper-button-next",
+				prevEl: ".swiper-button-prev",
+			},
 		});
 	}
+
+
+	if ($(".ks-products-slider").length > 0) {
+		var product_slider = new Swiper(".ks-products-slider", {
+			slidesPerView: 1,
+			spaceBetween: 0,
+			loop: true,
+			navigation: {
+				nextEl: ".swiper-button-next",
+				prevEl: ".swiper-button-prev",
+			},
+			breakpoints: {
+				640: {
+					slidesPerView: 1,
+				},
+				768: {
+					slidesPerView: 3,
+				},
+				1024: {
+					slidesPerView: 5,
+				},
+			},
+		});
+
+	}
+
+
 
 	if ($("#menu-nav").length > 0) {
 		if (typeof hcOffcanvasNav == "undefined") {
@@ -39,8 +69,8 @@ $(function () {
 	// Len dau trang
 	$(".go-top").on("click", function () {
 		$("html, body").animate({
-				scrollTop: 0,
-			},
+			scrollTop: 0,
+		},
 			500
 		);
 	});

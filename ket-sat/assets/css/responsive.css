@@ -1,9 +1,9 @@
-.hc-offcanvas-nav:not(.touch-device) li:not(.nav-item-custom) a:not([disabled]):hover {
-  background: transparent;
+.content {
+  padding-bottom: 20px;
 }
 
-.nav {
-  justify-content: space-between;
+.hc-offcanvas-nav:not(.touch-device) li:not(.nav-item-custom) a:not([disabled]):hover {
+  background: transparent;
 }
 
 .navbar-nav {
@@ -62,7 +62,9 @@
 
 /* ----------------------------------------------- */
 @media (min-width: 1400px) {
-
+  .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    max-width: 1240px;
+  }
 }
 
 @media only screen and (max-width: 1900px) and (min-width: 300px) {}
@@ -74,8 +76,7 @@
 
 @media (max-width: 1199px) {}
 
-@media (max-width: 767px) {
-}
+@media (max-width: 767px) {}
 
 @media (max-width: 575px) {}
 
@@ -83,8 +84,7 @@
 
 @media (min-width: 992px) {}
 
-@media (min-width: 768px) {
-}
+@media (min-width: 768px) {}
 
 @media (min-width: 600px) {}
 
