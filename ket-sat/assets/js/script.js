@@ -1,6 +1,6 @@
 $(function () {
-	if ($(".box-post-slider").length > 0) {
-		var swiper_slider = new Swiper(".box-post-slider", {
+	if ($(".ks-adv-slider").length > 0) {
+		var swiper_slider = new Swiper(".ks-adv-slider", {
 			slidesPerView: 1,
 			// spaceBetween: 10,
 			loop: true,
