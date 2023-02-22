@@ -2212,5 +2212,10 @@ input:checked+label.rdo-tile-label {
   position: static;
 }
 
+.ks-adv-banner{
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-8);
+}
 
 /* --------------------END-HOME --------------------- */

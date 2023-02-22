@@ -63,14 +63,6 @@
 /* ----------------------------------------------- */
 @media (min-width: 1400px) {
 
-  .container,
-  .container-lg,
-  .container-md,
-  .container-sm,
-  .container-xl,
-  .container-xxl {
-    max-width: 1140px;
-  }
 }
 
 @media only screen and (max-width: 1900px) and (min-width: 300px) {}
@@ -83,10 +75,6 @@
 @media (max-width: 1199px) {}
 
 @media (max-width: 767px) {
-  .box-post.large .post-img {
-    width: 100%;
-  }
-
 }
 
 @media (max-width: 575px) {}
