@@ -1,4 +1,7 @@
 $(function () {
+
+	var sticky = new Sticky('[data-sticky]');
+
 	if ($(".ks-adv-slider").length > 0) {
 		var main_slider = new Swiper(".ks-adv-slider", {
 			slidesPerView: 1,
@@ -13,6 +16,8 @@ $(function () {
 			},
 		});
 	}
+
+
 
 
 	if ($(".ks-products-slider").length > 0) {

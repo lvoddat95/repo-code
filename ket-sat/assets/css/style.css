@@ -2691,6 +2691,7 @@ input:checked+label.rdo-tile-label {
 .ks-product-list {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .ks-product-list.grid-5 .product {
@@ -3132,6 +3133,7 @@ input:checked+label.rdo-tile-label {
   left: 50%;
   transform: translate(-50%, 0);
   max-width: 1200px !important;
+  z-index: 11;
 }
 
 .ks_banner_scroll>div {
@@ -3359,22 +3361,423 @@ input:checked+label.rdo-tile-label {
 /* End - Footer */
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* --------------------END-HOME --------------------- */
+
+
+/* --------------------CATEGORY --------------------- */
+.ks-breadcrumb-slider {
+  padding-bottom: 20px;
+
+}
+
+.ks-filters {
+  padding: 14px 10px 6px;
+  background: #fff;
+  border-radius: var(--radius-6);
+}
+
+.ks-filter-item {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 17px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.ks-combination,
+.ks-filter-item .dropdown .dropdown-toggle {
+  position: relative;
+  cursor: pointer;
+  padding: 8px 10px;
+  font-size: 13px;
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius-16);
+  color: var(--link-color);
+}
+
+.ks-combination.show,
+.ks-filter-item .dropdown .dropdown-toggle.show {
+  border-color: var(--main-color);
+}
+
+.ks-filter-item .dropdown .dropdown-toggle.show:before,
+.ks-filter-item .dropdown .dropdown-toggle.show:after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: calc(50% - 7px);
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  z-index: 1;
+  border-top: 0;
+  margin: 0;
+}
+
+.filter-count {
+  background-color: var(--main-color);
+  border-radius: 50%;
+  color: #fff;
+  display: inline-block;
+  font-size: 10px;
+  height: 16px;
+  line-height: 16px;
+  position: absolute;
+  top: -7px;
+  text-align: center;
+  right: 16px;
+  width: 16px;
+}
+}
+
+.ks-filter-item .dropdown .dropdown-toggle.show:before {
+  bottom: -10px;
+  border-bottom: 7px solid #dee2e6;
+}
+
+.ks-filter-item .dropdown .dropdown-toggle.show:after {
+  bottom: -11px;
+  border-bottom: 7px solid #fff;
+}
+
+.ks-filter-item .dropdown-menu {
+  position: absolute;
+  left: 0;
+  right: auto;
+  margin: 10px 0 0 !important;
+  background-color: #fff;
+  border-radius: 4px;
+  max-width: 600px;
+  min-width: 382px;
+  padding: 10px;
+  width: max-content;
+  white-space: normal;
+  -webkit-box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
+  box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
+  border: none;
+  z-index: 9;
+}
+
+.ks-filter-item .dropdown-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ks-filter-item .dropdown-menu a {
+  align-items: center;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  color: #444;
+  display: block;
+  font-size: 13px;
+  justify-content: center;
+  text-align: center;
+  line-height: 17px;
+  margin-bottom: 6px;
+  margin-right: 6px;
+  padding: 8px 9px;
+}
+
+.ks-filter-item .dropdown-menu a.active {
+  border: 1px solid var(--main-color);
+}
+
+.filter-button {
+  background-color: #fff;
+  box-shadow: 0 -4px 8px rgb(0 0 0 / 5%);
+  font-size: 0;
+  margin: 15px -10px 0;
+  padding: 8px 10px;
+  text-align: center;
+  display: none;
+}
+
+.btn-filter-close, .btn-filter-readmore {
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 14px;
+  line-height: 16px;
+  margin: 0 5px;
+  padding: 10px 0;
+  text-align: center;
+  width: 170px;
+  position: relative;
+}
+
+.btn-filter-close {
+  border: 1px solid #dd1c1a;
+  color: #dd1c1a;
+  cursor: pointer;
+}
+
+.btn-filter-close, .btn-filter-readmore {
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 14px;
+  line-height: 16px;
+  margin: 0 5px;
+  padding: 10px 0;
+  text-align: center;
+  width: 170px;
+  position: relative;
+}
+
+.btn-filter-readmore {
+  background-color: #288ad6;
+  color: #fff;
+  cursor: pointer;
+}
+
+.box-checkbox {
+  float: left;
+  margin: 5px 0 15px;
+  display: flex;
+}
+
+.box-checkbox .c-checkitem:first-child {
+  margin-left: 25px;
+}
+
+.box-checkbox .c-checkitem {
+  position: relative;
+  margin-right: 25px;
+}
+
+.c-checkitem .tick-checkbox, .c-checkitem p {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.c-checkitem .tick-checkbox {
+  border: 1px solid #a6a6a6;
+  border-radius: 3px;
+  margin-right: 2px;
+  height: 16px;
+  width: 16px;
+  background: #fff;
+}
+
+.c-checkitem.active .tick-checkbox {
+  background-color: #4a90e2;
+  border: none;
+}
+
+.box-checkbox .c-checkitem p {
+  font-size: 12px;
+  line-height: 16px;
+  color: #545454;
+  margin: 0;
+  margin-left: 5px;
+}
+
+.c-checkitem.active:after, .c-checkitem.active:before {
+  background-color: #fff;
+  bottom: 3px;
+  border-radius: 20px;
+  content: "";
+  position: absolute;
+  width: 2px;
+}
+
+.c-checkitem.active:before {
+  height: 8px;
+  left: 4px;
+  transform: rotate(-35deg);
+}
+
+.c-checkitem.active:after {
+  height: 12px;
+  left: 9px;
+  transform: rotate(35deg);
+}
+
+.ks-sort-cate {
+  border: 0;
+  height: inherit;
+  margin: 10px 0;
+  display: block;
+  overflow: visible;
+  padding: 1em;
+}
+
+.sort-total {
+  float: left;
+  font-weight: 700;
+  margin: 0 0 15px;
+  padding-top: 3px;
+  color: #3f3f3f;
+}
+
+.ks-product-grid {
+  background: #fff;
+  border-radius: var(--radius-6);
+  margin: 0.5em 0;
+}
+
+.ks-sort-cate .ks-sort-cate-left {
+  display: inline-block;
+  float: right;
+}
+
+.ks-sort-cate .ks-dropdown {
+  position: relative;
+  padding: 0;
+  border-radius: 0;
+}
+
+.ks-sort-cate .ks-dropdown__cta {
+  display: flex;
+  align-items: center;
+  line-height: normal;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 6px 10px 8px 8px;
+}
+
+.ks-dropdown__cta {
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.ks-dropdown__content {
+  background: #fafafa;
+  border-radius: 3px;
+  box-shadow: 0 0 4px rgb(0 0 0 / 15%);
+  width: 200px;
+}
+
+.ks-dropdown__item, .ks-dropdown__item a {
+  display: flex;
+  width: 100%;
+}
+
+.ks-dropdown__item a {
+  padding: 1rem;
+  border-left: 3px solid transparent;
+  transition: all .2s ease;
+  color: #3f3f3f;
+}
+
+.ks-dropdown__item a:hover {
+  background: rgba(0, 0, 0, .05);
+  border-color: #ed3324;
+}
+
+.ks-category-filter {
+  display: flex;
+  flex-flow: wrap;
+  background: #fff;
+  padding: 1em;
+  border-radius: var(--radius-6);
+  margin-bottom: 1px;
+}
+
+
+.ks-category-filter a {
+  cursor: pointer;
+  margin: 0 6px 10px;
+  width: 120px;
+}
+
+.ks-category-filter img {
+  align-items: center;
+  background-color: #f4f4f4;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  height: 60px;
+  margin: 0 auto;
+  width: 60px;
+}
+
+.ks-category-filter span {
+  font-size: 13px;
+  line-height: 17px;
+  max-width: 96px;
+  margin: 5px auto 0;
+  text-align: center;
+  color: #333;
+  display: block;
+}
+
+.ks-category-filter a.active img,
+.ks-category-filter a:hover img {
+  border: 1px solid var(--main-color);
+}
+
+.ks-category-filter a.active span,
+.ks-category-filter a:hover span {
+  color: var(--main-color);
+}
+
+.ks-category-product {
+  background: white;
+  position: relative;
+  border-radius: var(--radius-6);
+}
+
+.categories_info {
+  border-radius: 8px;
+  box-shadow: 0 0 6px 0 rgb(0 0 0 / 6%);
+  background-color: #fff;
+  padding: 16px;
+  margin: 0.5em 0;
+  width: auto;
+  line-height: 2;
+}
+
+.categories_info a.hide, .categories_info a.show {
+  text-align: center;
+  line-height: 40px;
+  display: block;
+  margin: 16px auto 0;
+  cursor: pointer;
+  color: #0071ff;
+  font-size: 16px;
+}
+
+.categories_info a {
+  color: #ed3324 !important;
+}
+
+.categories_info ._bd {
+  line-height: 2 !important;
+}
+
+.categories_info ._bd {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.categories_info .short {
+  position: relative;
+}
+
+.categories_info .short .show_light {
+  background: hsla(0, 0%, 100%, .8);
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  height: 25px;
+}
+
+.ks-top-san-pham {
+  background: #fff;
+  padding: 20px;
+  border-radius: var(--radius-6);
+}
+
+.ks-title-top {
+  font-weight: 700;
+  position: relative;
+  color: #3f3f3f;
+  margin-bottom: 1rem;
+  display: inline-flex;
+  text-transform: uppercase;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, .15));
+}
+
+/* --------------------END-CATEGORY --------------------- */
