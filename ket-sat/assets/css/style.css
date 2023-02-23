@@ -1912,7 +1912,7 @@ input:checked+label.rdo-tile-label {
   cursor: pointer;
 }
 
-.header {
+#ks-header-top {
   padding: 10px 0;
   background: var(--main-color);
 }
@@ -2119,16 +2119,21 @@ input:checked+label.rdo-tile-label {
   margin-bottom: 10px;
 }
 
-
-
 .ks-nav {
   border-bottom: .5px solid #e0e0e0;
 }
 
-
-
 .ks-category {
   position: relative;
+  z-index: 111;
+}
+
+.ks-category:hover .ks-menu-category {
+  display: block !important;
+}
+
+.ks-category:hover h3 {
+  cursor: pointer;
 }
 
 .ks-category>h3 {
@@ -2214,7 +2219,7 @@ input:checked+label.rdo-tile-label {
   height: auto;
   min-height: 384px;
   top: 0;
-  left: 240px;
+  left: 100%;
   display: none;
 }
 
@@ -3129,6 +3134,10 @@ input:checked+label.rdo-tile-label {
   max-width: 1200px !important;
 }
 
+.ks_banner_scroll>div {
+  display: none;
+}
+
 .ks_banner_scroll_left {
   position: absolute;
   left: -145px !important;
@@ -3145,7 +3154,7 @@ input:checked+label.rdo-tile-label {
   position: fixed;
   z-index: 40;
   bottom: 0rem;
-  right: 10px;
+  left: 10px;
   width: 60px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
   height: auto;
@@ -3213,7 +3222,7 @@ input:checked+label.rdo-tile-label {
   border-radius: 28px;
   position: absolute;
   top: 0;
-  right: 10px;
+  left: 10px;
   width: 0;
   overflow: hidden;
   -webkit-transition: all 1s;
@@ -3228,14 +3237,124 @@ input:checked+label.rdo-tile-label {
   font-weight: 600;
   line-height: 2.9em;
   z-index: 19;
-  text-align: left;
+  text-align: right;
   width: 259px;
-  padding-left: 20px;
-  padding-right: 10px;
+  padding-left: 10px;
+  padding-right: 20px;
   opacity: 1;
 }
 
+.ms {
+  left: 10px;
+  bottom: 76px;
+  position: fixed;
+  z-index: 99999;
+  width: 60px;
+  height: 60px;
+  background: url(/assets/img/social/fb.jpg) no-repeat center center;
+  border-radius: 50%;
+}
 
+.ms em {
+  z-index: 2;
+  line-height: 30px;
+  text-align: center;
+  color: #fff;
+  font-style: normal;
+}
+
+.ms span, .ms em {
+  position: absolute;
+  width: 120px;
+  height: 30px;
+  margin-left: 70px;
+  margin-top: 5px;
+}
+
+.ms b {
+  position: absolute;
+  z-index: 2;
+  width: 20px;
+  line-height: 20px;
+  text-align: center;
+  color: #fff;
+  background-color: #cc0000;
+  margin-left: 40px;
+  font-weight: 500;
+  border-radius: 50%;
+}
+
+.ms span {
+  z-index: 1;
+  background-color: #00427f;
+  border-radius: 6px;
+  -moz-opacity: 0.7;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+
+.zl {
+  left: 10px;
+  bottom: 140px;
+  position: fixed;
+  z-index: 99999;
+  width: 60px;
+  height: 60px;
+  background: url(/assets/img/social/zalo.ico) no-repeat center center;
+  border-radius: 50%;
+  background-size: 100%;
+}
+
+.zl em {
+  z-index: 2;
+  line-height: 30px;
+  text-align: center;
+  color: #fff;
+  font-style: normal;
+  background: #262667;
+  border-radius: 7%;
+  background-size: 100%;
+}
+
+.zl span, .zl em {
+  position: absolute;
+  width: 120px;
+  height: 30px;
+  margin-left: 70px;
+  margin-top: 5px;
+}
+
+.zl b {
+  position: absolute;
+  z-index: 2;
+  width: 20px;
+  line-height: 20px;
+  text-align: center;
+  color: #fff;
+  background-color: #cc0000;
+  margin-left: 40px;
+  font-weight: 500;
+  border-radius: 50%;
+}
+
+}
+
+.zl span {
+  z-index: 1;
+  background-color: #00427f;
+  border-radius: 6px;
+  -moz-opacity: 0.7;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+
+.zl span, .zl em {
+  position: absolute;
+  width: 120px;
+  height: 30px;
+  margin-left: 70px;
+  margin-top: 5px;
+}
 
 /* End - Footer */
 

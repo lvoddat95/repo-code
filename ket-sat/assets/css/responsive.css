@@ -62,14 +62,21 @@
 
 /* ----------------------------------------------- */
 @media (min-width: 1400px) {
+  .ks_banner_scroll .ks_banner_scroll_right,
+  .ks_banner_scroll .ks_banner_scroll_left{
+    display: block;
+  }
   .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
     max-width: 1240px;
   }
 }
 
-@media only screen and (max-width: 1900px) and (min-width: 300px) {}
+@media (min-width: 1200px) {
+  .container, .container-lg, .container-md, .container-sm, .container-xl {
+    max-width: 1240px;
+  }
 
-@media (min-width: 1200px) {}
+}
 
 
 @media (max-width: 1600px) {}
