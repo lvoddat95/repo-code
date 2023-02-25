@@ -2,14 +2,14 @@ $(function () {
 
 	var sticky = new Sticky('[data-sticky]');
 
-	var swiper = new Swiper(".ks-product-img-main", {
+	var swiper = new Swiper(".ks-product-thumbnail", {
 		spaceBetween: 10,
-		slidesPerView: 4,
+		slidesPerView: 6,
 		freeMode: true,
 		watchSlidesProgress: true,
 	});
 
-	var product_thumb_image = new Swiper(".ks-product-thumbnail", {
+	var swiper2 = new Swiper(".ks-product-img-main", {
 		spaceBetween: 10,
 		navigation: {
 			nextEl: ".swiper-button-next",
@@ -19,6 +19,13 @@ $(function () {
 			swiper: swiper,
 		},
 	});
+
+
+	if ($('[data-fancybox="gallery"]').length > 0) {
+		Fancybox.bind('[data-fancybox="gallery"]', {
+			// Your custom options
+		});
+	}
 
 	if ($(".ks-adv-slider").length > 0) {
 		var main_slider = new Swiper(".ks-adv-slider", {
@@ -35,8 +42,12 @@ $(function () {
 		});
 	}
 
-
-
+	$(document).on("click", "#clickShowSendReview", function () {
+		$("#ks_review_pdp_show_npv").css("display", "none");
+		$("#clickShowSendReview").css("display", "none");
+		$("#send_vote_npv").css("display", "flex");
+		$(".wrap_post_composer_pdp").css("display", "block");
+	});
 
 	if ($(".ks-products-slider").length > 0) {
 		var product_slider = new Swiper(".ks-products-slider", {
@@ -91,8 +102,8 @@ $(function () {
 	// Len dau trang
 	$(".go-top").on("click", function () {
 		$("html, body").animate({
-				scrollTop: 0,
-			},
+			scrollTop: 0,
+		},
 			500
 		);
 	});
