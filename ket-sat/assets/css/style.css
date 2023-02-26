@@ -2228,7 +2228,7 @@ input:checked+label.rdo-tile-label {
   display: flex;
   background: #fff;
   overflow: hidden;
-  width: 707px;
+  width: 350px;
   box-shadow: 2px 2px 6px 0px rgb(17 29 43 / 24%);
 }
 
@@ -2237,7 +2237,7 @@ input:checked+label.rdo-tile-label {
   padding: 14px 20px;
   height: auto;
   min-height: 360px;
-  width: 176px;
+  width: 350px;
 }
 
 .sub-menu-item:nth-child(2n) {
@@ -3136,6 +3136,11 @@ input:checked+label.rdo-tile-label {
   text-align: center;
 }
 
+.footer-box .ks-showroom-list {
+  max-height: 172px;
+  padding: 0;
+}
+
 
 .ks_banner_scroll {
   top: 135px;
@@ -3981,29 +3986,11 @@ input:checked+label.rdo-tile-label {
   justify-content: center;
 }
 
-.whotline.cht li {
-  padding: 0;
-  background: #ffc928;
-}
-
 .whotline.cht li p {
-  color: var(--link-color);
+  /* font-size: var(--fz-16);
+  font-weight: 500; */
 }
 
-.whotline.cht li span {
-  margin-bottom: 0;
-}
-
-.whotline.cht li a {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  flex: 0 0 auto;
-  width: 100%;
-  color: var(--link-color);
-  padding: 12px;
-}
 
 .whotline li span {
   display: block;
