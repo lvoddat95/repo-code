@@ -72,6 +72,11 @@ $(function () {
 		});
 	}
 
+	var swiper = new Swiper(".nav-newscate", {
+		slidesPerView: "auto",
+		freeMode: true,
+	  });
+
 
 
 	if ($("#menu-nav").length > 0) {
