@@ -5123,6 +5123,11 @@ input:checked+label.rdo-tile-label {
   padding: 10px 0;
 }
 
+.ks-mb-banner-slider .swiper-button-next, 
+.ks-mb-banner-slider .swiper-button-prev{
+  margin-top: -36px;
+}
+
 .mb-cate-wrap-item {
   background-color: white;
   margin: 0;
@@ -5175,6 +5180,10 @@ input:checked+label.rdo-tile-label {
   font-size: 18px;
   text-shadow: 0 0 var(--primaryColor), 1px 0 var(--primaryColor), 0 -1px var(--primaryColor), 0 -1px var(--primaryColor),
     -1px -1px var(--primaryColor), -1px 0 var(--primaryColor), -1px -1px var(--primaryColor), 1px -1px var(--primaryColor);
+}
+
+.ks-mb-products-slider{
+  position: relative;
 }
 
 .mb .product .product-header {

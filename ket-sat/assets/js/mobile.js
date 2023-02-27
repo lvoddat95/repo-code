@@ -24,22 +24,22 @@ $(function () {
             pagination: {
                 el: ".cate-swiper-pagination",
                 type: "progressbar",
-              },
+            },
         });
 
     };
 
-	if ($(".ks-mb-products-slider").length > 0) {
-		var product_slider = new Swiper(".ks-mb-products-slider", {
-			slidesPerView: 2,
-			spaceBetween: 5,
-			loop: true,
-			navigation: {
-				nextEl: ".swiper-button-next",
-				prevEl: ".swiper-button-prev",
-			},
-		});
-	}
+    if ($(".ks-mb-products-slider").length > 0) {
+        var product_slider = new Swiper(".ks-mb-products-slider", {
+            slidesPerView: 2,
+            spaceBetween: 5,
+            loop: true,
+            navigation: {
+                nextEl: ".mb-products-button-next",
+                prevEl: ".mb-products-button-prev",
+            },
+        });
+    }
 
 
 });
