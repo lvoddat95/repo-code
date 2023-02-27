@@ -2469,7 +2469,6 @@ input:checked+label.rdo-tile-label {
   width: 100%;
   justify-content: space-between;
   min-height: 24px;
-  margin-top: 8px;
 }
 
 .product-feature-badge-item {
@@ -5092,10 +5091,10 @@ input:checked+label.rdo-tile-label {
 }
 
 .mb .ks-list-service {
-  margin: 10px 0;
   line-height: normal;
   display: flex;
   justify-content: space-around;
+  margin: 10px -3px;
 }
 
 .mb .ks-service-item {
@@ -5104,6 +5103,7 @@ input:checked+label.rdo-tile-label {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 3px;
 }
 
 .mb .ks-service-item span {
@@ -5118,36 +5118,111 @@ input:checked+label.rdo-tile-label {
   margin: 0 0 5px;
 }
 
+.ks-mb-banner-slider .swiper-pagination {
+  position: static;
+  padding: 10px 0;
+}
+
+.mb-cate-wrap-item {
+  background-color: white;
+  margin: 0;
+}
+
+.mb-cate-img {
+  margin-bottom: 5px;
+}
+
+.mb-cate-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 96px;
+  background: #fff;
+  margin-bottom: 5px;
+  text-align: center;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 0.5px solid #DBDBDB;
+  border-radius: 4px;
+}
+
+.mb-cate-title {
+  color: var(--link-color);
+  font-size: 11px;
+  font-weight: normal;
+  width: 100%;
+  text-align: center;
+}
 
 
+.cate-swiper-pagination {
+  position: static;
+  border-radius: 6px;
+  overflow: hidden;
+}
 
 
+.mb-block {
+  margin-bottom: 20px;
+}
+
+.mb .ks-heading {
+  height: 46px;
+}
+
+.mb .ks-heading.type-text>div {
+  font-size: 18px;
+  text-shadow: 0 0 var(--primaryColor), 1px 0 var(--primaryColor), 0 -1px var(--primaryColor), 0 -1px var(--primaryColor),
+    -1px -1px var(--primaryColor), -1px 0 var(--primaryColor), -1px -1px var(--primaryColor), 1px -1px var(--primaryColor);
+}
+
+.mb .product .product-header {
+  min-height: auto;
+}
+
+.mb .product .product-header .product-image {
+  height: auto;
+  padding: 6vw 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mb .product .product-header .frame {
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+.mb .product .product-header .frame img{
+  width: 100%;
+}
+
+.mb .product .product-header .tags-image {
+  height: 42vw;
+}
+
+.mb .product .product-body {
+  padding: 0 5px;
+  margin-top: 2vw;
+}
+
+.mb .product .product-body .product-title a{
+  max-height: 50px;
+}
+
+@media screen and (max-width: 768px) {
+  .mb .product .product-header {
+    height: 23vw;
+  }
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@media screen and (max-width: 435px) {
+  .mb .product .product-header {
+    height: 42vw;
+  }
+}
 
 
 
