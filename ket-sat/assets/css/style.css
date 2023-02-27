@@ -5234,7 +5234,9 @@ input:checked+label.rdo-tile-label {
 }
 
 
-
+.readmore-btn{
+  width: 100%;
+}
 
 
 
