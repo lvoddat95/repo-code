@@ -1,6 +1,9 @@
 $(function () {
 
-	var sticky = new Sticky('[data-sticky]');
+	if ($('[data-sticky]').length > 0) {
+		var sticky = new Sticky('[data-sticky]');
+	};
+
 
 	var swiper = new Swiper(".ks-product-thumbnail", {
 		spaceBetween: 10,
@@ -8,7 +11,6 @@ $(function () {
 		freeMode: true,
 		watchSlidesProgress: true,
 	});
-
 	var swiper2 = new Swiper(".ks-product-img-main", {
 		spaceBetween: 10,
 		navigation: {
@@ -75,9 +77,7 @@ $(function () {
 	var swiper = new Swiper(".nav-newscate", {
 		slidesPerView: "auto",
 		freeMode: true,
-	  });
-
-
+	});
 
 	if ($("#menu-nav").length > 0) {
 		if (typeof hcOffcanvasNav == "undefined") {
@@ -107,8 +107,8 @@ $(function () {
 	// Len dau trang
 	$(".go-top").on("click", function () {
 		$("html, body").animate({
-			scrollTop: 0,
-		},
+				scrollTop: 0,
+			},
 			500
 		);
 	});
@@ -143,7 +143,7 @@ var fancybox_modal = function (source, closeMethod = "true") {
 			// btnTpl: {
 			//     smallBtn: "",
 			// },
-			touch: false,
+			touch: false,                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 			clickSlide: clickSlide,
 			clickOutside: clickOutside,
 		},

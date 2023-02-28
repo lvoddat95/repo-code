@@ -1,170 +1,346 @@
-<div class="container">
-    <div class="row align-items-center">
-        <div class="col-3">
-            <div class="ks-logo">
-                <a href="">
-                    <img class="img-fluid" src="assets/img/logo.png" alt="Logo" srcset="">
-                </a>
+<div id="ks-header-top">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-3">
+                <div class="ks-logo">
+                    <a href="index.html">
+                        <img class="img-fluid" src="assets/img/logo.png" alt="Logo" srcset="">
+                    </a>
+                </div>
             </div>
-        </div>
-        <div class="col-9">
-            <div class="row align-items-center">
-                <div class="w60p">
-                    <div class="ks-header-search">
-                        <form action="">
-                            <input type="search" name="" id="" placeholder="Bạn cần tìm gì hôm nay ?"
-                                autocomplete="off">
-                            <button type="submit"><i class="far fa-magnifying-glass"></i></button>
-                        </form>
+            <div class="col-9">
+                <div class="row align-items-center">
+                    <div class="w60p">
+                        <div class="ks-header-search">
+                            <form action="">
+                                <input type="search" name="" id="" placeholder="Bạn cần tìm gì hôm nay ?"
+                                    autocomplete="off">
+                                <button type="submit"><i class="far fa-magnifying-glass"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="w40p">
+                        <ul class="ks-list-action list-unstyled d-flex align-items-center justify-content-end">
+                            <li class="ks-cart droplist">
+                                <a href="" class="d-flex align-items-center">
+                                    <div class="position-relative">
+                                        <span class="ks-icon fal fa-cart-shopping">
+                                            <span class="ks-count">2</span>
+                                        </span>
+                                    </div>
+                                    Giỏ hàng
+                                </a>
+                                <div class="droplist-box">
+                                    <span class="ks-arrow"></span>
+                                    <ul class="ks-cart-list custom-scrollbar list-unstyled">
+                                        <li>
+                                            <div class="ks-cart-img">
+                                                <a href="">
+                                                    <img class="img-fluid"
+                                                        src="https://cdn.nguyenkimmall.com/images/thumbnails/40/40/detailed/783/10051419-may-say-quan-ao-electrolux-8-5-kg-edv854n3sb-xam-1.jpg"
+                                                        alt="">
+                                                </a>
+                                            </div>
+                                            <div class="ks-cart-info">
+                                                <p class="ks-cart-title mb-0">Máy sấy quần áo Electrolux 8.5
+                                                    kg
+                                                    EDV854N3SB Xám</p>
+                                                <p class="ks-cart-price">9.990.000đ</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ks-cart-img">
+                                                <a href="">
+                                                    <img class="img-fluid"
+                                                        src="https://cdn.nguyenkimmall.com/images/thumbnails/40/40/detailed/783/10051419-may-say-quan-ao-electrolux-8-5-kg-edv854n3sb-xam-1.jpg"
+                                                        alt="">
+                                                </a>
+                                            </div>
+                                            <div class="ks-cart-info">
+                                                <p class="ks-cart-title mb-0">Máy sấy quần áo Electrolux 8.5
+                                                    kg
+                                                    EDV854N3SB Xám</p>
+                                                <p class="ks-cart-price">9.990.000đ</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="ks-cart-footer">
+                                        <div class="d-flex align-items-end">
+                                            <span class="fw-medium me-3">Tổng tiền:</span>
+                                            <span class="ks-cart-price"
+                                                style="position: relative; bottom: -2px;">9.990.000đ</span>
+                                        </div>
+                                        <a href="" class="ks-cart-buy">Mua ngay</a>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="ks-showroom droplist">
+                                <a href="" class="d-flex align-items-center">
+                                    <span class="ks-icon fal fa-map-location-dot"></span>
+                                    Danh sách <br> Showroom
+                                </a>
+                                <div class="droplist-box">
+                                    <span class="ks-arrow"></span>
+                                    <ul class="ks-showroom-list custom-scrollbar">
+                                        <li>
+                                            <h4>Showroom cửa hàng Hà Nội</h4>
+                                            <p><i class="far fa-location-dot"></i> Số 189 Nguyễn Trãi -
+                                                Thanh
+                                                Xuân -Hà Nội</p>
+                                            <p><i class="far fa-location-dot"></i> Số 9 Nhà Vườn 7 Khu đô
+                                                thị
+                                                Tổng cục 5, Yên Xá, Thanh Trì, Hà Nội</p>
+                                            <p><i class="far fa-location-dot"></i> Sân vận động quốc gia Mỹ
+                                                Đình, Nam Từ Liêm, Hà Nội</p>
+                                            <p><i class="far fa-location-dot"></i> Đường Kim Mã, Ba Đình, Hà
+                                                Nội</p>
+                                            <p><i class="far fa-location-dot"></i> Đường Cầu Mai Động, Hoàng
+                                                Mai, Hà Nội</p>
+                                            <p><i class="far fa-location-dot"></i> Đường Ngô Gia Tự, Long
+                                                Biên,
+                                                Hà Nội</p>
+                                            <p><i class="far fa-location-dot"></i> Đường Tôn Đức Thắng, Đống
+                                                Đa, Hà Nội</p>
+                                            <p><i class="far fa-location-dot"></i> Đường Lạc Long Quân, Tây
+                                                Hồ,
+                                                Hà Nội</p>
+                                            <p class="main-color"><i class="far fa-phone"></i> Hotline:
+                                                0908439666 - 0898145056</p>
+                                            <p class="main-color"><i class="far fa-envelope"></i> Email:
+                                                ketsatphattai.vn@gmail.com</p>
+                                        </li>
+                                        <li>
+                                            <h4>Showroom cửa hàng TP.HCM</h4>
+                                            <p><i class="far fa-location-dot"></i> 364/13 Thoại ngọc Hầu,
+                                                Phường phú thạnh, Quận Tân Phú, TP.HCM</p>
+                                            <p><i class="far fa-location-dot"></i> Số 109 Trương Phước
+                                                Phan,P.Bình Trị Đông, Bình Tân, TP.HCM</p>
+                                            <p><i class="far fa-location-dot"></i> Đường Phạm Thế Hiển, P6,
+                                                Q8,
+                                                tp.hcm</p>
+                                            <p><i class="far fa-location-dot"></i> Đường Quang Trung, P.3,
+                                                Q.
+                                                Gò Vấp, TP.HCM</p>
+                                            <p><i class="far fa-location-dot"></i> Đường 3/2, Phường 10,
+                                                Quận
+                                                10, TP.HCM</p>
+                                            <p><i class="far fa-location-dot"></i> Đường Nguyễn Thị Định,
+                                                Cát
+                                                Lái, Quận 2, TP.HCM</p>
+                                            <p><i class="far fa-location-dot"></i> Đường Phạm Văn Đồng, Linh
+                                                Trung, Thủ Đức, TP.HCM</p>
+                                            <p><i class="far fa-location-dot"></i> Đường Lũy Bán Bích, Tân
+                                                Thới
+                                                Hòa, Tân Phú, TP.HCM</p>
+                                            <p><i class="far fa-location-dot"></i> Các chi nhánh, Q1, Q3,
+                                                Q6,
+                                                Q7, Củ Chi, Nhà Bè, Bình Thạnh</p>
+                                            <p class="main-color"><i class="far fa-phone"></i> Hotline:
+                                                0908439666 - 0898145056</p>
+                                            <p class="main-color"><i class="far fa-envelope"></i> Email:
+                                                ketsatphattai.vn@gmail.com</p>
+                                        </li>
+                                        <li>
+                                            <h4>Showroom cửa hàng Đà Nẵng</h4>
+                                            <p><i class="far fa-location-dot"></i> 236 Trần Cao Vân,
+                                                Phường
+                                                Tam Thuận, Quận Thanh Khê, Đà Nẵng</p>
+                                            <p><i class="far fa-location-dot"></i> Kho hàng Quảng Ngãi (
+                                                Trong
+                                                bến xe Bắc Quảng Ngãi)</p>
+                                            <p class="main-color"><i class="far fa-phone"></i> Hotline:
+                                                0908439666 - 0898145056</p>
+                                            <p class="main-color"><i class="far fa-envelope"></i> Email:
+                                                ketsatphattai.vn@gmail.com</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li>
+                                <a href="" class="d-flex align-items-center">
+                                    <span class="ks-icon fal fa-phone-volume"></span>
+                                    Gọi mua: <br> 19001010
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <div class="w40p">
-                    <ul class="ks-list-action list-unstyled d-flex align-items-center justify-content-end">
-                        <li class="ks-cart droplist">
-                            <a href="" class="d-flex align-items-center">
-                                <div class="position-relative">
-                                    <span class="ks-icon fal fa-cart-shopping">
-                                        <span class="ks-count">2</span>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="ks-header-bottom" class="bg-white">
+    <div class="container">
+        <div class="ks-nav">
+            <div class="row gx-3">
+                <div class="w20p">
+                    <div class="ks-category">
+                        <h3><i class="far fa-bars"></i><b>Danh mục sản phẩm</b></h3>
+                        <ul class="ks-menu-category d-none">
+                            <li class="menu-item menu-has-sub">
+                                <div class="menu-link">
+                                    <i class="fa fa-tv"></i>
+                                    <span>
+                                        <a href="">Tivi</a>,
+                                        <a href="">Loa</a>,
+                                        <a href="">Dàn Karaoke</a>
                                     </span>
                                 </div>
-                                Giỏ hàng
-                            </a>
-                            <div class="droplist-box">
-                                <span class="ks-arrow"></span>
-                                <ul class="ks-cart-list custom-scrollbar list-unstyled">
-                                    <li>
-                                        <div class="ks-cart-img">
-                                            <a href="">
-                                                <img class="img-fluid"
-                                                    src="https://cdn.nguyenkimmall.com/images/thumbnails/40/40/detailed/783/10051419-may-say-quan-ao-electrolux-8-5-kg-edv854n3sb-xam-1.jpg"
-                                                    alt="">
-                                            </a>
+                                <div class="sub-menu">
+                                    <div class="sub-menu-wrap">
+                                        <div class="sub-menu-item">
+                                            <div class="links">
+                                                <h3 title="Tivi"><a class="a-links" href="">Tivi</a></h3>
+                                                <ul>
+                                                    <li><a title="Samsung" class="a-links" href="">Samsung</a></li>
+                                                    <li><a title="LG" class="a-links" href="">LG</a></li>
+                                                    <li class="non-caret"><a title="LG" class="a-links"
+                                                            href="">Thông
+                                                            tin</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="links">
+                                                <h3 title="Tivi"><a class="a-links" href="">Tivi</a></h3>
+                                                <ul>
+                                                    <li><a title="Samsung" class="a-links" href="">Samsung</a></li>
+                                                    <li><a title="LG" class="a-links" href="">LG</a></li>
+                                                    <li class="non-caret"><a title="LG" class="a-links"
+                                                            href="">Thông
+                                                            tin</a></li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                        <div class="ks-cart-info">
-                                            <p class="ks-cart-title mb-0">Máy sấy quần áo Electrolux 8.5 kg
-                                                EDV854N3SB Xám</p>
-                                            <p class="ks-cart-price">9.990.000đ</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="ks-cart-img">
-                                            <a href="">
-                                                <img class="img-fluid"
-                                                    src="https://cdn.nguyenkimmall.com/images/thumbnails/40/40/detailed/783/10051419-may-say-quan-ao-electrolux-8-5-kg-edv854n3sb-xam-1.jpg"
-                                                    alt="">
-                                            </a>
-                                        </div>
-                                        <div class="ks-cart-info">
-                                            <p class="ks-cart-title mb-0">Máy sấy quần áo Electrolux 8.5 kg
-                                                EDV854N3SB Xám</p>
-                                            <p class="ks-cart-price">9.990.000đ</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="ks-cart-footer">
-                                    <div class="d-flex align-items-end">
-                                        <span class="fw-medium me-3">Tổng tiền:</span>
-                                        <span class="ks-cart-price"
-                                            style="position: relative; bottom: -2px;">9.990.000đ</span>
+
                                     </div>
-                                    <a href="" class="ks-cart-buy">Mua ngay</a>
                                 </div>
-                            </div>
-                        </li>
+                            </li>
+                            <li class="menu-item">
+                                <div class="menu-link">
+                                    <i class="fa fa-refrigerator"></i>
+                                    <span>
+                                        <a href="">Tủ lạnh</a>,
+                                        <a href="">Tủ đông</a>,
+                                        <a href="">Tủ mát</a>
+                                    </span>
+                                </div>
+                                <div class="sub-menu"></div>
+                            </li>
 
-                        <li class="ks-showroom droplist">
-                            <a href="" class="d-flex align-items-center">
-                                <span class="ks-icon fal fa-map-location-dot"></span>
-                                Danh sách <br> Showroom
-                            </a>
-                            <div class="droplist-box">
-                                <span class="ks-arrow"></span>
-                                <ul class="ks-showroom-list custom-scrollbar">
-                                    <li>
-                                        <h4>Showroom cửa hàng Hà Nội</h4>
-                                        <p><i class="far fa-location-dot"></i> Số 189 Nguyễn Trãi -
-                                            Thanh
-                                            Xuân -Hà Nội</p>
-                                        <p><i class="far fa-location-dot"></i> Số 9 Nhà Vườn 7 Khu đô
-                                            thị
-                                            Tổng cục 5, Yên Xá, Thanh Trì, Hà Nội</p>
-                                        <p><i class="far fa-location-dot"></i> Sân vận động quốc gia Mỹ
-                                            Đình, Nam Từ Liêm, Hà Nội</p>
-                                        <p><i class="far fa-location-dot"></i> Đường Kim Mã, Ba Đình, Hà
-                                            Nội</p>
-                                        <p><i class="far fa-location-dot"></i> Đường Cầu Mai Động, Hoàng
-                                            Mai, Hà Nội</p>
-                                        <p><i class="far fa-location-dot"></i> Đường Ngô Gia Tự, Long
-                                            Biên,
-                                            Hà Nội</p>
-                                        <p><i class="far fa-location-dot"></i> Đường Tôn Đức Thắng, Đống
-                                            Đa, Hà Nội</p>
-                                        <p><i class="far fa-location-dot"></i> Đường Lạc Long Quân, Tây
-                                            Hồ,
-                                            Hà Nội</p>
-                                        <p class="main-color"><i class="far fa-phone"></i> Hotline:
-                                            0908439666 - 0898145056</p>
-                                        <p class="main-color"><i class="far fa-envelope"></i> Email:
-                                            ketsatphattai.vn@gmail.com</p>
-                                    </li>
-                                    <li>
-                                        <h4>Showroom cửa hàng TP.HCM</h4>
-                                        <p><i class="far fa-location-dot"></i> 364/13 Thoại ngọc Hầu,
-                                            Phường phú thạnh, Quận Tân Phú, TP.HCM</p>
-                                        <p><i class="far fa-location-dot"></i> Số 109 Trương Phước
-                                            Phan,P.Bình Trị Đông, Bình Tân, TP.HCM</p>
-                                        <p><i class="far fa-location-dot"></i> Đường Phạm Thế Hiển, P6,
-                                            Q8,
-                                            tp.hcm</p>
-                                        <p><i class="far fa-location-dot"></i> Đường Quang Trung, P.3,
-                                            Q.
-                                            Gò Vấp, TP.HCM</p>
-                                        <p><i class="far fa-location-dot"></i> Đường 3/2, Phường 10,
-                                            Quận
-                                            10, TP.HCM</p>
-                                        <p><i class="far fa-location-dot"></i> Đường Nguyễn Thị Định,
-                                            Cát
-                                            Lái, Quận 2, TP.HCM</p>
-                                        <p><i class="far fa-location-dot"></i> Đường Phạm Văn Đồng, Linh
-                                            Trung, Thủ Đức, TP.HCM</p>
-                                        <p><i class="far fa-location-dot"></i> Đường Lũy Bán Bích, Tân
-                                            Thới
-                                            Hòa, Tân Phú, TP.HCM</p>
-                                        <p><i class="far fa-location-dot"></i> Các chi nhánh, Q1, Q3,
-                                            Q6,
-                                            Q7, Củ Chi, Nhà Bè, Bình Thạnh</p>
-                                        <p class="main-color"><i class="far fa-phone"></i> Hotline:
-                                            0908439666 - 0898145056</p>
-                                        <p class="main-color"><i class="far fa-envelope"></i> Email:
-                                            ketsatphattai.vn@gmail.com</p>
-                                    </li>
-                                    <li>
-                                        <h4>Showroom cửa hàng Đà Nẵng</h4>
-                                        <p><i class="far fa-location-dot"></i> 236 Trần Cao Vân,
-                                            Phường
-                                            Tam Thuận, Quận Thanh Khê, Đà Nẵng</p>
-                                        <p><i class="far fa-location-dot"></i> Kho hàng Quảng Ngãi (
-                                            Trong
-                                            bến xe Bắc Quảng Ngãi)</p>
-                                        <p class="main-color"><i class="far fa-phone"></i> Hotline:
-                                            0908439666 - 0898145056</p>
-                                        <p class="main-color"><i class="far fa-envelope"></i> Email:
-                                            ketsatphattai.vn@gmail.com</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
+                            <li class="menu-item  menu-has-sub">
+                                <div class="menu-link">
+                                    <i class="fa fa-washing-machine"></i>
+                                    <span>
+                                        <a href="">Máy giặt</a>,
+                                        <a href="">Máy sấy</a>,
+                                        <a href="">Máy nước nóng</a>
+                                    </span>
+                                </div>
+                                <div class="sub-menu"></div>
+                            </li>
+                            <li class="menu-item  menu-has-sub">
+                                <div class="menu-link">
+                                    <i class="fa fa-washing-machine"></i>
+                                    <span>
+                                        <a href="">Máy giặt</a>,
+                                        <a href="">Máy sấy</a>,
+                                        <a href="">Máy nước nóng</a>
+                                    </span>
+                                </div>
+                                <div class="sub-menu"></div>
+                            </li>
+                            <li class="menu-item  menu-has-sub">
+                                <div class="menu-link">
+                                    <i class="fa fa-washing-machine"></i>
+                                    <span>
+                                        <a href="">Máy giặt</a>,
+                                        <a href="">Máy sấy</a>,
+                                        <a href="">Máy nước nóng</a>
+                                    </span>
+                                </div>
+                                <div class="sub-menu"></div>
+                            </li>
+                            <li class="menu-item  menu-has-sub">
+                                <div class="menu-link">
+                                    <i class="fa fa-washing-machine"></i>
+                                    <span>
+                                        <a href="">Máy giặt</a>,
+                                        <a href="">Máy sấy</a>,
+                                        <a href="">Máy nước nóng</a>
+                                    </span>
+                                </div>
+                                <div class="sub-menu"></div>
+                            </li>
+                            <li class="menu-item  menu-has-sub">
+                                <div class="menu-link">
+                                    <i class="fa fa-washing-machine"></i>
+                                    <span>
+                                        <a href="">Máy giặt</a>,
+                                        <a href="">Máy sấy</a>,
+                                        <a href="">Máy nước nóng</a>
+                                    </span>
+                                </div>
+                                <div class="sub-menu"></div>
+                            </li>
+                            <li class="menu-item  menu-has-sub">
+                                <div class="menu-link">
+                                    <i class="fa fa-washing-machine"></i>
+                                    <span>
+                                        <a href="">Máy giặt</a>,
+                                        <a href="">Máy sấy</a>,
+                                        <a href="">Máy nước nóng</a>
+                                    </span>
+                                </div>
+                                <div class="sub-menu"></div>
+                            </li>
+                            <li class="menu-item  menu-has-sub">
+                                <div class="menu-link">
+                                    <i class="fa fa-washing-machine"></i>
+                                    <span>
+                                        <a href="">Máy giặt</a>,
+                                        <a href="">Máy sấy</a>,
+                                        <a href="">Máy nước nóng</a>
+                                    </span>
+                                </div>
+                                <div class="sub-menu"></div>
+                            </li>
+                            <li class="menu-item  menu-has-sub">
+                                <div class="menu-link">
+                                    <i class="fa fa-washing-machine"></i>
+                                    <span>
+                                        <a href="">Máy giặt</a>,
+                                        <a href="">Máy sấy</a>,
+                                        <a href="">Máy nước nóng</a>
+                                    </span>
+                                </div>
+                                <div class="sub-menu"></div>
+                            </li>
 
-                        <li>
-                            <a href="" class="d-flex align-items-center">
-                                <span class="ks-icon fal fa-phone-volume"></span>
-                                Gọi mua: <br> 19001010
-                            </a>
-                        </li>
-                    </ul>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="w80p d-flex align-items-center">
+                    <div class="ks-list-service">
+                        <a class="ks-service-item" href="">
+                            <i class="fa-fw fa fa-truck-fast"></i><span>Giao lắp chuyên nghiệp</span>
+                        </a>
+                        <a class="ks-service-item" href="">
+                            <i class="fa-fw fa fa-screwdriver-wrench"></i><span>Bảo hành nhanh gọn</span>
+                            </span>
+                        </a>
+                        <a class="ks-service-item" href="">
+                            <i class="fa-fw fa fa-book-bookmark"></i><span>Tổng hợp khuyến mãi</span>
+                            </span>
+                        </a>
+                        <a class="ks-service-item" href="">
+                            <i class="fa-fw fa fa-gem"></i><span>Phát Tài Luxury</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
