@@ -4993,6 +4993,20 @@ input:checked+label.rdo-tile-label {
 
 /* -------------------- MOBILE --------------------- */
 /* Trang chủ */
+
+body.mb {
+  max-width: 768px;
+  margin: auto;
+}
+
+body.mb {
+  overflow-x: hidden;
+}
+
+.mb {
+  background: #f2f3f7;
+}
+
 .header-mb {
   background: #fff;
   border-bottom: 1px solid #eaeaea;
@@ -5175,6 +5189,7 @@ input:checked+label.rdo-tile-label {
 }
 
 
+
 .mb-block {
   margin-bottom: 20px;
 }
@@ -5290,7 +5305,6 @@ input:checked+label.rdo-tile-label {
   display: -webkit-flex;
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
   padding: 0;
   margin: -3px -3px 3px;
   padding: 6px 5px 2px 5px;
@@ -5298,10 +5312,12 @@ input:checked+label.rdo-tile-label {
 
 .mb .tab-link {
   height: 42px;
-  flex: 1 0 18%;
+  flex: 1 0 calc(20% - 6px);
+  /* width: calc(20% - 6px); */
   border: 0.5px solid #D8D8D8;
   line-height: 14px;
   margin: 3px;
+  padding: 2px 9px;
 }
 
 .ks-mb-news {
@@ -5396,46 +5412,50 @@ input:checked+label.rdo-tile-label {
   font-size: 12px;
 }
 
-.footer-contact{
+.footer-contact {
   background: #fff;
   margin: 10px 0 0;
   padding: 10px 0;
 }
-.footer-ct-box{
+
+.footer-ct-box {
   border: 1px solid #d4d7d9;
   padding: 4px;
   border-radius: 0.5em;
   font-size: 12px;
 }
 
-.footer-ct-box.mail{
+.footer-ct-box.mail {
   padding: 8px 4px;
 }
 
-.footer-contact p{
+.footer-contact p {
   margin-bottom: 0;
 }
-.ft-ct-hotline a{
+
+.ft-ct-hotline a {
   color: var(--sub-color2);
   font-weight: bold;
   font-size: 20px;
-  
+
 }
-.ft-ct-chat{
+
+.ft-ct-chat {
   color: var(--sub-color2);
 }
-.ft-ct-chat i{
+
+.ft-ct-chat i {
   font-size: 12px;
-  background:  var(--sub-color2);;
+  background: var(--sub-color2);
+  ;
   color: #fff;
   padding: 5px;
   border-radius: 50%;
   margin-right: 3px;
 }
 
-.footer-collapse{
+.footer-collapse {
   background: #fff;
-  margin-bottom: 10px;
 }
 
 .footer-collapse .collapse p {
@@ -5452,7 +5472,8 @@ input:checked+label.rdo-tile-label {
   transition: .3s;
   color: var(--link-color) !important;
 }
-.footer-collapse-wrap{
+
+.footer-collapse-wrap {
   background: #f3f3f3;
   border-radius: 4px;
   padding: 7px 0;
@@ -5460,9 +5481,119 @@ input:checked+label.rdo-tile-label {
   line-height: 1.6;
 }
 
+.footer-mb-links {
+  background: #fff;
+}
 
+.footer-links-top {
+  padding: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
 
+.footer-links-top a {
+  color: var(--link-color) !important;
+}
 
+.footer-links-top a[data-bs-toggle="collapse"]:not(.collapsed) {
+  font-weight: 600;
+}
 
+.footer-links-top a[data-bs-toggle="collapse"]:after {
+  content: "\f078";
+  font-family: var(--font-family-fa);
+  margin-left: 6px;
+  font-weight: bold;
+  transition: var(--transition-25);
+}
+
+.footer-links-top a[data-bs-toggle="collapse"]:not(.collapsed):after {
+  content: "\f077";
+}
+
+.mb .footer-box h3 a[data-bs-toggle="collapse"]:after {
+  content: "\f077";
+  font-family: var(--font-family-fa);
+  margin-left: 6px;
+  font-weight: bold;
+  transition: var(--transition-25);
+}
+
+.mb .footer-box h3 a[data-bs-toggle="collapse"]:not(.collapsed):after {
+  content: "\f078";
+}
+
+.mb .footer-box h3 a[data-bs-toggle="collapse"]:after {
+  float: right;
+}
+
+.mb .footer-box h3 {
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+.mb .footer-box h3 a {
+  color: var(--link-color);
+  font-size: 12px;
+  display: block;
+  position: relative;
+  cursor: pointer;
+  line-height: 14px;
+  padding: 10px 0px;
+}
+
+.mb .footer-box h3 a[data-bs-toggle="collapse"]:not(.collapsed) {
+  font-weight: 600;
+}
+
+.mb .footer-box {
+  border-bottom: 1px solid #F0F1F5;
+}
+
+.mb .footer-box .collapse {
+  padding-left: 20px;
+  padding-bottom: 10px;
+}
+
+.mb .footer-links {
+  border-radius: 4px;
+  padding: 0;
+  overflow: hidden;
+  background-color: #fafafa;
+}
+
+.mb .footer-brands a img {
+  width: 70px;
+}
+
+.footer-mb-brands {
+  background: #242424;
+  padding: 0.5rem 0 0;
+  text-align: center;
+}
+
+.footer-mb-company {
+  text-align: center;
+  font-size: 11px;
+  padding: 12px 20px;
+  line-height: 1.4;
+  letter-spacing: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: bold;
+  color: #3f3f3f;
+}
+
+.mb .footer-copyright {
+  padding: 10px 0 60px;
+  font-size: 10px;
+  background-color: #e5e5e5;
+}
+
+.mb .span_copyright {
+  margin-bottom: 0;
+  color: #a6a6a6;
+}
 
 /* -------------------- END-MOBILE --------------------- */
