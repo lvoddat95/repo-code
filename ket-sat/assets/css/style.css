@@ -5551,7 +5551,8 @@ body.mb {
   border-bottom: 1px solid #F0F1F5;
 }
 
-.mb .footer-box .collapse {
+.mb .footer-box .ks-showroom-list,
+.mb .footer-box .footer-submenu {
   padding-left: 20px;
   padding-bottom: 10px;
 }
