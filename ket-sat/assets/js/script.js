@@ -74,35 +74,24 @@ $(function () {
 		});
 	}
 
+	
+    if ($(".ks-category-list").length > 0) {
+        var category_slider = new Swiper(".ks-category-list", {
+            slidesPerView: 10,
+            spaceBetween: 10,
+            freeMode: true,
+            // pagination: {
+            //     el: ".cate-swiper-pagination",
+            //     type: "progressbar",
+            // },
+        });
+    };
+
+
 	var swiper = new Swiper(".nav-newscate", {
 		slidesPerView: "auto",
 		freeMode: true,
 	});
-
-	if ($("#menu-nav").length > 0) {
-		if (typeof hcOffcanvasNav == "undefined") {
-			console.warn("Warning - hcOffcanvasNav Js is not loaded.");
-			return;
-		}
-		if ($(".navbar-toggle").length == 0) {
-			console.warn(
-				"Warning - Thieu button navbar-toggle. Kiem tra lai HTML!"
-			);
-			return;
-		}
-		var $nav = $("#menu-nav").hcOffcanvasNav({
-			disableAt: 1200,
-			customToggle: ".navbar-toggle",
-			levelSpacing: 0,
-			levelTitles: true,
-			levelTitleAsBack: true,
-			labelBack: "Quay lại",
-			labelClose: "",
-			// expanded: true,
-			levelOpen: 'expand'
-		});
-		var Nav = $nav.data("hcOffcanvasNav");
-	}
 
 	// Len dau trang
 	$(".go-top").on("click", function () {

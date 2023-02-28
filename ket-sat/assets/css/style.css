@@ -2826,20 +2826,21 @@ input:checked+label.rdo-tile-label {
 }
 
 .ks-category-list {
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
   width: 100%;
-  justify-content: center;
+  justify-content: center; */
   padding: 24px 24px 0px;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .category-wrap-item {
-  width: 10%;
+  /* width: 10%; */
 }
 
 .category-item {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
@@ -5234,7 +5235,7 @@ input:checked+label.rdo-tile-label {
 }
 
 
-.readmore-btn{
+.mb .readmore-btn{
   width: 100%;
 }
 

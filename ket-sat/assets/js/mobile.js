@@ -26,8 +26,9 @@ $(function () {
                 type: "progressbar",
             },
         });
-
     };
+
+    
 
     if ($(".ks-mb-products-slider").length > 0) {
         var product_slider = new Swiper(".ks-mb-products-slider", {
