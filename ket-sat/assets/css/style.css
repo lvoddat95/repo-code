@@ -5008,8 +5008,26 @@ body.mb {
 }
 
 .header-mb {
+  z-index: 123;
   background: #fff;
-  border-bottom: 1px solid #eaeaea;
+}
+
+.header-mb.is-sticky {
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, .15));
+  border-bottom-left-radius: 0.2em;
+  border-bottom-right-radius: 0.2em;
+}
+
+.header-mb.is-sticky .ks-header-search {
+  display: none;
+}
+
+.ks-mb-search-icon {
+  display: none;
+}
+
+.header-mb.is-sticky .ks-mb-search-icon {
+  display: block;
 }
 
 .header-mb-wrap {
@@ -5019,8 +5037,208 @@ body.mb {
   height: 50px;
 }
 
+.ks_mb_search {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  left: 0;
+  right: 0;
+  background: #fff;
+  height: 100%;
+  width: 100%;
+}
+
+.mb .ks-header-search input {
+  border: 1px solid #eaeaea;
+  height: 32px;
+  border-radius: var(--radius-4);
+  font-size: var(--fz-12);
+}
+
+.mb .ks-header-search button {
+  top: 1px;
+  right: 1px;
+  height: 30px;
+  width: 34px;
+  font-size: 14px;
+}
+
+.ks_search_box {
+  display: inline-block;
+  width: 100%;
+  position: fixed;
+  height: 48px;
+  border-bottom: 1px solid #F0F1F5;
+}
+
+.ks_close_search_box {
+  position: absolute;
+  z-index: 101;
+  top: 0;
+  left: 0;
+  color: #fff;
+  font-size: 18px;
+  width: 40px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ks_search_box input {
+  font-size: 16px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  height: 47px;
+  border: none;
+  padding: 0 40px;
+  color: #fff;
+  outline: none;
+  background: #dc0021;
+}
+
+.ks_search_box input::placeholder {
+  color: #fff;
+}
+
+.ks_search_box button {
+  position: absolute;
+  z-index: 101;
+  top: 10px;
+  right: 12px;
+  color: #fff;
+  font-size: 18px;
+  border: 0;
+  background: transparent;
+}
+
+.ks_search_result {
+  background: #fff;
+  margin: 48px 0 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 0 0 100px 0;
+}
+
+.ks-search-result-section {
+  padding: 10px 0;
+}
+
+.ks-search-result-title {
+  font-size: 18px;
+  padding: 0 10px;
+  font-weight: 400;
+  color: #3f3f3f;
+  line-height: 1.6;
+  text-shadow: 1px 0 #3f3f3f;
+}
+
+.ks-search-result-product-link {
+  color: #3f3f3f;
+  padding: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, .15);
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.ks-search-result-product-card {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.ks-search-result-product-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  overflow: hidden;
+  flex: 1;
+  position: relative;
+}
+
+.ks-search-result-product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ks-search-result-product-image span {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background: #ed3324;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 4px;
+  padding: 2px;
+}
+
+.ks-search-result-product-info {
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  flex: 4;
+}
+
+.ks-search-result-product-info-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 0;
+  line-height: 1.6;
+  display: -webkit-box;
+  max-width: 100%;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ks-search-result-product-info-price {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ed3324;
+  line-height: 1.6;
+  display: inherit;
+}
+
+.ks-search-result-product-info-price .price-sale {
+  display: grid;
+}
+
+.ks-search-result-product-info-price .origin-price {
+  font-size: .8em;
+  color: #a6a6a6;
+  text-decoration: line-through;
+  margin: 0.2rem 0 0 1rem;
+  display: flex;
+  align-items: baseline;
+}
+
+.ks-search-result-view-more {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
+  color: #ed3324;
+  font-size: 16px;
+}
+
 .ks-mb-logo {
   max-width: 160px;
+  margin: auto;
+}
+
+.header-mb.is-sticky .ks-mb-logo {
+  position: relative;
+  right: -19px;
 }
 
 .mb-header-icon {
@@ -5113,7 +5331,7 @@ body.mb {
   line-height: normal;
   display: flex;
   justify-content: space-around;
-  margin: 10px -3px;
+  padding: 12px 0;
 }
 
 .mb .ks-service-item {
@@ -5596,5 +5814,6 @@ body.mb {
   margin-bottom: 0;
   color: #a6a6a6;
 }
+
 
 /* -------------------- END-MOBILE --------------------- */

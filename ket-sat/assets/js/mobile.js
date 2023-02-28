@@ -1,4 +1,7 @@
 $(function () {
+	if ($('[data-sticky]').length > 0) {
+		var sticky = new Sticky('[data-sticky]');
+	};
 
 
     if ($(".ks-mb-banner-slider").length > 0) {
@@ -56,5 +59,21 @@ $(function () {
         });
     }
 
-
 });
+
+
+var show_search_box = function(p_this){
+    $(p_this).focus();
+    $("#ks_mb_search").show();
+    console.log("show");
+}
+
+var hide_search_box = function(p_this){
+    $(p_this).focus();
+    $("#ks_mb_search").hide();
+    console.log("hide");
+}
+
+// $(".ks_close_search_box").click(function(e) {
+//     $("#ks_search_box").hide();
+// });

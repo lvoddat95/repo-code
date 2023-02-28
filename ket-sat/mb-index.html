@@ -19,9 +19,9 @@
 </head>
 
 <body class="mb">
-    <div id="master-container">
+    <div id="master-container" data-sticky-container>
 
-        <div id="header" class="header header-mb">
+        <div id="header" class="header header-mb" data-sticky data-sticky-class="is-sticky">
             <div class="container">
                 <div class="header-mb-wrap">
                     <div class="ks-mb-menu">
@@ -86,6 +86,13 @@
                             <img class="img-fluid" src="assets/img/logo-mb.png" alt="Logo" srcset="">
                         </a>
                     </div>
+
+                    <div class="ks-mb-search-icon me-2">
+                        <a class="d-block p-2" href="javascript:show_search_box();">
+                            <i class="mb-header-icon fa fa-magnifying-glass"></i>
+                        </a>
+                    </div>
+
                     <div class="ks-mb-cart">
                         <a href="" class="d-flex align-items-center">
                             <div class="position-relative">
@@ -96,27 +103,97 @@
                         </a>
                     </div>
                 </div>
+                <div class="ks-search-block">
+                    <div class="ks-header-search">
+                        <input type="search" name="" id="" placeholder="Bạn cần tìm gì hôm nay ?" autocomplete="off"
+                            onclick="show_search_box()">
+                        <button type="submit"><i class="far fa-magnifying-glass"></i></button>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div id="content" class="content">
+        <div id="ks_mb_search" class="ks_mb_search" style="display: none;">
+            <div class="ks_search_box">
+                    <a href="javascript:hide_search_box();" class="ks_close_search_box">
+                        <i class="fa fa-chevron-left"></i>
+                    </a>
+                    <input type="search" name="" id="" placeholder="Bạn cần tìm gì hôm nay ?"
+                        autocomplete="off">
+                    <button type="submit"><i class="far fa-magnifying-glass"></i></button>
+            </div>
+            <div class="ks_search_result">
+                <div class="ks-search-result-section">
+                    <h5 class="ks-search-result-title">Sản phẩm bán chạy nhất</h5>
+                    <div class="ks-search-result-box">
+                        <a href="" class="ks-search-result-product-link">
+                            <div class="ks-search-result-product-card">
+                                <div class="ks-search-result-product-image">
+                                    <img src="https://cdn.nguyenkimmall.com/images/thumbnails/100/100/detailed/840/10053824-tu-lanh-electrolux-inverter-624-lit-ese6600a-avn-1.jpg"
+                                        alt="Tủ lạnh Electrolux Inverter 624 lít ESE6600A-AVN">
+                                    <span>-26%</span>
+                                </div>
+                                <div class="ks-search-result-product-info">
+                                    <p class="ks-search-result-product-info-title">
+                                        Tủ lạnh Electrolux
+                                        Inverter 624 lít ESE6600A-AVN
+                                    </p>
+                                    <div class="ks-search-result-product-info-price">
+                                        <div class="price-sale">
+                                            <span>16.990.000đ</span>
+                                        </div>
+                                        <span class="origin-price">22.990.000đ</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="" class="ks-search-result-product-link">
+                            <div class="ks-search-result-product-card">
+                                <div class="ks-search-result-product-image">
+                                    <img src="https://cdn.nguyenkimmall.com/images/thumbnails/100/100/detailed/840/10053824-tu-lanh-electrolux-inverter-624-lit-ese6600a-avn-1.jpg"
+                                        alt="Tủ lạnh Electrolux Inverter 624 lít ESE6600A-AVN">
+                                    <span>-26%</span>
+                                </div>
+                                <div class="ks-search-result-product-info">
+                                    <p class="ks-search-result-product-info-title">
+                                        Tủ lạnh Electrolux
+                                        Inverter 624 lít ESE6600A-AVN
+                                    </p>
+                                    <div class="ks-search-result-product-info-price">
+                                        <div class="price-sale">
+                                            <span>16.990.000đ</span>
+                                        </div>
+                                        <span class="origin-price">22.990.000đ</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="/tim-kiem.html" class="ks-search-result-view-more">Xem tất cả</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            <div class="container">
-                <div class="ks-list-service">
-                    <a class="ks-service-item" href="">
-                        <i class="fa-fw fa fa-truck-fast"></i><span>Giao lắp chuyên nghiệp</span>
-                    </a>
-                    <a class="ks-service-item" href="">
-                        <i class="fa-fw fa fa-screwdriver-wrench"></i><span>Bảo hành nhanh gọn</span>
+        <div id="content" class="content pt-0">
 
-                    </a>
-                    <a class="ks-service-item" href="">
-                        <i class="fa-fw fa fa-book-bookmark"></i><span>Tổng hợp khuyến mãi</span>
+            <div class="bg-white">
+                <div class="container">
+                    <div class="ks-list-service">
+                        <a class="ks-service-item" href="">
+                            <i class="fa-fw fa fa-truck-fast"></i><span>Giao lắp chuyên nghiệp</span>
+                        </a>
+                        <a class="ks-service-item" href="">
+                            <i class="fa-fw fa fa-screwdriver-wrench"></i><span>Bảo hành nhanh gọn</span>
 
-                    </a>
-                    <a class="ks-service-item" href="">
-                        <i class="fa-fw fa fa-gem"></i><span>Phát Tài Luxury</span>
-                    </a>
+                        </a>
+                        <a class="ks-service-item" href="">
+                            <i class="fa-fw fa fa-book-bookmark"></i><span>Tổng hợp khuyến mãi</span>
+
+                        </a>
+                        <a class="ks-service-item" href="">
+                            <i class="fa-fw fa fa-gem"></i><span>Phát Tài Luxury</span>
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -1470,28 +1547,30 @@
             </div>
 
             <div class="footer-end">
-                    <div class="footer-mb-company">
-                        <span>PHATTAI.COM</span>
-                        <span>
-                            - KÊNH MUA SẮM TRỰC TUYẾN<br />UY TÍN GIÁ TỐT HÀNG ĐẦU VIỆT NAM</span>
-                    </div>
-                    <div class="footer-copyright">
-                        <p class="span_copyright">
-                            Copyright © 1999 - 2023 Công ty Cổ phần Thương mại Phát Tài.
-                        </p>
-                        <p class="span_copyright">
-                            Giấy chứng nhận đăng ký kinh doanh số 0302286281, cấp ngày 22/06/2006
-                            bởi Sở Kế hoạch và Đầu tư TP. Hồ Chí Minh.
-                        </p>
-                        <p class="span_copyright">
-                            Địa chỉ đăng ký trụ sở chính: 63-65-67 Trần Hưng Đạo, P. Cầu Ông Lãnh,
-                            TP. Hồ Chí Minh
-                        </p>
-                    </div>
+                <div class="footer-mb-company">
+                    <span>PHATTAI.COM</span>
+                    <span>
+                        - KÊNH MUA SẮM TRỰC TUYẾN<br />UY TÍN GIÁ TỐT HÀNG ĐẦU VIỆT NAM</span>
+                </div>
+                <div class="footer-copyright">
+                    <p class="span_copyright">
+                        Copyright © 1999 - 2023 Công ty Cổ phần Thương mại Phát Tài.
+                    </p>
+                    <p class="span_copyright">
+                        Giấy chứng nhận đăng ký kinh doanh số 0302286281, cấp ngày 22/06/2006
+                        bởi Sở Kế hoạch và Đầu tư TP. Hồ Chí Minh.
+                    </p>
+                    <p class="span_copyright">
+                        Địa chỉ đăng ký trụ sở chính: 63-65-67 Trần Hưng Đạo, P. Cầu Ông Lãnh,
+                        TP. Hồ Chí Minh
+                    </p>
+                </div>
             </div>
 
         </footer>
-
+<!-- 
+        <div id="banner-fixed"></div>
+        <div id="social-fixed"></div> -->
 
     </div>
 </body>
@@ -1510,26 +1589,20 @@
 <script>
     (function () {
 
-        // Fetch Header
-        // fetch('patials/header.html')
-        //     .then(response => response.text())
-        //     .then(html => {
-        //         document.querySelector('#header').innerHTML = html;
-        //     });
+        // Fetch banner
+        fetch('patials/banner.html')
+            .then(response => response.text())
+            .then(html => {
+                document.querySelector('#banner-fixed').innerHTML = html;
+            });
 
-        // Fetch Nav
-        // fetch('patials/nav.html')
-        //     .then(response => response.text())
-        //     .then(html => {
-        //         document.querySelector('#ks-top').innerHTML = html;
-        //     });
+        // Fetch social
+        fetch('patials/social.html')
+            .then(response => response.text())
+            .then(html => {
+                document.querySelector('#social-fixed').innerHTML = html;
+            });
 
-        // Fetch Footer
-        // fetch('patials/footer.html')
-        //     .then(response => response.text())
-        //     .then(html => {
-        //         document.querySelector('#footer').innerHTML = html;
-        //     });
     })();
 </script>
 
