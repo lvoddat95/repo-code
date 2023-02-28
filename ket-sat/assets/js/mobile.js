@@ -28,16 +28,30 @@ $(function () {
         });
     };
 
-    
+
 
     if ($(".ks-mb-products-slider").length > 0) {
         var product_slider = new Swiper(".ks-mb-products-slider", {
             slidesPerView: 2,
-            spaceBetween: 5,
+            spaceBetween: 10,
             loop: true,
             navigation: {
                 nextEl: ".mb-products-button-next",
                 prevEl: ".mb-products-button-prev",
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 10,
+                },
+                768: {
+                    slidesPerView: 4,
+                    spaceBetween: 10,
+                },
+                1024: {
+                    slidesPerView: 5,
+                    spaceBetween: 10,
+                },
             },
         });
     }
