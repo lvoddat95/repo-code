@@ -3765,10 +3765,6 @@ input:checked+label.rdo-tile-label {
 }
 
 .categories_info ._bd {
-  line-height: 2 !important;
-}
-
-.categories_info ._bd {
   font-size: 16px;
   line-height: 1.4;
 }
@@ -5023,6 +5019,18 @@ body.mb {
   display: none;
 }
 
+body:not(.home) .header-mb.is-sticky {
+  border-radius: 0px;
+}
+
+body:not(.home) .ks-mb-search-icon {
+  display: block;
+}
+
+body:not(.home) .ks-search-block {
+  display: none;
+}
+
 .ks-mb-search-icon {
   display: none;
 }
@@ -5237,6 +5245,7 @@ body.mb {
   margin: auto;
 }
 
+body:not(.home) .header-mb .ks-mb-logo,
 .header-mb.is-sticky .ks-mb-logo {
   position: relative;
   right: -19px;
@@ -5814,6 +5823,94 @@ body.mb {
 .mb .span_copyright {
   margin-bottom: 0;
   color: #a6a6a6;
+}
+
+/* Category */
+.ks-mb-filters {
+  background: #fff;
+  z-index: 123;
+  box-shadow: 0 4px 6px 0 rgb(0 0 0 / 6%);
+  border-bottom-left-radius: 0.2em;
+  border-bottom-right-radius: 0.2em;
+}
+
+.ks-mb-filters.is-sticky .ks-filters {
+  padding: 0px;
+}
+
+.ks-mb-filters .ks-filters {
+  margin: 0 -4px 10px;
+  white-space: nowrap;
+  overflow: auto;
+  padding: 0;
+  border-radius: 0px;
+}
+
+.ks-mb-filters .ks-filter-item {
+  margin: 8px 4px;
+}
+
+.mb .ks-sort-cate {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 40px;
+  margin-bottom: 0;
+}
+
+.mb .sort-total {
+  order: 2;
+  flex: 1;
+  margin: 0;
+}
+
+.mb .box-checkbox {
+  order: 1;
+  position: absolute;
+  top: 8px;
+}
+
+.mb .box-checkbox .c-checkitem:first-child {
+  margin-left: 0px;
+}
+
+.mb .ks-sort-cate-left {
+  order: 3;
+}
+
+.mb .ks-pagination {
+  justify-content: center;
+  height: 60px;
+  border-radius: 4px;
+  box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%);
+  background-color: #fff;
+  position: relative;
+  margin-top: 1em;
+}
+
+.mb .ks-pagination ul {
+  margin: 0;
+}
+
+.mb .ks-filter-item .dropdown-menu {
+  background-color: #fff;
+  width: 100%;
+  left: 0;
+  position: fixed !important;
+  padding: 10px !important;
+  z-index: 3;
+  -webkit-box-shadow: 0 20px 16px 0 rgb(0 0 0 / 20%);
+  box-shadow: 0 20px 16px 0 rgb(0 0 0 / 20%);
+  border-top: 1px solid #d9d9d9;
+  z-index: 9;
+  border-bottom-right-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
+  top: inherit !important;
+  transform: none !important;
+}
+
+.mb .ks-filter-item .dropdown-menu.show {
+  left: auto !important;
+  right: unset !important;
 }
 
 

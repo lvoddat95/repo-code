@@ -53,7 +53,7 @@ $(function () {
 
 	if ($(".ks-products-slider").length > 0) {
 		var product_slider = new Swiper(".ks-products-slider", {
-			slidesPerView: 1,
+			slidesPerView: 2,
 			spaceBetween: 0,
 			loop: true,
 			navigation: {
@@ -62,7 +62,7 @@ $(function () {
 			},
 			breakpoints: {
 				640: {
-					slidesPerView: 1,
+					slidesPerView: 2,
 				},
 				768: {
 					slidesPerView: 3,
