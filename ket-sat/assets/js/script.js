@@ -1,4 +1,20 @@
+
 $(function () {
+
+	if ($('#ks_filter_total').length > 0) {
+		$('#ks_filter_total').on('show.bs.collapse', function () {
+			$("body").addClass("overlay-filter");
+		});
+		$('#ks_filter_total').on('hide.bs.collapse', function () {
+			$("body").removeClass("overlay-filter");
+		});
+
+		$(".close-popup-total").click(function (e) { 
+			e.preventDefault();
+			$('#ks_filter_total').collapse('hide');
+		});
+	};
+
 
 	if ($('[data-sticky]').length > 0) {
 		var sticky = new Sticky('[data-sticky]');
@@ -74,18 +90,18 @@ $(function () {
 		});
 	}
 
-	
-    if ($(".ks-category-list").length > 0) {
-        var category_slider = new Swiper(".ks-category-list", {
-            slidesPerView: 10,
-            spaceBetween: 10,
-            freeMode: true,
-            // pagination: {
-            //     el: ".cate-swiper-pagination",
-            //     type: "progressbar",
-            // },
-        });
-    };
+
+	if ($(".ks-category-list").length > 0) {
+		var category_slider = new Swiper(".ks-category-list", {
+			slidesPerView: 10,
+			spaceBetween: 10,
+			freeMode: true,
+			// pagination: {
+			//     el: ".cate-swiper-pagination",
+			//     type: "progressbar",
+			// },
+		});
+	};
 
 
 	var swiper = new Swiper(".nav-newscate", {
@@ -96,8 +112,8 @@ $(function () {
 	// Len dau trang
 	$(".go-top").on("click", function () {
 		$("html, body").animate({
-				scrollTop: 0,
-			},
+			scrollTop: 0,
+		},
 			500
 		);
 	});
@@ -132,7 +148,7 @@ var fancybox_modal = function (source, closeMethod = "true") {
 			// btnTpl: {
 			//     smallBtn: "",
 			// },
-			touch: false,                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+			touch: false,
 			clickSlide: clickSlide,
 			clickOutside: clickOutside,
 		},

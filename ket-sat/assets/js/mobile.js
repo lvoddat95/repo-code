@@ -1,4 +1,18 @@
 $(function () {
+    if ($('#ks_filter_total').length > 0) {
+		$('#ks_filter_total').on('show.bs.collapse', function () {
+			$("body").addClass("overlay-filter");
+		});
+		$('#ks_filter_total').on('hide.bs.collapse', function () {
+			$("body").removeClass("overlay-filter");
+		});
+
+		$(".close-popup-total").click(function (e) { 
+			e.preventDefault();
+			$('#ks_filter_total').collapse('hide');
+		});
+	};
+
 	if ($('[data-sticky]').length > 0) {
 		var sticky = new Sticky('[data-sticky]');
 	};
