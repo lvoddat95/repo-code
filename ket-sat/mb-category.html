@@ -21,7 +21,7 @@
 <body class="mb">
     <div id="master-container" data-sticky-container>
 
-        <div id="header" class="header header-mb" data-sticky data-sticky-class="is-sticky">
+        <div id="header" class="header header-mb" data-stickys data-sticky-class="is-sticky">
             <div class="container">
                 <div class="header-mb-wrap">
                     <div class="ks-mb-menu">
@@ -168,6 +168,7 @@
         </div>
 
         <div id="content" class="content pt-0">
+
             <div class="ks-breadcrumb-slider">
                 <swiper-container navigation="true" loop="true" autoplay-delay="2500"
                     autoplay-disable-on-interaction="false">
@@ -188,7 +189,7 @@
                 </swiper-container>
             </div>
 
-            <div class="ks-mb-filters" data-sticky data-margin-top="50" data-sticky-class="is-sticky">
+            <div class="ks-mb-filters" data-stickys data-margin-top="50" data-sticky-class="is-sticky">
                 <div class="container">
                     <div class="ks-filters">
                         <div class="ks-filter-item ks-filter-box">
@@ -1147,9 +1148,7 @@
                 });
             </script>
 
-
         </div> <!-- Content -->
-
 
         <footer id="footer" class="footer">
             <div class="footer-subscribe">
@@ -1458,10 +1457,43 @@
             </div>
 
         </footer>
-        <!-- 
-        <div id="banner-fixed"></div>
-        <div id="social-fixed"></div> -->
 
+        <div id="mb-social-fixed">
+            <div class="dropdown m_hotline_toggle">
+                <a class="m_hotline_link collapsed" data-bs-toggle="collapse" href="#m_hotline_menu"
+                    aria-expanded="false">
+                    <i class="fa fa-phone-volume"></i>
+                    <span>Hotline</span>
+                </a>
+                <div id="m_hotline_menu" class="collapse m_hotline_menu">
+                    <a class="m_icon ic_tel" href="tel:" style="opacity: 1;">
+                        <i class="fa-solid fa-phone"></i>
+                    </a>
+                    <a class="m_icon ic_mess" href="https://www.messenger.com/t/TusatBDI" target="_blank"
+                        rel="nofollow">
+                        <i></i>
+                    </a>
+                    <a class="m_icon ic_zl" href="https://zalo.me/0908439666" target="_blank" rel="nofollow">
+                        <i></i>
+                    </a>
+                </div>
+            </div>
+            <div class="m_hotline_toggle">
+                <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
+                <label class="menu-open-button" for="menu-open">
+                    <i class="fa fa-share-alt share-icon"></i>
+                </label>
+
+                <a href="https://www.facebook.com" target="_blank" class="menu-item facebook_share_btn"> <i
+                        class="fa fa-facebook"></i> </a>
+                <a href="https://www.twitter.com" target="_blank" class="menu-item twitter_share_btn"> <i
+                        class="fa fa-twitter"></i> </a>
+                <a href="https://www.pinterest.com" target="_blank" class="menu-item pinterest_share_btn"> <i
+                        class="fa fa-pinterest"></i> </a>
+                        https://codepen.io/vabhishek-me/pen/LNxdVX
+            </div>
+
+        </div>
     </div>
 </body>
 
@@ -1479,19 +1511,6 @@
 <script>
     (function () {
 
-        // Fetch banner
-        // fetch('patials/banner.html')
-        //     .then(response => response.text())
-        //     .then(html => {
-        //         document.querySelector('#banner-fixed').innerHTML = html;
-        //     });
-
-        // // Fetch social
-        // fetch('patials/social.html')
-        //     .then(response => response.text())
-        //     .then(html => {
-        //         document.querySelector('#social-fixed').innerHTML = html;
-        //     });
 
     })();
 </script>
