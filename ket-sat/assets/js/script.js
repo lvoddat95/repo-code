@@ -121,81 +121,94 @@ $(function () {
 
 });
 
-// Show pass
-var show_password = function (p_this) {
-	var x = document.getElementById("password-input");
-	if (x.type === "password") {
-		x.type = "text";
-		$(p_this).addClass("show");
-	} else {
-		x.type = "password";
-		$(p_this).removeClass("show");
-	}
-};
 
-var fancybox_modal = function (source, closeMethod = "true") {
-	if (closeMethod == false) {
-		clickSlide = false;
-		clickOutside = false;
-	} else {
-		clickSlide = "close";
-		clickOutside = "close";
-	}
+// Mobile JS
+$(function () {
+    if ($('#ks_filter_total').length > 0) {
+		$('#ks_filter_total').on('show.bs.collapse', function () {
+			$("body").addClass("overlay-filter");
+		});
+		$('#ks_filter_total').on('hide.bs.collapse', function () {
+			$("body").removeClass("overlay-filter");
+		});
 
-	$.fancybox.open({
-		src: source,
-		opts: {
-			// btnTpl: {
-			//     smallBtn: "",
-			// },
-			touch: false,
-			clickSlide: clickSlide,
-			clickOutside: clickOutside,
-		},
-	});
-};
+		$(".close-popup-total").click(function (e) { 
+			e.preventDefault();
+			$('#ks_filter_total').collapse('hide');
+		});
+	};
 
-var AlertMessage = function (source, urlBack) {
-	Swal.fire({
-		template: "#alert-message-template",
-		title: "<strong>THÔNG BÁO</strong>",
-		html: $(source).html(),
-		width: 600,
-		backdrop: `rgba(0,0,0,.8)`,
-		position: "center",
-		showCancelButton: false,
-		showDenyButton: false,
-		customClass: {
-			htmlContainer: "entry_content",
-			confirmButton: "btn ci-btn ci-bg-sub-color",
-		},
-		buttonsStyling: false,
-	}).then((result) => {
-		if (result.isConfirmed) {
-			window.location.href = urlBack;
-		}
-	});
-};
+	if ($('[data-sticky]').length > 0) {
+		var sticky = new Sticky('[data-sticky]');
+	};
 
-var PopupMessage = function (source, urlBack) {
-	Swal.fire({
-		title: "<strong class='fz-24'><i class='fad fa-bullhorn me-3' style='color:orange;'></i>THÔNG BÁO</strong>",
-		html: $(source).html(),
-		width: 600,
-		backdrop: `rgba(0,0,0,.4)`,
-		position: "top",
-		showCancelButton: true,
-		showDenyButton: false,
-		showConfirmButton: false,
-		cancelButtonText: "Đóng",
-		customClass: {
-			htmlContainer: "entry_content",
-			cancelButton: "btn ci-btn ci-btn-outline",
-		},
-		buttonsStyling: false,
-	}).then((result) => {
-		if (result.isConfirmed) {
-			window.location.href = urlBack;
-		}
-	});
-};
+
+    if ($(".ks-mb-banner-slider").length > 0) {
+        var main_slider = new Swiper(".ks-mb-banner-slider", {
+            slidesPerView: 1,
+            loop: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    }
+
+    if ($(".ks-mb-category-slider").length > 0) {
+        var category_slider = new Swiper(".ks-mb-category-slider", {
+            slidesPerView: 4,
+            spaceBetween: 5,
+            freeMode: true,
+            pagination: {
+                el: ".cate-swiper-pagination",
+                type: "progressbar",
+            },
+        });
+    };
+
+
+
+    if ($(".ks-mb-products-slider").length > 0) {
+        var product_slider = new Swiper(".ks-mb-products-slider", {
+            slidesPerView: 2,
+            spaceBetween: 10,
+            loop: true,
+            navigation: {
+                nextEl: ".mb-products-button-next",
+                prevEl: ".mb-products-button-prev",
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 10,
+                },
+                768: {
+                    slidesPerView: 4,
+                    spaceBetween: 10,
+                },
+                1024: {
+                    slidesPerView: 5,
+                    spaceBetween: 10,
+                },
+            },
+        });
+    }
+
+});
+
+
+var show_search_box = function(p_this){
+    $(p_this).focus();
+    $("#ks_mb_search").show();
+    console.log("show");
+}
+
+var hide_search_box = function(p_this){
+    $(p_this).focus();
+    $("#ks_mb_search").hide();
+    console.log("hide");
+}

@@ -4367,7 +4367,7 @@ input:checked+label.rdo-tile-label {
 }
 
 .product_info {
-  z-index: 11;
+  z-index: 3;
 }
 
 .product_info .product-aside h3 {
@@ -6167,6 +6167,41 @@ body:not(.home) .header-mb .ks-mb-logo,
   top: -60px;
   left: 56px;
   background: url(../img/social/icon_zl.png) no-repeat center center;
+}
+
+.mb .ks-product-image{
+  margin-bottom: 20px;
+}
+
+.mb .ks-breadcrumb{
+  margin-top: 1px;
+}
+.mb .ks-chinh-sach{
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: flex;
+}
+.mb .ks-chinh-sach > h3{
+  display: none;
+}
+.mb .product_info{
+  margin-bottom: 20px;
+}
+.mb .product_info .categories_info .short{
+  max-height: 100% !important;
+}
+.mb .product_info .categories_info a.show{
+  display: none;
+}
+
+.mb .post_composer .post_composer_footer {
+  align-items: unset;
+  flex-direction: column;
+  justify-content: start;
+}
+.post_composer .post_composer_footer .composer_send {
+  width: auto;
+  margin: auto;
 }
 
 

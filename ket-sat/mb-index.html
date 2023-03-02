@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="assets/css/fontawesome.min.css">
     <link rel="stylesheet" href="assets/css/hc-offcanvas-nav.carbon.css">
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/fancybox.css">
 
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
@@ -115,12 +116,11 @@
 
         <div id="ks_mb_search" class="ks_mb_search" style="display: none;">
             <div class="ks_search_box">
-                    <a href="javascript:hide_search_box();" class="ks_close_search_box">
-                        <i class="fa fa-chevron-left"></i>
-                    </a>
-                    <input type="search" name="" id="" placeholder="Bạn cần tìm gì hôm nay ?"
-                        autocomplete="off">
-                    <button type="submit"><i class="far fa-magnifying-glass"></i></button>
+                <a href="javascript:hide_search_box();" class="ks_close_search_box">
+                    <i class="fa fa-chevron-left"></i>
+                </a>
+                <input type="search" name="" id="" placeholder="Bạn cần tìm gì hôm nay ?" autocomplete="off">
+                <button type="submit"><i class="far fa-magnifying-glass"></i></button>
             </div>
             <div class="ks_search_result">
                 <div class="ks-search-result-section">
@@ -1565,10 +1565,29 @@
             </div>
 
         </footer>
-<!-- 
-        <div id="banner-fixed"></div>
-        <div id="social-fixed"></div> -->
 
+        <div id="mb-social-fixed">
+            <div class="m_hotline_toggle">
+                <a class="m_hotline_link collapsed" data-bs-toggle="collapse" href="#m_hotline_collapse">
+                    <i class="fa fa-phone-volume"></i>
+                    <span>Hotline</span>
+                </a>
+                <div class="collapse" id="m_hotline_collapse">
+                    <div class="m_hotline_list">
+                        <a class="m_icon ic_tel" href="tel:" style="opacity: 1;">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+                        <a class="m_icon ic_mess" href="https://www.messenger.com/t/TusatBDI" target="_blank"
+                            rel="nofollow">
+                            <i></i>
+                        </a>
+                        <a class="m_icon ic_zl" href="https://zalo.me/0908439666" target="_blank" rel="nofollow">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
@@ -1579,9 +1598,10 @@
 <script src="assets/js//sticky.min.js"></script>
 <script src="assets/js/swiper-bundle.min.js"></script>
 <script src="assets/js/swiper-element-bundle.min.js"></script>
+<script src="assets/js/fancybox.umd.js"></script>
 
 <script src="assets/js/app.js"></script>
-<script src="assets/js/mobile.js"></script>
+<script src="assets/js/script.js"></script>
 
 <script>
     (function () {
