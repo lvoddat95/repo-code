@@ -4150,7 +4150,7 @@ input:checked+label.rdo-tile-label {
 }
 
 #product-actions-fieldset button.btn-cart {
-  background: var(--main-color);
+  background: var(--buy-color);
 }
 
 .whotline {
@@ -6077,13 +6077,12 @@ body:not(.home) .header-mb .ks-mb-logo,
 
 .m_hotline_link {
   position: fixed;
-  right: 20px;
   z-index: 10;
   height: 56px;
   width: 56px;
   cursor: pointer;
-  bottom: 9px;
-  bottom: 56px;
+  right: 11.764705882352942px !important;
+  bottom: 11.764705882352942px !important;
   color: #fff !important;
   border-radius: 50%;
   line-height: normal;
@@ -6144,53 +6143,58 @@ body:not(.home) .header-mb .ks-mb-logo,
   opacity: 0;
 }
 
-.show .m_icon{
+.show .m_icon {
   opacity: 1;
 }
 
 .ic_tel {
   position: absolute;
-  top: 43px;
+  top: 66px;
   left: -5px;
   color: forestgreen !important;
 }
 
 .ic_mess {
   position: absolute;
-  top: -24px;
+  top: 0px;
   left: -6px;
   background: url(../img/social/icon_mess.png) no-repeat center center;
 }
 
 .ic_zl {
   position: absolute;
-  top: -60px;
-  left: 56px;
+  top: -20px;
+  left: 65px;
   background: url(../img/social/icon_zl.png) no-repeat center center;
 }
 
-.mb .ks-product-image{
+.mb .ks-product-image {
   margin-bottom: 20px;
 }
 
-.mb .ks-breadcrumb{
+.mb .ks-breadcrumb {
   margin-top: 1px;
 }
-.mb .ks-chinh-sach{
+
+.mb .ks-chinh-sach {
   margin-top: 15px;
   margin-bottom: 15px;
   display: flex;
 }
-.mb .ks-chinh-sach > h3{
+
+.mb .ks-chinh-sach>h3 {
   display: none;
 }
-.mb .product_info{
+
+.mb .product_info {
   margin-bottom: 20px;
 }
-.mb .product_info .categories_info .short{
+
+.mb .product_info .categories_info .short {
   max-height: 100% !important;
 }
-.mb .product_info .categories_info a.show{
+
+.mb .product_info .categories_info a.show {
   display: none;
 }
 
@@ -6199,10 +6203,71 @@ body:not(.home) .header-mb .ks-mb-logo,
   flex-direction: column;
   justify-content: start;
 }
+
 .post_composer .post_composer_footer .composer_send {
   width: auto;
   margin: auto;
 }
+
+.mb .whotline.cht {
+  display: none;
+}
+
+.mb #product-actions-fieldset button {
+  height: auto;
+  padding: 6px 38px;
+}
+
+.mb .whotline {
+  margin: 0 -2px;
+}
+
+.mb .whotline li {
+  background: #fff;
+  color: var(--buy-color);
+  min-height: auto;
+  padding: 6.5px 0;
+  border: 1px solid var(--buy-color);
+  width: calc(50% - 4px);
+  margin: 0 2px;
+}
+
+.mb .whotline li p {
+  font-size: var(--fz-18);
+
+}
+
+.mb .whotline li span {
+  font-size: var(--fz-10);
+}
+
+.mb .product-sets {
+  margin-bottom: 4px;
+}
+
+.mb .qty-block {
+  margin-bottom: 4px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* -------------------- END-MOBILE --------------------- */
