@@ -6141,6 +6141,11 @@ body:not(.home) .header-mb .ks-mb-logo,
   align-items: center;
   font-size: 20px;
   background-size: 40px !important;
+  opacity: 0;
+}
+
+.show .m_icon{
+  opacity: 1;
 }
 
 .ic_tel {
