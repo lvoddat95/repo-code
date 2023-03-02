@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mobile - Trang chủ</title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/css/hc-offcanvas-nav.carbon.css">
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/fancybox.css">
+
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="mb">
+    <div id="master-container" data-sticky-container>
+
+        <div id="header" class="header header-mb" data-sticky data-sticky-class="is-sticky">
+            <div class="container">
+                <div class="header-mb-wrap">
+                    <div class="ks-mb-menu">
+                        <div class="dropdown">
+                            <a class="dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                <i class="mb-header-icon fa fa-bars"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <h2>Danh mục sản phẩm</h2>
+                                <div class="ks-menu-it">
+                                    <ul>
+                                        <li class="left-menu">
+                                            <i class="fal fa-tv"></i>
+                                            <span>
+                                                <a href="">Tivi</a>,
+                                                <a href="">Loa</a>,
+                                                <a href="">Dàn Karaoke</a>
+                                            </span>
+                                        </li>
+                                        <li class="left-menu">
+                                            <i class="fal fa-refrigerator"></i>
+                                            <span>
+                                                <a href="">Tủ lạnh</a>,
+                                                <a href="">Tủ đông</a>,
+                                                <a href="">Tủ mát</a>
+                                            </span>
+                                        </li>
+                                        <li class="left-menu">
+                                            <i class="fal fa-washing-machine"></i>
+                                            <span>
+                                                <a href="">Máy giặt</a>,
+                                                <a href="">Máy sấy</a>,
+                                                <a href="">Máy nước nóng</a>
+                                            </span>
+                                        </li>
+                                        <li class="left-menu">
+                                            <i class="fal fa-air-conditioner"></i>
+                                            <span>
+                                                <a href="">Máy lạnh</a>,
+                                                <a href="">Quạt</a>,
+                                                <a href="">Lọc khí</a>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="ks-menu-it mt-4">
+                                    <ul>
+                                        <li class="left-menu">
+                                            <i class="fal fa-phone-volume"></i>
+                                            <a href="tel:18006800">
+                                                HOTLINE MUA HÀNG <span class="main-color">1800.6800</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ks-mb-logo">
+                        <a href="index.html">
+                            <img class="img-fluid" src="assets/img/logo-mb.png" alt="Logo" srcset="">
+                        </a>
+                    </div>
+
+                    <div class="ks-mb-search-icon me-2">
+                        <a class="d-block p-2" href="javascript:show_search_box();">
+                            <i class="mb-header-icon fa fa-magnifying-glass"></i>
+                        </a>
+                    </div>
+
+                    <div class="ks-mb-cart">
+                        <a href="" class="d-flex align-items-center">
+                            <div class="position-relative">
+                                <span class="mb-header-icon fa fa-cart-shopping">
+                                    <span class="ks-count">2</span>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="ks_mb_search" class="ks_mb_search" style="display: none;">
+            <div class="ks_search_box">
+                <a href="javascript:hide_search_box();" class="ks_close_search_box">
+                    <i class="fa fa-chevron-left"></i>
+                </a>
+                <input type="search" name="" id="" placeholder="Bạn cần tìm gì hôm nay ?" autocomplete="off">
+                <button type="submit"><i class="far fa-magnifying-glass"></i></button>
+            </div>
+            <div class="ks_search_result">
+                <div class="ks-search-result-section">
+                    <h5 class="ks-search-result-title">Sản phẩm bán chạy nhất</h5>
+                    <div class="ks-search-result-box">
+                        <a href="" class="ks-search-result-product-link">
+                            <div class="ks-search-result-product-card">
+                                <div class="ks-search-result-product-image">
+                                    <img src="https://cdn.nguyenkimmall.com/images/thumbnails/100/100/detailed/840/10053824-tu-lanh-electrolux-inverter-624-lit-ese6600a-avn-1.jpg"
+                                        alt="Tủ lạnh Electrolux Inverter 624 lít ESE6600A-AVN">
+                                    <span>-26%</span>
+                                </div>
+                                <div class="ks-search-result-product-info">
+                                    <p class="ks-search-result-product-info-title">
+                                        Tủ lạnh Electrolux
+                                        Inverter 624 lít ESE6600A-AVN
+                                    </p>
+                                    <div class="ks-search-result-product-info-price">
+                                        <div class="price-sale">
+                                            <span>16.990.000đ</span>
+                                        </div>
+                                        <span class="origin-price">22.990.000đ</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="" class="ks-search-result-product-link">
+                            <div class="ks-search-result-product-card">
+                                <div class="ks-search-result-product-image">
+                                    <img src="https://cdn.nguyenkimmall.com/images/thumbnails/100/100/detailed/840/10053824-tu-lanh-electrolux-inverter-624-lit-ese6600a-avn-1.jpg"
+                                        alt="Tủ lạnh Electrolux Inverter 624 lít ESE6600A-AVN">
+                                    <span>-26%</span>
+                                </div>
+                                <div class="ks-search-result-product-info">
+                                    <p class="ks-search-result-product-info-title">
+                                        Tủ lạnh Electrolux
+                                        Inverter 624 lít ESE6600A-AVN
+                                    </p>
+                                    <div class="ks-search-result-product-info-price">
+                                        <div class="price-sale">
+                                            <span>16.990.000đ</span>
+                                        </div>
+                                        <span class="origin-price">22.990.000đ</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="/tim-kiem.html" class="ks-search-result-view-more">Xem tất cả</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="content" class="content pt-0">
+
+            <div class="container">
+
+                <div class="ks-single-block">
+
+                    <div class="nav-newscate overflow-hidden">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide nav-newscate-item"><a href="/" class="fa fa-home"></a></div>
+                            <div class="swiper-slide nav-newscate-item active"><a href=/khuyen-mai><span>Khuyến
+                                        mại</span></a></div>
+                            <div class="swiper-slide nav-newscate-item"><a href=/tu-van-tieu-dung><span>Tư
+                                        vấn</span></a></div>
+                            <div class="swiper-slide nav-newscate-item"><a href=/vao-bep><span>Vào Bếp</span></a>
+                            </div>
+                            <div class="swiper-slide nav-newscate-item"><a href=/video-review><span>Video
+                                        Review</span></a></div>
+                            <div class="swiper-slide nav-newscate-item"><a href=/meo-vat-doi-song><span>Mẹo vặt -
+                                        Đời sống</span></a>
+                            </div>
+                            <div class="swiper-slide nav-newscate-item"><a href=/loi-hay-y-dep><span>Lời hay - Ý
+                                        đẹp</span></a></div>
+                            <div class="swiper-slide nav-newscate-item"><a href=/danh-gia-san-pham><span>Kinh nghiệm
+                                        - Thủ
+                                        thuật</span></a></div>
+                            <div class="swiper-slide nav-newscate-item"><a href=/iphone-14><span>iPhone
+                                        14</span></a></div>
+                            <div class="swiper-slide nav-newscate-item"><a
+                                    href=/tuyen-dung-nhan-su-van-phong-tru-so-chinh><span>Tuyển
+                                        dụng HO</span></a></div>
+                            <div class="swiper-slide nav-newscate-item"><a href=/bao-hanh><span>Bảo hành</span></a>
+                            </div>
+                            <div class="swiper-slide nav-newscate-item"><a href=/tin-ve-mediamart><span>Tin về
+                                        Mediamart</span></a>
+                            </div>
+                            <div class="swiper-slide nav-newscate-item"><a href=/san-pham-khuyen-mai><span>Sản phẩm
+                                        khuyến
+                                        mại</span></a></div>
+                            <div class="swiper-slide nav-newscate-item"><a href=/tuyen-dung><span>Tuyển
+                                        dụng</span></a></div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-md-3 col-lg-3">
+                            <div class="nav-newscate-child" style="position: sticky; top: 10px;">
+                                <h2 class="title">Khuyến mại</h2>
+                                <ul class="navbar-nav">
+                                    <li class="nav-item active"><a class="nav-link" href="/tin-khuyen-mai">Tin Khuyến
+                                            mại</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/uu-dai-tra-gop">Ưu đãi trả góp</a>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link" href="/uu-dai-thanh-toan">Ưu đãi thanh
+                                            toán</a>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link" href="/uu-dai-ve-dich-vu">Ưu đãi về dịch
+                                            vụ</a>
+                                    </li>
+                                    <li class="nav-item fLimitMenu_SeeMore" style="display:none"><a
+                                            href="javascript:"><span>Xem thêm</span>
+                                            <div class="circle"></div>
+                                        </a></li>
+                                    <li class="nav-item fLimitMenu_Collapse" style="display:none"><a
+                                            href="javascript:"><span>Thu gọn</span>
+                                            <div class="circle"></div>
+                                        </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-9 col-lg-9">
+                            <div class="news-detail row">
+                                <div class="col-12 col-md-12 col-lg-12">
+                                    <div class="news-item-highlight"><img
+                                            src="https://cdn.mediamart.vn/images/news/cui-tun-din-lnh-gim-to---khong-lo-v-gia-gim-sau-dn-50_8b779239.jpg"
+                                            alt="Cuối tuần điện lạnh GIẢM TO – Không lo về giá, giảm sâu đến 50% (24.2-26.2)">
+                                    </div>
+                                    <div class="news-item-content-box">
+                                        <h1 class="news-title text-color">Cuối tuần điện lạnh GIẢM TO – Không lo về giá,
+                                            giảm sâu đến 50% (24.2-26.2)</h1>
+                                        <div class="news-item-description">Cuối
+                                            tuần này, đến ngay siêu thị điện máy MediaMart để lựa chọn hàng nghìn
+                                            sản
+                                            phẩm điện lạnh gồm tủ lạnh, máy giặt, máy sấy quần áo, điều hòa với giá
+                                            giảm
+                                            SỐC đến 50%, cùng nhiều ưu đãi hấp dẫn khác. Nhanh tay đặt mua
+                                            ngay!
+                                        </div>
+                                        <div class="news-item-quickview col-12 col-md-6">
+                                            <button type="button" type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#newsquickview">
+                                                <h4>Xem nhanh <i class="fa fa-chevron-up"></i><i
+                                                        class="fa fa-chevron-down"></i>
+                                                </h4>
+                                            </button>
+                                            <ul id="newsquickview" class="collapse show list-unstyled">
+                                                <li>
+                                                    <h3><a
+                                                            href="#noi-dung-chuong-trinh-dien-lanh-giam-sau-den-50-dip-cuoi-tuan"><span>1</span>.
+                                                            Nội dung chương trình Điện lạnh giảm sâu đến 50% dịp cuối
+                                                            tuần</a></h3>
+                                                </li>
+                                                <li>
+                                                    <h3><a
+                                                            href="#danh-sach-san-pham-dien-lanh-giam-gia-khung-den-50-dip-cuoi-tuan"><span>2</span>.
+                                                            Danh Sách Sản Phẩm Điện Lạnh Giảm Giá Khủng Đến 50% Dịp Cuối
+                                                            Tuần</a></h3>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="news-item-content">
+                                        <div class="news-item-content-box">
+                                            <h2 id="noi-dung-chuong-trinh-dien-lanh-giam-sau-den-50-dip-cuoi-tuan"
+                                                class="newsitem-title text-color-news"><span>1</span>. Nội dung chương
+                                                trình
+                                                Điện lạnh giảm sâu đến 50% dịp cuối tuần</h2>
+                                            <div class="newsitem-content">
+                                                <p dir="ltr"
+                                                    style="line-height:1.7999999999999998;margin-top:12pt;margin-bottom:12pt"
+                                                    data-gtm-vis-recent-on-screen-11082105_181="877"
+                                                    data-gtm-vis-first-on-screen-11082105_181="877"
+                                                    data-gtm-vis-total-visible-time-11082105_181="100"
+                                                    data-gtm-vis-has-fired-11082105_181="1"
+                                                    data-gtm-vis-recent-on-screen-11082105_183="879"
+                                                    data-gtm-vis-first-on-screen-11082105_183="879"
+                                                    data-gtm-vis-total-visible-time-11082105_183="100"
+                                                    data-gtm-vis-has-fired-11082105_183="1"><span
+                                                        style="font-size:12pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;">Thời
+                                                        gian diễn ra:</span><span
+                                                        style="font-size:12pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;">
+                                                        Duy nhất 3 ngày từ 24/2/2023 đến hết ngày 26/2/2023</span></p>
+                                                <p dir="ltr"
+                                                    style="line-height:1.7999999999999998;margin-top:12pt;margin-bottom:12pt"
+                                                    data-gtm-vis-has-fired-11082105_181="1"
+                                                    data-gtm-vis-has-fired-11082105_183="1"><span
+                                                        style="font-size:12pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;">Phạm
+                                                        vi áp dụng:</span><span
+                                                        style="font-size:12pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;">
+                                                        Trên toàn bộ các kênh bán hàng tại hệ thống các siêu thị điện
+                                                        máy
+                                                        của MediaMart.</span></p>
+                                                <p dir="ltr"
+                                                    style="line-height:1.7999999999999998;margin-top:12pt;margin-bottom:12pt"
+                                                    data-gtm-vis-has-fired-11082105_181="1"
+                                                    data-gtm-vis-has-fired-11082105_183="1"><span
+                                                        style="font-size:12pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;">Nội
+                                                        dung chương trình</span><span
+                                                        style="font-size:12pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;">:</span>
+                                                </p>
+                                                <p data-gtm-vis-has-fired-11082105_181="1"
+                                                    data-gtm-vis-has-fired-11082105_183="1"><span
+                                                        id="docs-internal-guid-b9894764-7fff-ac4e-d308-bc9b960eef25"></span>
+                                                </p>
+                                                <p dir="ltr"
+                                                    style="line-height:1.7999999999999998;margin-top:12pt;margin-bottom:12pt"
+                                                    data-gtm-vis-has-fired-11082105_181="1"
+                                                    data-gtm-vis-has-fired-11082105_183="1"><span
+                                                        style="font-size:12pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;">Trong
+                                                        thời gian diễn ra chương trình, quý khách hàng khi mua các sản
+                                                        phẩm
+                                                        điện lạnh gồm tủ lạnh, máy giặt, máy sấy quần áo, điều hòa sẽ
+                                                        được
+                                                        giảm giá sâu lên đến 50%. Theo đó, hàng loạt các mẫu sản phẩm
+                                                        đến từ
+                                                        các thương hiệu nổi tiếng như Samsung, Toshiba, LG, Daikin,… với
+                                                        công suất mạnh mẽ, hoạt động hiệu quả cùng nhiều tiện ích thông
+                                                        minh
+                                                        đang có mức giá rẻ hơn bao giờ hết.</span></p>
+                                            </div>
+                                        </div>
+                                        <div class="news-item-content-box">
+                                            <h2 id="danh-sach-san-pham-dien-lanh-giam-gia-khung-den-50-dip-cuoi-tuan"
+                                                class="newsitem-title text-color-news"><span>2</span>. Danh Sách Sản
+                                                Phẩm
+                                                Điện Lạnh Giảm Giá Khủng Đến 50% Dịp Cuối Tuần</h2>
+                                            <div class="newsitem-content">
+                                                <div class="table-wrapper">
+                                                    <div class="table-scroll">
+                                                        <table>
+                                                            <colgroup>
+                                                                <col width="382"
+                                                                    style="mso-width-source:userset;mso-width-alt:13970;width:287pt">
+                                                                <col width="128"
+                                                                    style="mso-width-source:userset;mso-width-alt:4681;width:96pt">
+                                                                <col width="156"
+                                                                    style="mso-width-source:userset;mso-width-alt:5705;width:117pt">
+                                                                <col width="128"
+                                                                    style="mso-width-source:userset;mso-width-alt:4681;width:96pt">
+                                                            </colgroup>
+                                                            <tbody>
+                                                                <tr height="20" style="height:15.0pt">
+                                                                    <td rowspan="2" height="40" class="xl70" width="382"
+                                                                        style="height:30pt;width:287pt;font-size:10pt;color:rgb(156,0,6);font-weight:700;font-family:Arial;border:0.5pt solid windowtext;background:rgb(255,199,206)">
+                                                                        SẢN PHẨM KHUYẾN MẠI</td>
+                                                                    <td rowspan="2" class="xl70" width="128"
+                                                                        style="width:96pt;font-size:10pt;color:rgb(156,0,6);font-weight:700;font-family:Arial;border:0.5pt solid windowtext;background:rgb(255,199,206)">
+                                                                        GIÁ NIÊM YẾT</td>
+                                                                    <td rowspan="2" class="xl70" width="156"
+                                                                        style="width:117pt;font-size:10pt;color:rgb(156,0,6);font-weight:700;font-family:Arial;border:0.5pt solid windowtext;background:rgb(255,199,206)">
+                                                                        % GIẢM GIÁ</td>
+                                                                    <td rowspan="2" class="xl70" width="128"
+                                                                        style="width:96pt;font-size:10pt;color:rgb(156,0,6);font-weight:700;font-family:Arial;border:0.5pt solid windowtext;background:rgb(255,199,206)">
+                                                                        GIÁ KHUYẾN MẠI</td>
+                                                                </tr>
+                                                                <tr height="20" style="height:15.0pt"></tr>
+                                                                <tr height="25" style="height:18.75pt">
+                                                                    <td height="25" class="xl73" width="382"
+                                                                        style="height:18.75pt;border-top:none;width:287pt">
+                                                                        Tủ lạnh Toshiba Inverter 180L GR-B22VU(UKG)</td>
+                                                                    <td class="xl75" width="128"
+                                                                        style="border-top:none;border-left:none;width:96pt">
+                                                                        6,090,000</td>
+                                                                    <td class="xl77" width="156"
+                                                                        style="border-top:none;border-left:none;width:117pt">
+                                                                        -18%</td>
+                                                                    <td class="xl75" width="128"
+                                                                        style="border-top:none;border-left:none;width:96pt">
+                                                                        4,990,000</td>
+                                                                </tr>
+                                                                <tr height="31"
+                                                                    style="mso-height-source:userset;height:23.25pt">
+                                                                    <td height="31" class="xl73" width="382"
+                                                                        style="height:23.25pt;border-top:none;width:287pt">
+                                                                        Tủ lạnh Samsung 236L RT22FARBDSA/SV</td>
+                                                                    <td class="xl75" width="128"
+                                                                        style="border-top:none;border-left:none;width:96pt">
+                                                                        7,790,000</td>
+                                                                    <td class="xl77" width="156"
+                                                                        style="border-top:none;border-left:none;width:117pt">
+                                                                        -31%</td>
+                                                                    <td class="xl75" width="128"
+                                                                        style="border-top:none;border-left:none;width:96pt">
+                                                                        5,390,000</td>
+                                                                </tr>
+                                                                <tr height="25" style="height:18.75pt">
+                                                                    <td height="25" class="xl73" width="382"
+                                                                        style="height:18.75pt;border-top:none;width:287pt">
+                                                                        &nbsp;Tủ lạnh Samsung 380L RT38K5982SL/SV&nbsp;
+                                                                    </td>
+                                                                    <td class="xl75" width="128"
+                                                                        style="border-top:none;border-left:none;width:96pt">
+                                                                        17,490,000</td>
+                                                                    <td class="xl77" width="156"
+                                                                        style="border-top:none;border-left:none;width:117pt">
+                                                                        -37%</td>
+                                                                    <td class="xl75" width="128"
+                                                                        style="border-top:none;border-left:none;width:96pt">
+                                                                        10,990,000</td>
+                                                                </tr>
+                                                                <tr height="25" style="height:18.75pt">
+                                                                    <td height="25" class="xl73" width="382"
+                                                                        style="height:18.75pt;border-top:none;width:287pt">
+                                                                        Tủ lạnh Samsung 320L&nbsp; RT32K5932S8/SV</td>
+                                                                    <td class="xl79"
+                                                                        style="border-top:none;border-left:none">
+                                                                        12,890,000
+                                                                    </td>
+                                                                    <td class="xl77" width="156"
+                                                                        style="border-top:none;border-left:none;width:117pt">
+                                                                        -38%</td>
+                                                                    <td class="xl75" width="128"
+                                                                        style="border-top:none;border-left:none;width:96pt">
+                                                                        7,990,000</td>
+                                                                </tr>
+                                                                <tr height="45"
+                                                                    style="mso-height-source:userset;height:33.75pt">
+                                                                    <td height="45" class="xl73" width="382"
+                                                                        style="height:33.75pt;border-top:none;width:287pt">
+                                                                        Máy giặt thông minh LG AI DD 9kg+ sấy 5kg
+                                                                        FV1409G4V
+                                                                    </td>
+                                                                    <td class="xl79"
+                                                                        style="border-top:none;border-left:none">
+                                                                        19,990,000
+                                                                    </td>
+                                                                    <td class="xl77" width="156"
+                                                                        style="border-top:none;border-left:none;width:117pt">
+                                                                        -35%</td>
+                                                                    <td class="xl75" width="128"
+                                                                        style="border-top:none;border-left:none;width:96pt">
+                                                                        12,990,000</td>
+                                                                </tr>
+                                                                <tr height="25" style="height:18.75pt">
+                                                                    <td height="25" class="xl73" width="382"
+                                                                        style="height:18.75pt;border-top:none;width:287pt">
+                                                                        Máy sấy thông hơi Electrolux 8,5Kg EDV854J3WB
+                                                                    </td>
+                                                                    <td class="xl79"
+                                                                        style="border-top:none;border-left:none">
+                                                                        11,590,000
+                                                                    </td>
+                                                                    <td class="xl77" width="156"
+                                                                        style="border-top:none;border-left:none;width:117pt">
+                                                                        -18%</td>
+                                                                    <td class="xl75" width="128"
+                                                                        style="border-top:none;border-left:none;width:96pt">
+                                                                        9,490,000</td>
+                                                                </tr>
+                                                                <tr height="25" style="height:18.75pt">
+                                                                    <td height="25" class="xl73" width="382"
+                                                                        style="height:18.75pt;border-top:none;width:287pt">
+                                                                        Đều hòa Casper 1C 9.000BTU SC-09FS33</td>
+                                                                    <td class="xl79"
+                                                                        style="border-top:none;border-left:none">
+                                                                        8,200,000
+                                                                    </td>
+                                                                    <td class="xl77" width="156"
+                                                                        style="border-top:none;border-left:none;width:117pt">
+                                                                        -39%</td>
+                                                                    <td class="xl75" width="128"
+                                                                        style="border-top:none;border-left:none;width:96pt">
+                                                                        4,990,000</td>
+                                                                </tr>
+                                                                <tr height="25" style="height:18.75pt">
+                                                                    <td height="25" class="xl73" width="382"
+                                                                        style="height:18.75pt;border-top:none;width:287pt">
+                                                                        Điều hòa Casper 1C Inverter 9.800BTU GC-09IS33
+                                                                    </td>
+                                                                    <td class="xl79"
+                                                                        style="border-top:none;border-left:none">
+                                                                        10,100,000
+                                                                    </td>
+                                                                    <td class="xl77" width="156"
+                                                                        style="border-top:none;border-left:none;width:117pt">
+                                                                        -36%</td>
+                                                                    <td class="xl75" width="128"
+                                                                        style="border-top:none;border-left:none;width:96pt">
+                                                                        6,490,000</td>
+                                                                </tr>
+                                                                <tr height="52"
+                                                                    style="mso-height-source:userset;height:39.0pt">
+                                                                    <td height="52" class="xl73" width="382"
+                                                                        style="height:39.0pt;border-top:none;width:287pt">
+                                                                        Điều hòa Daikin 1C Inverter 8.500BTU FTKB25WMVMV
+                                                                    </td>
+                                                                    <td class="xl79"
+                                                                        style="border-top:none;border-left:none">
+                                                                        12,090,000
+                                                                    </td>
+                                                                    <td class="xl77" width="156"
+                                                                        style="border-top:none;border-left:none;width:117pt">
+                                                                        -26%</td>
+                                                                    <td class="xl75" width="128"
+                                                                        style="border-top:none;border-left:none;width:96pt">
+                                                                        8,990,000</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <p dir="ltr"
+                                                    style="line-height:1.7999999999999998;margin-top:12pt;margin-bottom:12pt"
+                                                    data-gtm-vis-has-fired-11082105_181="1"
+                                                    data-gtm-vis-has-fired-11082105_183="1"><span
+                                                        style="font-size:12pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;">Không
+                                                        chỉ cam kết đem đến sản phẩm chính hãng với mức giá thành rẻ
+                                                        nhất mà
+                                                        MediaMart còn nỗ lực không ngừng để hoàn thiện các dịch vụ đi
+                                                        kèm.
+                                                        Theo đó, MediaMart cam kết duy trì chính sách: Trả góp 0% trả
+                                                        trước
+                                                        0 đồng; đổi trả miễn phí trong vòng 45 ngày…</span></p>
+                                                <p dir="ltr"
+                                                    style="line-height:1.7999999999999998;margin-top:12pt;margin-bottom:12pt"
+                                                    data-gtm-vis-has-fired-11082105_181="1"
+                                                    data-gtm-vis-has-fired-11082105_183="1"><span
+                                                        style="font-size:12pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;">Song
+                                                        hành với việc bán trực tiếp thì hơn 350 siêu thị MediaMart trên
+                                                        toàn
+                                                        quốc còn đẩy mạnh bán online thông qua các kênh mạng xã hội,
+                                                        website
+                                                        nhằm dễ dàng đưa các sản phẩm đến tay người tiêu dùng, đáp ứng
+                                                        giao
+                                                        lắp nhanh miễn phí toàn quốc. Xem thêm các sản phẩm khuyến mại
+                                                        tại
+                                                        đây: <a
+                                                            href="https://mediamart.vn/sale-cuoi-tuan-da">https://mediamart.vn/sale-cuoi-tuan-da</a></span>
+                                                </p>
+                                                <p data-gtm-vis-has-fired-11082105_181="1"
+                                                    data-gtm-vis-has-fired-11082105_183="1"><span
+                                                        id="docs-internal-guid-3440d7ab-7fff-e3dd-0ba1-dcb1baab029d"></span>
+                                                </p>
+                                                <p dir="ltr"
+                                                    style="line-height:1.7999999999999998;margin-top:12pt;margin-bottom:12pt"
+                                                    data-gtm-vis-has-fired-11082105_181="1"
+                                                    data-gtm-vis-has-fired-11082105_183="1"><span
+                                                        style="font-size:12pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;">Chi
+                                                        tiết các chương trình khuyến mại, Quý khách hàng có thể truy cập
+                                                        tại
+                                                        website: <a
+                                                            href="https://mediamart.vn/">http://mediamart.vn</a>;
+                                                        hoặc <a
+                                                            href="https://mediamart.vn/">http://thegioidienmay.com/</a></span>
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="news-item-content-box">
+                                        <div>
+                                            <div class="nav-categorybrand">
+                                                <p style="margin:20px 0 10px"><b>Mời bạn tham khảo
+                                                        thêm</b></p>
+                                                <div class="dot-lists ms-5">
+                                                    <ul>
+                                                        <li>
+                                                            <a href="" title="Máy sấy quần áo">Máy sấy quần áo</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="" title="Máy sấy quần áo Coex">Máy sấy quần áo
+                                                                Coex</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wrap-tags">
+                                            <p>Tags:</p>
+                                            <a href="/o" target="_blank" title="máy sấy quần áo">máy sấy quần áo</a>
+                                            <span>, </span>
+                                            <a href="/" target="_blank" title="máy sấy bơm nhiệt">máy sấy bơm nhiệt</a>
+                                            <span>, </span>
+                                            <a href="/" target="_blank" title="máy sấy heat pump">máy sấy heat pump</a>
+                                            <span>, </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div> <!-- Content -->
+
+        <footer id="footer" class="footer">
+            <div class="footer-subscribe">
+                <div class="container">
+                    <div class="row">
+                        <ul class="connect-with-us">
+                            <li>
+                                <a target="_blank" rel="nofollow" href="">
+                                    <img class="img-fluid" src="assets/img/social/icon_fb.png" width="32" height="32"
+                                        alt="icon_fb">
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" rel="nofollow" href="https://www.youtube.com/user/nguyenkimtv/">
+                                    <img class="img-fluid" src="assets/img/social/icon_ytb.png" width="32" height="32"
+                                        alt="icon_ytb">
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" rel="nofollow" href="https://zalo.me/817480596531042971">
+                                    <img class="img-fluid" src="assets/img/social/icon_zalo.png" width="32" height="32"
+                                        alt="icon_zalo">
+                                </a>
+                            </li>
+                        </ul>
+
+                        <div class="email-box">
+                            <form id="form_subscribe" action="https://www.nguyenkim.com/" method="post"
+                                name="subscribe_form" class="cm-processed-form">
+                                <div class="txt">
+                                    <input name="" id="" size="20" type="email" placeholder="Thả Email Nhận Ưu Đãi">
+                                </div>
+                                <div class="btn-submit">
+                                    <input type="button" value="Đăng ký">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-contact">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="footer-ct-box tel text-center">
+                                <strong class="fw-medium">Gọi mua - Góp ý - Bảo hành</strong>
+                                <p class="ft-ct-hotline"><a href="tel:18006800">1800.6800</a> <strong
+                                        class="fw-medium">Miễn phí</strong></p>
+                            </div>
+
+                        </div>
+                        <div class="col-6">
+                            <div class="footer-ct-box mail">
+                                <strong class="fw-medium d-block">Email: <a class="main-color"
+                                        href="mailto:NKare@nguyenkim.com">NKare@nguyenkim.com</a> </strong>
+                                <strong class="fw-medium"><a href="" class="ft-ct-chat"><i
+                                            class="fal fa-message-dots"></i>Chat với chúng tôi</a></strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-collapse">
+                <div class="container">
+                    <div class="footer-collapse-wrap">
+                        <a class="cta-hotline" data-bs-toggle="collapse" href="#footerCollapse">
+                            Kênh tiếp nhận phản ánh về hối lộ
+                        </a>
+                        <div class="collapse" id="footerCollapse">
+                            <p class="hotline-wrapper">- Đường dây nóng: <span class="hot-line"><a
+                                        href="tel:1800.1713">1800.1713</a> (8:00 - 21:00)</span></p>
+                            <p class="hotline-wrapper">- Hộp thư điện tử: <span><a class="underline"
+                                        href="mailto:1800.1713">crv.whistleblower@vn.centralretail.com</a></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-mb-links">
+                <div class="container">
+                    <div class="footer-links-top">
+                        <a href="">Thông tin công ty</a>
+                        <a href="">Cảnh báo giảo mại</a>
+                        <a href="#FtThongTinKhac" data-bs-toggle="collapse" class="collapsed"
+                            aria-expanded="false">Thông tin khác</a>
+
+                    </div>
+
+                    <div class="footer-links collapse" id="FtThongTinKhac">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="footer-box">
+                                        <h3>
+                                            <a href="#Ft1" data-bs-toggle="collapse">Hệ thống Showroom</a>
+                                        </h3>
+                                        <ul id="Ft1" class="collapse ks-showroom-list custom-scrollbar">
+                                            <li>
+                                                <h4>Showroom cửa hàng Hà Nội</h4>
+                                                <p><i class="far fa-location-dot"></i> Số 189 Nguyễn Trãi -
+                                                    Thanh
+                                                    Xuân -Hà Nội</p>
+                                                <p><i class="far fa-location-dot"></i> Số 9 Nhà Vườn 7 Khu đô
+                                                    thị
+                                                    Tổng cục 5, Yên Xá, Thanh Trì, Hà Nội</p>
+                                                <p><i class="far fa-location-dot"></i> Sân vận động quốc gia Mỹ
+                                                    Đình, Nam Từ Liêm, Hà Nội</p>
+                                                <p><i class="far fa-location-dot"></i> Đường Kim Mã, Ba Đình, Hà
+                                                    Nội</p>
+                                                <p><i class="far fa-location-dot"></i> Đường Cầu Mai Động, Hoàng
+                                                    Mai, Hà Nội</p>
+                                                <p><i class="far fa-location-dot"></i> Đường Ngô Gia Tự, Long
+                                                    Biên,
+                                                    Hà Nội</p>
+                                                <p><i class="far fa-location-dot"></i> Đường Tôn Đức Thắng, Đống
+                                                    Đa, Hà Nội</p>
+                                                <p><i class="far fa-location-dot"></i> Đường Lạc Long Quân, Tây
+                                                    Hồ,
+                                                    Hà Nội</p>
+                                                <p class="main-color"><i class="far fa-phone"></i> Hotline:
+                                                    0908439666 - 0898145056</p>
+                                                <p class="main-color"><i class="far fa-envelope"></i> Email:
+                                                    ketsatphattai.vn@gmail.com</p>
+                                            </li>
+                                            <li>
+                                                <h4>Showroom cửa hàng TP.HCM</h4>
+                                                <p><i class="far fa-location-dot"></i> 364/13 Thoại ngọc Hầu,
+                                                    Phường phú thạnh, Quận Tân Phú, TP.HCM</p>
+                                                <p><i class="far fa-location-dot"></i> Số 109 Trương Phước
+                                                    Phan,P.Bình Trị Đông, Bình Tân, TP.HCM</p>
+                                                <p><i class="far fa-location-dot"></i> Đường Phạm Thế Hiển, P6,
+                                                    Q8,
+                                                    tp.hcm</p>
+                                                <p><i class="far fa-location-dot"></i> Đường Quang Trung, P.3,
+                                                    Q.
+                                                    Gò Vấp, TP.HCM</p>
+                                                <p><i class="far fa-location-dot"></i> Đường 3/2, Phường 10,
+                                                    Quận
+                                                    10, TP.HCM</p>
+                                                <p><i class="far fa-location-dot"></i> Đường Nguyễn Thị Định,
+                                                    Cát
+                                                    Lái, Quận 2, TP.HCM</p>
+                                                <p><i class="far fa-location-dot"></i> Đường Phạm Văn Đồng, Linh
+                                                    Trung, Thủ Đức, TP.HCM</p>
+                                                <p><i class="far fa-location-dot"></i> Đường Lũy Bán Bích, Tân
+                                                    Thới
+                                                    Hòa, Tân Phú, TP.HCM</p>
+                                                <p><i class="far fa-location-dot"></i> Các chi nhánh, Q1, Q3,
+                                                    Q6,
+                                                    Q7, Củ Chi, Nhà Bè, Bình Thạnh</p>
+                                                <p class="main-color"><i class="far fa-phone"></i> Hotline:
+                                                    0908439666 - 0898145056</p>
+                                                <p class="main-color"><i class="far fa-envelope"></i> Email:
+                                                    ketsatphattai.vn@gmail.com</p>
+                                            </li>
+                                            <li>
+                                                <h4>Showroom cửa hàng Đà Nẵng</h4>
+                                                <p><i class="far fa-location-dot"></i> 236 Trần Cao Vân,
+                                                    Phường
+                                                    Tam Thuận, Quận Thanh Khê, Đà Nẵng</p>
+                                                <p><i class="far fa-location-dot"></i> Kho hàng Quảng Ngãi (
+                                                    Trong
+                                                    bến xe Bắc Quảng Ngãi)</p>
+                                                <p class="main-color"><i class="far fa-phone"></i> Hotline:
+                                                    0908439666 - 0898145056</p>
+                                                <p class="main-color"><i class="far fa-envelope"></i> Email:
+                                                    ketsatphattai.vn@gmail.com</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="footer-box">
+                                        <h3>
+                                            <a href="#Ft2" data-bs-toggle="collapse">Chính sách</a>
+                                        </h3>
+                                        <div id="Ft2" class="collapse footer-submenu">
+                                            <a rel="nofollow" href="">Link nofollow</a>
+                                            <a rel="nofollow" href="">Link nofollow</a>
+                                            <a rel="nofollow" href="">Link nofollow</a>
+                                            <a rel="nofollow" href="">Link nofollow</a>
+                                            <a rel="nofollow" href="">Link nofollow</a>
+                                            <a rel="nofollow" href="">Link nofollow</a>
+                                            <a rel="nofollow" href="">Link nofollow</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="footer-box">
+                                        <h3>
+                                            <a href="#Ft3" data-bs-toggle="collapse">Ưu đãi đối tác</a>
+                                        </h3>
+                                        <div id="Ft3" class="collapse footer-submenu">
+                                            <a rel="nofollow" href="">Link nofollow</a>
+                                            <a rel="nofollow" href="">Link nofollow</a>
+                                            <a rel="nofollow" href="">Link nofollow</a>
+                                            <a rel="nofollow" href="">Link nofollow</a>
+                                            <a rel="nofollow" href="">Link nofollow</a>
+                                            <a rel="nofollow" href="">Link nofollow</a>
+                                            <a rel="nofollow" href="">Link nofollow</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="footer-box">
+                                        <h3><a href="#Ft4" data-bs-toggle="collapse">Tổng đài hỗ trợ miễn phí</a></h3>
+                                        <div id="Ft4" class="collapse footer-submenu">
+                                            <p class="mb-0" style="flex-wrap: wrap">
+                                                (Gọi mua - Góp ý - Bảo hành) <br />
+                                                <a class="main-color" href="tel:1800.6800">1800.6800</a>
+                                                (8:00 - 21:00)
+                                            </p>
+                                            <p class="mb-3">
+                                                Email:
+                                                <a class="main-color"
+                                                    href="mailto:NKare@nguyenkim.com">NKare@nguyenkim.com</a>
+                                            </p>
+                                            <p class="mb-0">Kênh phản ánh vi phạm kinh doanh</p>
+                                            <p class="mb-0">
+                                                - Đường dây nóng:<a href="tel:1800.1713">1800.1713 </a> (08:00 -
+                                                21:00)
+                                            </p>
+                                            <p class="mb-0">
+                                                - Email:
+                                                <a href="mailto:crv.whistleblower@vn.centralretail.com">crv.whistleblower@vn.centralretail.com
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer-mb-brands">
+                <div class="brands">
+                    <a href="https://centralretail.com.vn/" target="_blank" rel="nofollow">
+                        <img class="img-fluid" src="assets/img/partner/central-logo.webp" width="84px" height="42px"
+                            alt="central-logo" /></a>
+                    <a href="https://www.facebook.com/GOMallVN" target="_blank" rel="nofollow">
+                        <img class="img-fluid" src="assets/img/partner/GO.webp" width="84px" height="42px"
+                            alt="GO" /></a>
+                    <a href="#"><img class="img-fluid" src="assets/img/partner/go_.webp" width="84px" height="42px"
+                            alt="go_" /></a>
+                    <a href="https://go-vietnam.vn/" target="_blank" rel="nofollow">
+                        <img class="img-fluid" src="assets/img/partner/Hyper.webp" width="84px" height="42px"
+                            alt="Hyper" /></a>
+                    <a href="https://topsmarket.vn/" target="_blank" rel="nofollow">
+                        <img class="img-fluid" src="assets/img/partner/Topmarket-logo.webp" width="84px" height="42px"
+                            alt="Topmarket-logo" /></a>
+                    <a href="https://www.bigc.vn/" target="_blank" rel="nofollow">
+                        <img class="img-fluid" src="assets/img/partner/Logo-BigC.webp" width="84px" height="42px"
+                            alt="Logo-BigC" /></a>
+                    <a href="https://lanchi.vn/" target="_blank" rel="nofollow">
+                        <img class="img-fluid" src="assets/img/partner/Lan-chi-logo.webp" width="84px" height="42px"
+                            alt="Lan-chi-logo" /></a>
+                    <a href="https://www.nguyenkim.com/" rel="nofollow">
+                        <img class="img-fluid" src="assets/img/partner/NguyenKim.webp" width="84px" height="42px"
+                            alt="NguyenKim" /></a>
+                    <a href="https://www.facebook.com/lookkoolvn" target="_blank" rel="nofollow">
+                        <img class="img-fluid" src="assets/img/partner/Lookkool-logo.png" width="84px" height="42px"
+                            alt="Lookkool-logo" /></a>
+                    <a href="https://www.facebook.com/kuboplayground" target="_blank" rel="nofollow">
+                        <img class="img-fluid" src="assets/img/partner/logo-Kubo.webp" width="84px" height="42px"
+                            alt="logo-Kubo" /></a>
+                    <a href="https://supersports.com.vn/" target="_blank" rel="nofollow">
+                        <img class="img-fluid" src="assets/img/partner/Suppersports-white.webp" width="84px"
+                            height="42px" alt="Suppersports-white" /></a>
+                    <a href="https://www.facebook.com/ROBINSVietnam" target="_blank" rel="nofollow">
+                        <img class="img-fluid" src="assets/img/partner/Logo-Robin.webp" width="84px" height="42px"
+                            alt="Logo-Robin" /></a>
+                    <a href="https://www.facebook.com/hellobeautyvietnam" target="_blank" rel="nofollow">
+                        <img class="img-fluid" src="assets/img/partner/HelloBeauty-white.webp" width="84px"
+                            height="42px" alt="HelloBeauty-white" /></a>
+                </div>
+            </div>
+
+            <div class="footer-end">
+                <div class="footer-mb-company">
+                    <span>PHATTAI.COM</span>
+                    <span>
+                        - KÊNH MUA SẮM TRỰC TUYẾN<br />UY TÍN GIÁ TỐT HÀNG ĐẦU VIỆT NAM</span>
+                </div>
+                <div class="footer-copyright">
+                    <p class="span_copyright">
+                        Copyright © 1999 - 2023 Công ty Cổ phần Thương mại Phát Tài.
+                    </p>
+                    <p class="span_copyright">
+                        Giấy chứng nhận đăng ký kinh doanh số 0302286281, cấp ngày 22/06/2006
+                        bởi Sở Kế hoạch và Đầu tư TP. Hồ Chí Minh.
+                    </p>
+                    <p class="span_copyright">
+                        Địa chỉ đăng ký trụ sở chính: 63-65-67 Trần Hưng Đạo, P. Cầu Ông Lãnh,
+                        TP. Hồ Chí Minh
+                    </p>
+                </div>
+            </div>
+
+        </footer>
+
+        <div id="mb-social-fixed">
+            <div class="m_hotline_toggle">
+                <a class="m_hotline_link collapsed" data-bs-toggle="collapse" href="#m_hotline_collapse">
+                    <i class="fa fa-phone-volume"></i>
+                    <span>Hotline</span>
+                </a>
+                <div class="collapse" id="m_hotline_collapse">
+                    <div class="m_hotline_list">
+                        <a class="m_icon ic_tel" href="tel:" style="opacity: 1;">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+                        <a class="m_icon ic_mess" href="https://www.messenger.com/t/TusatBDI" target="_blank"
+                            rel="nofollow">
+                            <i></i>
+                        </a>
+                        <a class="m_icon ic_zl" href="https://zalo.me/0908439666" target="_blank" rel="nofollow">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+
+<script src="assets/js/jquery-3.6.3.slim.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/hc-offcanvas-nav.js"></script>
+<script src="assets/js//sticky.min.js"></script>
+<script src="assets/js/swiper-bundle.min.js"></script>
+<script src="assets/js/swiper-element-bundle.min.js"></script>
+<script src="assets/js/fancybox.umd.js"></script>
+
+<script src="assets/js/app.js"></script>
+<script src="assets/js/script.js"></script>
+
+<script>
+    (function () {
+
+
+    })();
+</script>
+
+</html>

@@ -5210,7 +5210,7 @@ body.mb {
   display: none;
 }
 
-body:not(.home) .header-mb.is-sticky {
+body.category-page .header-mb.is-sticky {
   border-radius: 0px;
   filter: none;
   box-shadow: 0 0 6px 0 rgb(0 0 0 / 6%);
