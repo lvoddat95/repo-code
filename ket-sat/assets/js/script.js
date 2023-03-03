@@ -189,7 +189,7 @@ $(function () {
 		var product_slider = new Swiper(".ks-mb-products-slider", {
 			slidesPerView: 2,
 			spaceBetween: 10,
-			loop: true,
+			loop: false,
 			navigation: {
 				nextEl: ".mb-products-button-next",
 				prevEl: ".mb-products-button-prev",

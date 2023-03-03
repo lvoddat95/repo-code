@@ -7289,8 +7289,72 @@ body:not(.home) .header-mb .ks-mb-logo,
   left: 0;
   height: 72px;
 }
-body.show-buynow .mb-buy-now{
+
+body.show-buynow .mb-buy-now {
   display: block;
   opacity: 1;
 }
+
+.mb .ks-mb-filters {
+  z-index: 999;
+}
+
+.mb .ks-filters {
+  overflow: visible;
+}
+
+.mb #ks_filter_total {
+  position: fixed;
+  width: 100%;
+  margin: auto;
+  left: 0;
+  text-align-last: center;
+  box-shadow: 0 7px 8px 0 #e5e5e5;
+  padding-top: 0.5em;
+  top: 0;
+  max-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.mb #ks_filter_total .wrap{
+  overflow-y: auto;
+}
+
+.mb .show-total-main {
+  display: block;
+}
+
+.mb .show-total-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 100%;
+}
+
+.mb .show-total-txt {
+  text-align: left;
+}
+.mb .list-filter-active{
+  display: inline-flex !important;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.mb .collapsing {
+  transition: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /* -------------------- END-MOBILE --------------------- */
