@@ -5198,8 +5198,12 @@ body.mb {
 }
 
 .header-mb {
-  z-index: 123;
+  z-index: 1000;
   background: #fff;
+}
+
+.overlay-filter .header-mb{
+  z-index: 123;
 }
 
 .header-mb.is-sticky {
