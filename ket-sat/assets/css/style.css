@@ -7303,10 +7303,6 @@ body.show-buynow .mb-buy-now {
   z-index: 999;
 }
 
-.mb .ks-filters {
-  overflow: visible;
-}
-
 .mb #ks_filter_total {
   position: fixed;
   width: 100%;
