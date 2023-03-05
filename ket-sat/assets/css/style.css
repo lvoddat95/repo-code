@@ -5707,13 +5707,17 @@ body:not(.home) .header-mb .ks-mb-logo,
 }
 
 .mb .tab-link {
+  line-height: normal !important;
   height: 42px;
-  flex: 1 0 calc(20% - 6px);
-  /* width: calc(20% - 6px); */
+  flex: 1 0 calc(33.33% - 6px);
+  width: calc(33.33% - 6px);
   border: 0.5px solid #D8D8D8;
   line-height: 14px;
   margin: 3px;
   padding: 2px 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .ks-mb-news {
