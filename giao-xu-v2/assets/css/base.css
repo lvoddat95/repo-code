@@ -1176,7 +1176,7 @@ Tags:
   padding: 6px 16px;
   background: #fff;
   border-top: 1px solid #ccc;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .ui-button, .ui-datepicker-buttonpane button {
@@ -1339,7 +1339,7 @@ Tags:
 
 .ui-datepicker .ui-datepicker-header {
   position: relative;
-  margin-top: 6px;
+  margin-top: 12px;
 }
 
 .ui-datepicker .ui-datepicker-title {
@@ -1349,10 +1349,10 @@ Tags:
   justify-content: center;
   -ms-flex-align: center;
   align-items: center;
-  padding-top: 7px;
-  padding-bottom: 7px;
-  margin-left: 34px;
-  margin-right: 34px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 .ui-datepicker .ui-datepicker-title .ui-datepicker-month {
@@ -1385,17 +1385,18 @@ Tags:
   height: 40px;
 }
 
-.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
+.ui-datepicker .ui-datepicker-prev, 
+.ui-datepicker .ui-datepicker-next {
   position: absolute;
   top: 50%;
-  margin-top: -14px;
+  margin-top: -20px;
   padding: 0;
   cursor: pointer;
   border-radius: 0.1875rem;
-  height: 26px;
-  width: 26px;
+  height: 40px;
+  width: 40px;
   text-align: center;
-  line-height: 26px;
+  line-height: 40px;
   color: #111;
 }
 
@@ -1404,7 +1405,8 @@ Tags:
   color: #111;
 }
 
-.ui-datepicker .ui-datepicker-prev:after, .ui-datepicker .ui-datepicker-next:after {
+.ui-datepicker .ui-datepicker-prev:after, 
+.ui-datepicker .ui-datepicker-next:after {
   font-family: var(--font-family-fa);
   display: block;
   font-size: 14px;
@@ -1414,12 +1416,13 @@ Tags:
   -moz-osx-font-smoothing: grayscale;
 }
 
-.ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span {
+.ui-datepicker .ui-datepicker-prev span, 
+.ui-datepicker .ui-datepicker-next span {
   display: none;
 }
 
 .ui-datepicker .ui-datepicker-prev {
-  left: 5px;
+  left: 10px;
 }
 
 .ui-datepicker .ui-datepicker-prev:after {
@@ -1427,7 +1430,7 @@ Tags:
 }
 
 .ui-datepicker .ui-datepicker-next {
-  right: 5px;
+  right: 10px;
 }
 
 .ui-datepicker .ui-datepicker-next:after {
@@ -1445,7 +1448,7 @@ Tags:
 .ui-datepicker .ui-datepicker-calendar th {
   text-align: center;
   font-weight: bolder;
-  padding-bottom: 0.4375rem;
+  padding: 12px 0;
   color: #333;
 }
 
@@ -1569,6 +1572,6 @@ Tags:
   width: 25%;
 }
 
-.swiper-pagination-bullet{
+.swiper-pagination-bullet {
   border: 1px solid #FF6B00;
 }

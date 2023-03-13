@@ -122,7 +122,7 @@ body {
   overflow-x: hidden;
   font-synthesis: none;
   color: var(--dark);
-  background: #f9f9f9;
+  background: rgb(234, 234, 234);
   font-family: var(--font-family-sans-serif);
   font-family: "Roboto", sans-serif;
   font-size: var(--fz-14);
@@ -1872,7 +1872,7 @@ input:checked+label.rdo-tile-label {
 .nav ul.menu-nav li a {
   display: block;
   color: #fff;
-  padding: 11px 12px;
+  padding: 6px 12px;
   width: 100%;
   font-weight: 600;
   text-transform: uppercase;
@@ -2020,7 +2020,7 @@ input:checked+label.rdo-tile-label {
 }
 
 .footer-links {
-  height: 400px;
+  height: 455px;
   width: 100%;
   overflow-y: scroll;
 }
@@ -2057,7 +2057,7 @@ input:checked+label.rdo-tile-label {
 }
 
 #datepicker {
-  padding: 4px 2px;
+  padding: 22px 2px;
   background: #fff;
 }
 
@@ -2089,6 +2089,8 @@ input:checked+label.rdo-tile-label {
 }
 
 .post-box {
+  background: #fff;
+  margin-bottom: 15px;
   border: 1px solid #bbb;
 }
 
@@ -2108,8 +2110,8 @@ input:checked+label.rdo-tile-label {
   padding: 5px;
   color: #4d4d4d;
   background: #dadfe1;
-  min-height: 147px;
-  max-height: 147px;
+  min-height: 165px;
+  max-height: 165px;
 }
 
 .post-slider__info:hover {
@@ -2134,8 +2136,8 @@ input:checked+label.rdo-tile-label {
   height: 85px;
 }
 
-
 .post-title {
+  font-weight: bold;
   padding: 8px 0;
   color: var(--main-color);
   margin-bottom: 0;
@@ -2151,9 +2153,13 @@ input:checked+label.rdo-tile-label {
   margin-top: -1px;
 }
 
+.post-title.main-color a:hover {
+  color: #dfdfdf;
+}
+
 .post-list-scroll {
-  min-height: 479px;
-  max-height: 479px;
+  min-height: 497px;
+  max-height: 497px;
   overflow-y: scroll;
   background: #efefef;
   padding: 10px 15px;
@@ -2176,10 +2182,14 @@ input:checked+label.rdo-tile-label {
   overflow: hidden;
 }
 
+.post-link:hover {
+  color: #bbb;
+}
+
 .post-link.is-title {
   display: block;
   padding: 5px;
-  height: 65px;
+  height: 72px;
   text-align: justify;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -2187,9 +2197,81 @@ input:checked+label.rdo-tile-label {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.post-image img{
+
+.post-image img {
   width: 100%;
   height: 150px;
   object-fit: cover;
   object-position: 100% 0;
+}
+
+.old-web img {
+  max-width: 253px;
+}
+
+.old-web img:hover {
+  box-shadow: 0 0 5px #000;
+}
+
+.post-list {
+  height: 328px;
+  overflow-y: auto;
+  background: #fff;
+  padding: 5px 10px;
+}
+
+.post-list.v1 {
+  height: 220px;
+}
+
+.post-list.v2 {
+  height: 327px;
+}
+
+.post-list.v3 {
+  height: 222px;
+}
+
+.post-image ~ .post-list.v2{
+  max-height: 177px;
+}
+
+.post-list .post-link {
+  -webkit-line-clamp: 3;
+}
+
+.post-list li {
+  padding: 5px 0;
+  border-bottom: 1px dotted #c0c0c0;
+}
+
+.post-list li:last-child {
+  border-bottom: 0;
+}
+
+.post-video-wrap {
+  padding: 5px;
+  height: 478px;
+}
+
+.post-video-wrap .post-image:not(:last-child) {
+  margin-bottom: 10px;
+  border-bottom: 1px dotted #c0c0c0;
+}
+.post-ket-noi{
+  height: 150px;
+}
+.post-ket-noi a{
+  display: block;
+  margin: 1px 5px;
+  border: 1px;
+  border-style: solid;
+  border-color: #bbb;
+}
+.post-ket-noi a:hover{
+  box-shadow: 0 0 5px #000;
+}
+.post-ket-noi img{
+  object-fit: contain;
+  width: 100%;
 }
