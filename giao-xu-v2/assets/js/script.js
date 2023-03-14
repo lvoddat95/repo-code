@@ -19,7 +19,7 @@ $(function () {
 			levelTitleAsBack: true,
 			labelBack: "Quay lại",
 			labelClose: "",
-			expanded: true,
+			// expanded: true,
 			levelOpen: 'expand'
 		});
 		var Nav = $nav.data("hcOffcanvasNav");
