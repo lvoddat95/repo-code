@@ -38,6 +38,9 @@
   .single-title{
     font-size: 24px;
   }
+  .post-image img{
+    height: auto;
+  }
 }
 
 @media (min-width: 992px) {}
