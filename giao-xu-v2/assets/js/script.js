@@ -20,7 +20,7 @@ $(function () {
 			labelBack: "Quay lại",
 			labelClose: "",
 			expanded: true,
-			levelOpen: 'false'
+			levelOpen: 'expand'
 		});
 		var Nav = $nav.data("hcOffcanvasNav");
 	}
