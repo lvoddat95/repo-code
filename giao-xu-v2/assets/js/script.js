@@ -17,10 +17,10 @@ $(function () {
 			levelSpacing: 0,
 			levelTitles: true,
 			levelTitleAsBack: true,
-			labelBack: "Quay láº¡i",
+			labelBack: "Quay lại",
 			labelClose: "",
-			// expanded: true,
-			levelOpen: 'expand'
+			expanded: true,
+			levelOpen: 'false'
 		});
 		var Nav = $nav.data("hcOffcanvasNav");
 	}
