@@ -43,6 +43,12 @@
   }
 
   .post-image img {
+    height: auto;
+  }
+
+  .post-video-wrap,
+  .post-list {
+    height: auto !important;
   }
 
   .footer-box {
