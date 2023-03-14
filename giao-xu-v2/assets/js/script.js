@@ -1,4 +1,30 @@
 $(function () {
+	
+	if ($("#menu-nav").length > 0) {
+		if (typeof hcOffcanvasNav == "undefined") {
+			console.warn("Warning - hcOffcanvasNav Js is not loaded.");
+			return;
+		}
+		if ($(".navbar-toggle").length == 0) {
+			console.warn(
+				"Warning - Thieu button navbar-toggle. Kiem tra lai HTML!"
+			);
+			return;
+		}
+		var $nav = $("#menu-nav").hcOffcanvasNav({
+			disableAt: 1200,
+			customToggle: ".navbar-toggle",
+			levelSpacing: 0,
+			levelTitles: true,
+			levelTitleAsBack: true,
+			labelBack: "Quay láº¡i",
+			labelClose: "",
+			// expanded: true,
+			levelOpen: 'expand'
+		});
+		var Nav = $nav.data("hcOffcanvasNav");
+	}
+
 
 	if ($(".post-box-slider").length > 0) {
 		var swiper_slider = new Swiper(".post-box-slider", {
@@ -8,6 +34,10 @@ $(function () {
 			pagination: {
 				el: ".swiper-pagination",
 				clickable: true,
+			},
+			autoplay: {
+				delay: 3500,
+				disableOnInteraction: false
 			},
 		});
 	}
@@ -93,14 +123,10 @@ $(function () {
 	});
 
 	window.addEventListener("scroll", function () {
-		// Lấy vị trí hiện tại của trang web
 		var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-		// Nếu vị trí hiện tại lớn hơn hoặc bằng 100px, hiển thị nút "Lên đầu trang"
 		if (currentScroll >= 100) {
 			document.getElementById("back-to-top").style.display = "block";
-		}
-		// Ngược lại, ẩn nút "Lên đầu trang"
-		else {
+		} else {
 			document.getElementById("back-to-top").style.display = "none";
 		}
 	});

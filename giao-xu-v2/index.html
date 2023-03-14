@@ -23,6 +23,7 @@
     <div id="master-container">
 
         <div id="header" class="header">
+
             <div class="header-top">
                 <div class="container">
                     <div class="row">
@@ -47,13 +48,22 @@
                     </div>
                 </div>
             </div>
+
             <div class="header-nav">
-                <div class="container-md">
+                <div class="container">
                     <nav id="nav" class="nav">
+
+                        <button class="navbar-toggle d-block d-lg-none" type="button">
+                            <b class="icon-bar"></b>
+                            <b class="icon-bar"></b>
+                            <b class="icon-bar"></b>
+                        </button>
+
+
                         <div class="d-none d-lg-block">
                             <ul id="menu-nav" class="menu-nav">
                                 <li class="menu-item">
-                                    <a href="" class="active">
+                                    <a class="menu-link active" href="index.html">
                                         Trang chủ
                                     </a>
                                 </li>
@@ -63,57 +73,53 @@
 
                                     <ul class="sub-menu">
                                         <li class="menu-item">
-                                            <a class="menu-link" href="media.html">Media</a>
+                                            <a class="menu-link " href="media.html">Media</a>
                                         </li>
                                         <li class="menu-item">
-                                            <a class="menu-link" href="tin-tuc.html">Tin tức</a>
+                                            <a class="menu-link " href="loi-chua.html">Lời chúa</a>
                                         </li>
                                         <li class="menu-item">
-                                            <a class="menu-link" href="chi-tiet.html">Chi tiết</a>
+                                            <a class="menu-link " href="chi-tiet.html">Chi tiết</a>
                                         </li>
                                     </ul>
 
                                 </li>
                                 <li class="menu-item">
-                                    <a href="media.html">
+                                    <a class="menu-link " href="media.html">
                                         Media
                                     </a>
                                 </li>
                                 <li class="menu-item">
-                                    <a href="tin-tuc.html">
-                                        Tin tức
-                                    </a>
+                                    <a class="menu-link " href="loi-chua.html">Lời chúa</a>
                                 </li>
                                 <li class="menu-item">
-                                    <a href="chi-tiet.html">
+                                    <a class="menu-link " href="chi-tiet.html">
                                         Chi tiết
                                     </a>
                                 </li>
                             </ul>
                         </div>
 
-                        <button class="navbar-toggle d-block d-lg-none" type="button">
-                            <b class="icon-bar"></b>
-                            <b class="icon-bar"></b>
-                            <b class="icon-bar"></b>
-                        </button>
-
-                        <div class="menu-search">
-                            <a href="javascript:void(0);" class="menu-search-icon" title="Tìm kiếm">
+                        <div class="menu-search ms-auto">
+                            <a class="menu-search-icon collapsed" title="Tìm kiếm" data-bs-toggle="collapse"
+                                href="#toggleSearch" role="button" aria-expanded="false" aria-controls="toggleSearch">
                                 <i class="fa fa-magnifying-glass"></i>
                             </a>
-                            <div class="menu-search-form">
-                                <form action="">
-                                    <input type="search" class="menu-search-input" placeholder="Bạn cần tìm gì...">
-                                    <button class="menu-search-button" type="button"><i
-                                            class="far fa-magnifying-glass"></i></button>
-                                </form>
-                            </div>
                         </div>
-
                     </nav>
                 </div>
+            </div>
 
+            <div class="header-search">
+                <div class="container">
+                    <div class="menu-search-form collapse" id="toggleSearch">
+                        <form action="">
+                            <input type="search" class="menu-search-input" placeholder="Bạn cần tìm gì...">
+                            <button class="menu-search-button" type="button"><i
+                                    class="far fa-magnifying-glass"></i></button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
 
