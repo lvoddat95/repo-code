@@ -1,12 +1,15 @@
 /* ----------------------------------------------- */
-.content{
+.content {
   margin: 10px 0;
 }
+
 @media (min-width: 1400px) {
+
   .ks_banner_scroll .ks_banner_scroll_right,
-  .ks_banner_scroll .ks_banner_scroll_left{
+  .ks_banner_scroll .ks_banner_scroll_left {
     display: block;
   }
+
   .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
     max-width: 1185px;
   }
@@ -25,7 +28,7 @@
 @media (max-width: 1199px) {}
 
 @media (max-width: 991px) {
-  .single-meta ul li{
+  .single-meta ul li {
     margin-bottom: 5px;
   }
 }
@@ -35,10 +38,11 @@
 @media (max-width: 575px) {}
 
 @media (max-width: 475px) {
-  .single-title{
+  .single-title {
     font-size: 24px;
   }
-  .post-image img{
+
+  .post-image img {
     height: auto;
   }
 }
