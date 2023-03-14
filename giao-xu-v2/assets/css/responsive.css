@@ -45,6 +45,10 @@
   .post-image img {
     height: auto;
   }
+
+  .footer-box {
+    margin-bottom: 20px;
+  }
 }
 
 @media (min-width: 992px) {}
