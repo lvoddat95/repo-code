@@ -24,11 +24,21 @@
 
 @media (max-width: 1199px) {}
 
+@media (max-width: 991px) {
+  .single-meta ul li{
+    margin-bottom: 5px;
+  }
+}
+
 @media (max-width: 767px) {}
 
 @media (max-width: 575px) {}
 
-@media (max-width: 475px) {}
+@media (max-width: 475px) {
+  .single-title{
+    font-size: 24px;
+  }
+}
 
 @media (min-width: 992px) {}
 

@@ -2360,7 +2360,15 @@ input:checked+label.rdo-tile-label {
 }
 
 .single-meta li {
+  display: inline-block;
+  vertical-align: middle;
   margin-right: 14px;
+  margin-bottom: 5px;
+}
+
+.single-meta li span{
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .single-meta li a {
