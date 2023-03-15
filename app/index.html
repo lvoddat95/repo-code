@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="assets/css/fontawesome.min.css" />
+	<link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+
+	<!-- <link rel="stylesheet" href="assets/css/base.css" />
+	<link rel="stylesheet" href="assets/css/style.css" />
+	<link rel="stylesheet" href="assets/css/responsive.css" /> -->
+</head>
+
+<body>
+	<div class="container mt-5 p-5">
+		<div class="row">
+			<div id="app">{{ message }}</div>
+
+			<br /><br />
+			<br /><br />
+			<hr>
+
+			<div id="app-2">
+				<span v-bind:title="message">
+					Rê chuột lên đây một vài giây để xem thuộc tính `title` được bind!
+				</span>
+			</div>
+
+			<br /><br />
+			<br /><br />
+			<hr>
+
+			<div id="app-3">
+				<span v-if="seen">Thoắt ẩn thoắt hiện</span>
+			</div>
+
+			<br /><br />
+			<br /><br />
+			<hr>
+
+			<div id="app-4">
+				<ul>
+					<li v-for="item in list">{{ item.text }}</li>
+				</ul>
+			</div>
+
+			<br /><br />
+			<br /><br />
+			<hr>
+
+			<div id="app-5">
+				<p>{{ message }}</p>
+				<button class="btn btn-primary" v-on:click="reverseMessage">
+					Reverse Message
+				</button>
+			</div>
+
+			<br /><br />
+			<br /><br />
+			<hr>
+
+			<div id="app-6">
+				<p class="alert alert-info">{{ message }}</p>
+				<input class="form-control" v-model="message" placeholder="Nhập thông tin..." />
+			</div>
+
+			<br /><br />
+			<br /><br />
+			<hr>
+
+			<div id="app-7">
+				<p>Những thứ họ mua:</p>
+				<ol>
+					<!--
+					Ở đây chúng ta cung cấp một object "todo" cho mỗi component
+					"todo-item". Bằng cách này nội dung của từng component trở nên động.
+					Mỗi component cũng sẽ nhận một thuộc tính "key". Chúng ta sẽ
+					nói thêm về thuộc tính này sau.
+				  -->
+					<todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id">
+					</todo-item>
+				</ol>
+			</div>
+
+			<br /><br />
+			<br /><br />
+			<hr>
+
+			<div id="blog-post-demo">
+				<blog-post v-for="post in posts" v-bind:key="post.id" v-bind:title="post.title"></blog-post>
+				<blog-post title="Test"></blog-post>
+			</div>
+
+			<br /><br />
+			<br /><br />
+			<hr>
+
+			<div id="app-8">
+				<p>{{ mess }}</p>
+				<!-- foo sẽ không được cập nhật! -->
+				<button @click="mess = '12 baz'">Cập nhật đi chứ</button>
+			</div>
+
+
+			<br /><br />
+			<br /><br />
+			<hr>
+
+			<div id="app-9">
+				<p>Sử dụng cú pháp mustache: {{ rawHtml }}</p>
+				<p>Sử dụng directive v-html: <span v-html="rawHtml"></span></p>
+
+				<p>Giá trị của <code>isButtonDisabled</code>: {{ isButtonDisabled }}</p>
+
+				<p v-if="seen">Thoắt ẩn thoắt hiện</p>
+
+				<a :href="url"> :link </a>
+				<br>
+				<a v-bind:href="url"> v-bind:link </a>
+				<br>
+
+				<button @click="toggleDisable">@click= Toggle Disable</button>
+				<button v-on:click="toggleDisable">v-on:click= Toggle Disable</button>
+
+				<br>
+				<button v-bind:disabled="isButtonDisabled" v-bind:title="title">Hòn Vọng Phu</button>
+
+			</div>
+
+			<br /><br />
+			<br /><br />
+			<hr>
+
+
+			<div id="example">
+				<p>Thông điệp ban đầu: "{{ now }}"</p>
+				<p>Thông điệp bị đảo ngược bằng tính toán (computed): "{{ reversedMessage }}"</p>
+
+				<p>{{ message }}</p>
+			</div>
+
+			<br /><br />
+			<br /><br />
+			<hr>
+
+			<div id="demo">{{ fullName }}</div>
+
+			<br /><br />
+			<br /><br />
+			<hr>
+
+
+			<div id="watch-example">
+				<p>
+					Hãy hỏi một câu hỏi yes/no:
+					<input v-model="question">
+				</p>
+				<p>{{ answer }}</p>
+			</div>
+
+			<br /><br />
+			<br /><br />
+			<hr>
+
+
+			<div id="demo-bindding-class">
+				<div class="static" v-bind:class="{ active: isActive, 'text-danger': hasError }">
+					<span>Div class active: isActive, 'text-danger': hasError</span>
+				</div>
+				<div class="test" :class="classObj">
+					Div classObj
+				</div>
+
+				<div v-bind:class="[isActive ? activeClass : '', errorClass]">
+					[isActive ? activeClass : '', errorClass]
+				</div>
+
+				<h1 v-if="ok">Mọi việc ổn cả</h1>
+				<h1 v-else>Có gì đó sai sai</h1>
+
+				<div v-if="Math.random() > 0.5">
+					Tài
+				</div>
+				<div v-else>
+					Xỉu
+				</div>
+
+				<div v-if="type === 'A'">A</div>
+				<div v-else-if="type === 'B'">B</div>
+				<div v-else-if="type === 'C'">C</div>
+				<div v-else-if="type === 'D'">D</div>
+				<div v-else>Chiến Sĩ không thể nhớ nổi</div>
+
+				<h1 v-show="show">Xin chào!</h1>
+			</div>
+
+			<br /><br />
+			<br /><br />
+			<hr>
+
+
+
+		</div>
+	</div>
+	<script src=" https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"> </script>
+	<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js">
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="app.js"></script>
+</body>
+
+</html>
