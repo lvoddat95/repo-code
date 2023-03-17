@@ -186,6 +186,7 @@
 				<div v-if="Math.random() > 0.5">
 					Tài
 				</div>
+
 				<div v-else>
 					Xỉu
 				</div>
@@ -197,6 +198,7 @@
 				<div v-else>Chiến Sĩ không thể nhớ nổi</div>
 
 				<h1 v-show="show">Xin chào!</h1>
+
 			</div>
 
 			<br /><br />
@@ -204,8 +206,119 @@
 			<hr>
 
 
+			<div id="show_if">
+				<button @click="showDetails = !showDetails">Toggle Details</button>
+
+				<div v-show="showDetails">
+					This is some details that are always rendered, but hidden when the button is clicked.
+				</div>
+
+				<div v-if="showDetails">
+					This is some details that are only rendered when the button is clicked.
+				</div>
+			</div>
+
+
+			<br /><br />
+			<br /><br />
+			<hr>
+
+
+			<div id="todo-list-example">
+				<input v-model="newTodoText" v-on:keyup.enter="addNewTodo" placeholder="Thêm việc cần làm">
+				<ul>
+					<li is="todo-item" v-for="(todo, index) in todos" v-bind:key="todo.id" v-bind:title="todo.title"
+						v-on:remove="todos.splice(index, 1)"></li>
+				</ul>
+			</div>
+
+			<br /><br />
+			<br /><br />
+			<hr>
+
+
+			<div id="dem-cuu">
+				<button v-on:click="counter += 1">Đếm cừu</button>
+				<p>{{ counter }} con cừu</p>
+			</div>
+
+			<br /><br />
+			<br /><br />
+			<hr>
+
+			<div id="example-2">
+				<!-- `greet` là tên của phương thức bạn muốn gọi -->
+				<button v-on:click="greet">Chào mừng</button>
+			</div>
+
+			<br /><br />
+			<br /><br />
+			<hr>
+
+			<div id="example-3">
+				<!-- `greet` là tên của phương thức bạn muốn gọi -->
+				<button v-on:click="warn('Chưa submit được form.', $event)">Chào mừng</button>
+				<div @click.meta="openNewTab">Mở tab mới</div>
+
+				<input type="checkbox" id="checkbox" v-model="checked">
+				<label for="checkbox">{{ checked }}</label>
+			</div>
+
+
+			<br /><br />
+			<br /><br />
+			<hr>
+
+			<div id="components-demo">
+				<button-counter></button-counter>
+				<button-counter></button-counter>
+				<button-counter></button-counter>
+			</div>
+			
+			<br /><br />
+			<br /><br />
+			<hr>
+
+			<div id="blog-posts-events-demo">
+				<div :style="{ fontSize: postFontSize + 'em' }">
+					Test
+					<blog-post v-on:enlarge-text="onEnlargeText" v-for="post in posts" v-bind:key="post.id"
+						v-bind:post="post"></blog-post>
+				</div>
+			</div>
+
+
+			<div id="v-model-component">
+				input v-model="searchText"
+				<input v-model="searchText">
+
+				<br>
+				input v-bind:value="searchText"
+				<input v-bind:value="searchText" v-on:input="searchText = $event.target.value">
+
+				<br>
+				custom-input v-model="searchText"
+				<custom-input v-bind:value="searchText" v-on:input="searchText = $event"></custom-input>
+				<custom-input></custom-input>
+			</div>
+
+
+			<alert-box>
+				Đã xảy ra cái gì gì đó.
+			</alert-box>
+
+			<base-input v-model="username" class="username-input" placeholder="Enter your username"></base-input>
 
 		</div>
+
+
+
+
+
+
+
+
+
 	</div>
 	<script src=" https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"> </script>
 	<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js">

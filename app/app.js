@@ -276,3 +276,200 @@ var bindClass = new Vue({
         }
     }
 });
+
+
+var v_show_if = new Vue({
+    el: "#show_if",
+    data: {
+        showDetails: false
+    }
+});
+
+Vue.component('todo-item', {
+    template: `
+      <li>
+        {{ title }}
+        <button v-on:click="$emit('remove')">X</button>
+      </li>
+    `,
+    props: ['title']
+})
+var todo = new Vue({
+    el: "#todo-list-example",
+    data: {
+        newTodoText: "",
+        nextTodoId: 5,
+        todos: [{
+                id: 1,
+                title: "One",
+            },
+            {
+                id: 2,
+                title: "Two",
+            },
+            {
+                id: 3,
+                title: "Three",
+            },
+            {
+                id: 4,
+                title: "Four",
+            },
+        ]
+    },
+    methods: {
+        addNewTodo: function () {
+            this.todos.push({
+                id: this.nextTodoId++,
+                title: this.newTodoText
+            })
+            this.newTodoText = ''
+        }
+    }
+});
+
+
+var demCuu = new Vue({
+    el: "#dem-cuu",
+    data: {
+        counter: 0,
+    }
+});
+
+
+var example2 = new Vue({
+    el: '#example-2',
+    data: {
+        name: 'Vue.js'
+    },
+    // định nghĩa phương thức trong object `methods`
+    methods: {
+        greet: function (event) {
+            // bên trong một phương thức, `this` trỏ đến đối tượng Vue
+            alert('Xin chào ' + this.name + '!')
+            // `event` là sự kiện DOM native
+            if (event) {
+                alert(event.target.tagName)
+            }
+        }
+    }
+})
+
+// bạn cũng có thể gọi phương thức từ JavaScript
+// example2.greet() // => 'Xin chào Vue.js!'
+
+
+var example3 = new Vue({
+    el: '#example-3',
+    data: {
+        name: 'Vue.js',
+        checked: true
+    },
+    // định nghĩa phương thức trong object `methods`
+    methods: {
+        warn: function (message, event) {
+            // bây giờ chúng ta có thể truy xuất đến sự kiện DOM native
+            if (event) event.stopPropagation()
+            alert(message)
+        }
+    }
+})
+
+// Định nghĩa một component với tên là "button-counter"
+Vue.component('button-counter', {
+    data: function () {
+        return {
+            count: 0
+        }
+    },
+    template: '<button v-on:click="count++">Bạn đã bấm {{ count }} lần.</button>'
+})
+
+new Vue({
+    el: '#components-demo'
+})
+
+
+Vue.component('blog-post', {
+    props: ['post'],
+    template: `
+      <div class="blog-post">
+        <h3>{{ post.title }}</h3>
+        <button v-on:click="$emit('enlarge-text', 0.1)">
+  Phóng to
+</button>
+        <div v-html="post.content"></div>
+      </div>
+    `
+})
+
+
+new Vue({
+    el: '#blog-posts-events-demo',
+    data: {
+        posts: [{
+                id: 1,
+                title: 'Giới thiệu về Vue'
+            },
+            {
+                id: 2,
+                title: 'Các khái niệm trong Vue'
+            },
+            {
+                id: 3,
+                title: 'Vue căn bản và vô cùng nâng cao'
+            }
+        ],
+        postFontSize: 1
+    },
+    methods: {
+        onEnlargeText: function (enlargeAmount) {
+            this.postFontSize += enlargeAmount
+        }
+    }
+})
+
+
+Vue.component('custom-input', {
+    props: ['value'],
+    template: `
+      <input
+        v-bind:value="value"
+        v-on:input="$emit('input', $event.target.value)"
+      >
+    `
+});
+
+
+var v_model_component = new Vue({
+    el: "#v-model-component",
+    data: {
+        searchText: ""
+    }
+});
+
+
+Vue.component('alert-box', {
+    template: `
+      <div class="demo-alert-box">
+        <strong>Lỗi!</strong>
+        <slot></slot>
+      </div>
+    `
+})
+
+
+Vue.component('base-input', {
+    inheritAttrs: false,
+    props: ['label', 'value'],
+    template: `
+      <label>
+        {{ label }}
+        <input
+          v-bind="$attrs"
+          v-bind:value="value"
+          v-on:input="$emit('input', $event.target.value)"
+        >
+      </label>
+    `
+})
