@@ -28,7 +28,7 @@ Vue.component("custom-input", {
     data() {
         return {
             error: null,
-            controlClass: "form-control",
+            controlClass: "form-control bg-gray-50 text-gray-900 border-gray-300 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2 ",
             // Thêm một data property mới để giữ giá trị của prop "value"
             inputValue: this.value,
             initialValue: this.value, // Giá trị ban đầu của prop "value"
@@ -147,9 +147,31 @@ var formUpdate = new Vue({
         modalTitle: "Thêm mới",
         isCheckedAll: false,
         isChecked: false,
+        currentPage: 1,
+        perPage: 5,
     },
     watch: {},
+    computed: {
+        totalItems: function() {
+          return this.items.length;
+        },
+        totalPages: function() {
+          return Math.ceil(this.totalItems / this.perPage);
+        }
+      },
     methods: {
+
+        paginate: function (items) {
+            let start = (this.currentPage - 1) * this.perPage;
+            let end = start + this.perPage;
+
+            return items.slice(start, end);
+        },
+
+        updatePage: function (page) {
+            this.currentPage = page;
+        },
+
         toggleCheckedAll() {
             this.isCheckedAll = !this.isCheckedAll;
             this.items.forEach(item => {
@@ -352,6 +374,8 @@ var formUpdate = new Vue({
                 axios.get('http://localhost/repo-code/app/backend/api.php?action=getall')
                     .then(function (res) {
                         this.items = res.data.body;
+                        this.totalItems = res.data.body.length;
+                        this.totalPages = Math.ceil(this.totalItems / this.perPage);
                     }.bind(this)) // Ràng buộc ngữ cảnh của từ khoá 'this' với đối tượng Vue
                     .catch(function (error) {
                         this.error = 'Lỗi! Không thể truy cập API. ' + error
@@ -364,7 +388,7 @@ var formUpdate = new Vue({
     mounted: function () {
         this.getList();
     },
-    created: function () {},
+    created: function () { },
 });
 
 
