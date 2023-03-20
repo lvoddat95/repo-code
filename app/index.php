@@ -30,13 +30,31 @@
             <div class="p-5">
 
                 <div class="gap-2 d-flex justify-content-center">
-                    <button @click="openModal(true)" type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#formUpdate" style="display: inherit;">
+                    <button @click="openModalUpdate(true)" type="button" class="btn btn-sm btn-primary d-flex">
                         <span class="material-symbols-outlined">
                             add
                         </span>
                         <span>Thêm mới</span>
                     </button>
-                    <button class="btn btn-sm btn-outline-danger">Xoá</button>
+                    <button @click="deleteItems()" class="btn btn-sm btn-outline-info d-flex">
+                        <span class="material-symbols-outlined">
+                            forward_to_inbox
+                        </span>
+                        <span>Gửi Email</span>
+                    </button>
+                    <button @click="deleteItems()" class="btn btn-sm btn-outline-info d-flex">
+                        <span class="material-symbols-outlined">
+                            draw
+                        </span>
+                        <span>Kí điện tử</span>
+                    </button>
+                    <button @click="deleteItems()" class="btn btn-sm btn-outline-info d-flex border-">
+                        <span class="material-symbols-outlined">
+                            upload
+                        </span>
+                        <span>Import bảng kê</span>
+                    </button>
+                    <button @click="deleteItems()" class="btn btn-sm btn-outline-danger d-flex">Xoá</button>
                 </div>
 
                 <!-- data-bs-backdrop="static"
@@ -47,7 +65,7 @@
                     <div class="modal-dialog">
                         <form @submit.prevent="onSubmit" class="modal-content">
                             <div class="modal-header title-main">
-                                <h5 class="modal-title text-dark text-uppercase ">Thêm mới</h5>
+                                <h5 class="modal-title text-dark text-uppercase ">{{modalTitle}}</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" v-on:click="dismissModal"></button>
                             </div>
                             <div class="modal-body">
@@ -83,19 +101,19 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal" v-on:click="dismissModal">Đóng</button>
-                                <button type="button" @click.prevent="Add" class="btn btn-primary">Cập nhập</button>
+                                <button type="button" @click.prevent="onSubmit()" class="btn btn-primary">Cập nhập</button>
                             </div>
                         </form>
                     </div>
                 </div>
-
 
                 <h2>Danh sách</h2>
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
                             <th></th>
-                            <th><input class="form-check-input" type="checkbox" name="" id=""></th>
+                            <th><input class="form-check-input" type="checkbox" v-bind:checked="isCheckedAll" v-on:change="toggleCheckedAll"></th>
+
                             <th>Mã bảng kê</th>
                             <th>Tên công ty</th>
                             <th>Số hợp đồng</th>
@@ -112,7 +130,7 @@
                     <tbody>
                         <tr v-for="(item, i) in items" :key="item.pk_id">
                             <td>{{i+1}}</td>
-                            <td><input class="form-check-input" type="checkbox" name="" id=""></td>
+                            <td><input class="form-check-input" type="checkbox" v-model="item.isChecked" v-on:change="toggleChecked"></td>
 
                             <td>{{item.c_code}}</td>
                             <td>{{item.c_ten_cong_ty}}</td>
@@ -121,6 +139,13 @@
                             <td>{{item.c_name}}</td>
                             <td>{{item.c_nam_sinh}}</td>
                             <td>{{item.c_email}}</td>
+                            <td>
+                                <a href="" class="text-info">
+                                    <span class="material-icons-outlined">
+                                        badge
+                                    </span>
+                                </a>
+                            </td>
                             <td>{{item.c_temp}}</td>
                             <td>{{item.c_trang_thai}}</td>
                             <td>
@@ -136,6 +161,7 @@
                         </tr>
                     </tbody>
                 </table>
+
             </div>
         </div>
 

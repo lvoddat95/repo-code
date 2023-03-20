@@ -77,6 +77,43 @@ if ($action == 'add') {
 	}
 }
 
+if ($action == 'udpate') {
+	if (
+		isset($_POST['pk_id']) &&
+		isset($_POST['c_code']) &&
+		isset($_POST['c_ten_cong_ty']) &&
+		isset($_POST['c_name']) &&
+		isset($_POST['c_nam_sinh']) &&
+		isset($_POST['c_so_hop_dong']) &&
+		isset($_POST['c_hieu_luc']) &&
+		isset($_POST['c_email']) &&
+		isset($_POST['c_temp']) &&
+		isset($_POST['c_trang_thai'])
+	) {
+
+		$pk_id = $_POST['pk_id'];
+		$c_code = $_POST['c_code'];
+		$c_ten_cong_ty = $_POST['c_ten_cong_ty'];
+		$c_name = $_POST['c_name'];
+		$c_nam_sinh = $_POST['c_nam_sinh'];
+		$c_so_hop_dong = $_POST['c_so_hop_dong'];
+		$c_hieu_luc = $_POST['c_hieu_luc'];
+		$c_email = $_POST['c_email'];
+		$c_temp = $_POST['c_temp'];
+		$c_trang_thai = $_POST['c_trang_thai'];
+
+		$result = $modelDB->update($pk_id, $c_code, $c_ten_cong_ty, $c_name, $c_nam_sinh, $c_so_hop_dong, $c_hieu_luc, $c_email, $c_temp, $c_trang_thai);
+
+		if ($result === true) {
+			$res['error'] = false;
+			$res['message'] = "Cập nhập thành công";
+		} else {
+			$res['error'] = true;
+			$res['message'] = "Lỗi!!!";
+		}
+	}
+}
+
 
 if ($action == 'delete') {
 
@@ -88,11 +125,34 @@ if ($action == 'delete') {
 
 		if ($result === true) {
 			$res['error'] = false;
-			$res['message'] = "Đã xoá thành công";
+			$res['message'] = "Đã xoá thành công.";
 		} else {
 			$res['error'] = true;
 			$res['message'] = "Lỗi!!!";
 		}
+	}
+}
+
+
+if ($action == 'deleteItems') {
+
+	if (isset($_POST['ids'])) {
+
+		$ids = explode(",", $_POST['ids']);
+
+		if (count($ids) > 0) {
+			for ($i = 0; $i < count($ids); $i++) {
+				$result = $modelDB->delete($ids[$i]);
+				if ($result === false) {
+					$res['error'] = true;
+					$res['message'] = "Lỗi. Xoá không thành công.";
+					break;
+				}
+			}
+		}
+
+		$res['error'] = false;
+		$res['message'] = "Đã xoá thành công";
 	}
 }
 

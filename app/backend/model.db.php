@@ -73,6 +73,51 @@ class ModelDB
         } else {
             return false;
         }
+        // Ngắt kết nối tới CSDL
+        $this->conn = null;
+    }
+
+    public function update($pk_id, $c_code, $c_ten_cong_ty, $c_name, $c_nam_sinh, $c_so_hop_dong, $c_hieu_luc, $c_email, $c_temp, $c_trang_thai)
+    {
+        $now = date('Y-m-d H:i:s');
+
+        $sql = "UPDATE `$this->tbl` 
+            SET c_code = :c_code,
+            c_ten_cong_ty = :c_ten_cong_ty,
+            c_name = :c_name,
+            c_nam_sinh = :c_nam_sinh,
+            c_so_hop_dong = :c_so_hop_dong,
+            c_hieu_luc = :c_hieu_luc,
+            c_email = :c_email,
+            c_temp = :c_temp,
+            c_trang_thai = :c_trang_thai,
+            c_nguoi_sua = 0,
+            c_ngay_sua = NOW()
+        WHERE pk_id = :pk_id";
+
+        $data = [
+            ':pk_id' => $pk_id,
+            ':c_code' => $c_code,
+            ':c_ten_cong_ty' => $c_ten_cong_ty,
+            ':c_name' => $c_name,
+            ':c_nam_sinh' => $c_nam_sinh,
+            ':c_so_hop_dong' => $c_so_hop_dong,
+            ':c_hieu_luc' => $c_hieu_luc,
+            ':c_email' => $c_email,
+            ':c_temp' => $c_temp,
+            ':c_trang_thai' => $c_trang_thai,
+        ];
+
+
+        $stmt = $this->conn->prepare($sql);
+
+        if ($stmt->execute($data)) {
+            return true;
+        } else {
+            return false;
+        }
+        // Ngắt kết nối tới CSDL
+        $this->conn = null;
     }
 
     public function delete($id)
@@ -98,22 +143,18 @@ class ModelDB
         $this->conn = null;
     }
 
-
     public function getDetail($id)
     {
         $data = [];
 
         $sql = "SELECT * FROM `$this->tbl` WHERE `pk_id` = '$id'";
- 
+
         $stmt = $this->conn->prepare($sql);
 
         if ($stmt->execute()) {
             $data = $stmt->fetch();
         }
- 
+
         return $data;
     }
-
-
-
 }

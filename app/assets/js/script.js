@@ -133,6 +133,7 @@ var formUpdate = new Vue({
     el: "#main",
     data: {
         items: [],
+        pk_id: "",
         c_code: "",
         c_ten_cong_ty: "",
         c_name: "",
@@ -142,11 +143,69 @@ var formUpdate = new Vue({
         c_email: "",
         c_temp: 1,
         c_trang_thai: true,
-        errors: {}
+        errors: {},
+        modalTitle: "Thêm mới",
+        isCheckedAll: false,
+        isChecked: false,
     },
     watch: {},
     methods: {
-        Add: function () {
+        toggleCheckedAll() {
+            this.isCheckedAll = !this.isCheckedAll;
+            this.items.forEach(item => {
+                item.isChecked = this.isCheckedAll;
+            });
+        },
+
+        toggleChecked(item) {
+            item.isChecked = !item.isChecked;
+            this.isCheckedAll = this.items.every(item => item.isChecked);
+        },
+
+        deleteItems: function () {
+            let hasChecked = true;
+            for (let prop in this.items) {
+                if (this.items[prop].isChecked) {
+                    hasChecked = false;
+                    break;
+                }
+            }
+
+            if (hasChecked) {
+                alert("Chưa chọn");
+            }
+
+            let ids = [];
+            this.items.forEach(item => {
+                if (item.isChecked) {
+                    // this.DeleteIds(item);
+                    ids.push(item.pk_id);
+                }
+            });
+            if (window.confirm("Xoá nha? \n")) {
+                let formData = new FormData();
+                formData.append("ids", ids);
+
+                axios({
+                    url: "http://localhost/repo-code/app/backend/api.php?action=deleteItems",
+                    method: "post",
+                    data: formData,
+                }).then((res) => {
+                    if (res.data.error) {
+                        alert("Error");
+                        return;
+                    }
+
+                    alert("Đã xoá thành công");
+                    this.getList();
+
+                }).catch((err) => {
+                    console.log(err);
+                });
+            };
+        },
+
+        onSubmit: function () {
 
             // Validate các component custom-input
             let isValid = true;
@@ -172,13 +231,19 @@ var formUpdate = new Vue({
                 data.append("c_temp", this.c_temp);
                 data.append("c_trang_thai", this.c_trang_thai);
 
-                axios.post('http://localhost/repo-code/app/backend/api.php?action=add', data)
+                let url_action = "add";
+
+                if (this.pk_id.length > 0) {
+                    url_action = "udpate";
+                    data.append("pk_id", this.pk_id);
+                }
+
+                axios.post("http://localhost/repo-code/app/backend/api.php?action=" + url_action, data)
                     .then((res) => {
                         if (res.data.error) {
                             alert("Error");
                             return;
                         }
-
                         $("#formUpdate").modal("hide");
                         this.getList();
                         alert(res.data.message);
@@ -188,6 +253,7 @@ var formUpdate = new Vue({
                     })
             }
         },
+
         Delete: function (item) {
             if (window.confirm("Xoá nha? \n" + item.c_name)) {
                 let formData = new FormData();
@@ -211,7 +277,11 @@ var formUpdate = new Vue({
                 });
             };
         },
+
         Edit: function (id) {
+            this.modalTitle = "Cập nhập";
+            this.pk_id = id;
+
             let formData = new FormData();
             formData.append("id", id);
 
@@ -221,9 +291,6 @@ var formUpdate = new Vue({
                 data: formData,
             }).then((res) => {
                 if (res.data.error === false) {
-
-                    console.log()
-
                     this.$refs.c_code.inputValue = res.data.body.c_code;
                     this.$refs.c_ten_cong_ty.inputValue = res.data.body.c_ten_cong_ty;
                     this.$refs.c_name.inputValue = res.data.body.c_name;
@@ -233,9 +300,7 @@ var formUpdate = new Vue({
                     this.$refs.c_email.inputValue = res.data.body.c_email;
                     this.c_temp = res.data.body.c_temp;
                     this.c_trang_thai = res.data.body.c_trang_thai;
-
                     $("#formUpdate").modal("show");
-
                 }
             }).catch((err) => {
                 console.log(err);
@@ -269,17 +334,19 @@ var formUpdate = new Vue({
             }
         },
 
-        openModal: function (resetData = false) {
+        openModalUpdate: function (resetData = false) {
+            this.modalActionAdd = true;
+            $("#formUpdate").modal("show");
             console.log(resetData)
             if (resetData) {
                 this.resetRef();
             }
         },
+
         dismissModal: function () {
             this.resetRef();
-
-            // Đóng modal
         },
+
         getList: _.debounce(
             function () {
                 axios.get('http://localhost/repo-code/app/backend/api.php?action=getall')
@@ -292,14 +359,15 @@ var formUpdate = new Vue({
             },
             100
         ),
-        editItem: function () { },
-        deleteItem: function () { },
+
     },
     mounted: function () {
-        console.log("mounted")
         this.getList();
     },
-    created: function () {
-        console.log("created")
-    },
+    created: function () {},
+});
+
+
+$('#formUpdate').on('hidden.bs.modal', function (event) {
+    formUpdate.resetRef();
 });
