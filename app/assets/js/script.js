@@ -4,6 +4,10 @@ Vue.component("custom-input", {
             type: String,
             required: true,
         },
+        name: {
+            type: String,
+            required: true,
+        },
         label: {
             type: String,
             required: true,
@@ -23,6 +27,14 @@ Vue.component("custom-input", {
         "data-type": {
             type: String,
             default: "",
+        },
+        "label-class": {
+            type: String,
+            default: "col-sm-3 col-form-label",
+        },
+        "content-class": {
+            type: String,
+            default: "col-sm-9",
         },
     },
     data() {
@@ -118,9 +130,9 @@ Vue.component("custom-input", {
     },
     template: `
     <div class="row mb-3">
-        <label :for="id" class="col-sm-3 col-form-label">{{ label }} <span class="text-danger">*</span></label>
-        <div class="col-sm-9">
-            <input :id="id" :type="type" :data-type="dataType" v-model="inputValue" :required="isRequired" 
+        <label :for="id" :class="[labelClass]">{{ label }} <span class="text-danger">*</span></label>
+        <div :class="[contentClass]">
+            <input :id="id" :type="type" :name="name" :data-type="dataType" v-model="inputValue" :required="isRequired" 
             v-bind:class="[{ 'is-invalid': error }, controlClass]" >
             <div v-if="error" class="invalid-feedback">
                 {{ error }}
@@ -142,23 +154,30 @@ var formUpdate = new Vue({
         c_hieu_luc: "",
         c_email: "",
         c_temp: 1,
-        c_trang_thai: true,
+        c_trang_thai: 1,
         errors: {},
         modalTitle: "Thêm mới",
         isCheckedAll: false,
         isChecked: false,
         currentPage: 1,
         perPage: 5,
+        // totalPages: 0,
+        // totalItems: 0
     },
     watch: {},
     computed: {
-        totalItems: function() {
-          return this.items.length;
+        totalItems: {
+            get: function () {
+                return this.items.length;
+            },
+            set: function (value) {
+                this.totalItems = value;
+            }
         },
-        totalPages: function() {
-          return Math.ceil(this.totalItems / this.perPage);
+        totalPages: function () {
+            return Math.ceil(this.totalItems / this.perPage);
         }
-      },
+    },
     methods: {
 
         paginate: function (items) {
@@ -241,6 +260,7 @@ var formUpdate = new Vue({
                 return;
             }
 
+
             if (Object.keys(this.errors).length === 0) {
                 let data = new FormData();
                 data.append("c_code", this.$refs.c_code.inputValue);
@@ -251,7 +271,7 @@ var formUpdate = new Vue({
                 data.append("c_hieu_luc", this.$refs.c_hieu_luc.inputValue);
                 data.append("c_email", this.$refs.c_email.inputValue);
                 data.append("c_temp", this.c_temp);
-                data.append("c_trang_thai", this.c_trang_thai);
+                data.append("c_trang_thai", parseInt(this.c_trang_thai));
 
                 let url_action = "add";
 
@@ -321,7 +341,7 @@ var formUpdate = new Vue({
                     this.$refs.c_hieu_luc.inputValue = res.data.body.c_hieu_luc;
                     this.$refs.c_email.inputValue = res.data.body.c_email;
                     this.c_temp = res.data.body.c_temp;
-                    this.c_trang_thai = res.data.body.c_trang_thai;
+                    this.c_trang_thai = parseInt(res.data.body.c_trang_thai);
                     $("#formUpdate").modal("show");
                 }
             }).catch((err) => {
@@ -395,3 +415,41 @@ var formUpdate = new Vue({
 $('#formUpdate').on('hidden.bs.modal', function (event) {
     formUpdate.resetRef();
 });
+
+
+var formUpload = new Vue({
+    el: "#formUpload",
+    data: {
+        items: [],
+        c_code: "",
+        c_temp: 1,
+    },
+    methods: {
+        onUpload: function () {
+
+        },
+        handleFileUpload() {
+            const fileInput = this.$refs.fileInput;
+            const file = fileInput.files[0];
+            const formData = new FormData();
+
+            console.log(file)
+            console.log(formData)
+
+            formData.append('file', file);
+
+            fetch('http://localhost/repo-code/app/backend/process-excel.php', {
+                method: 'POST',
+                body: formData,
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    this.items = data;
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        },
+    },
+});
+

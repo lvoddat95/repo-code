@@ -25,64 +25,130 @@
 </head>
 
 <body>
-    <div id="main" class="container" v-cloak>
+
+    <!-- Modal Upload-->
+    <div class="modal " id="formUpload" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <form @submit.prevent="" class="modal-content" novalidate>
+                <div class="modal-header ">
+                    <h5 class="modal-title text-xl font-semibold text-gray-900">Import bảng kê Excel</h5>
+                    <button class="btn-close text-sm text-gray-900" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row mb-3">
+                        <label for="c_code" class="col-sm-4 col-form-label">
+                            Mã bảng kê <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-sm-8">
+                            <input id="c_code" v-model="c_code" required="required" type="text" class="form-control bg-gray-50 text-gray-900 border-gray-300 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2 ">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-4 col-form-label" for="c_temp">Chọn mẫu thẻ</label>
+                        <div class="col-sm-8">
+                            <select class="form-select bg-gray-50 text-gray-900 border-gray-300 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2" name="c_temp" id="c_temp" v-model="c_temp">
+                                <option value="1">Mẫu VNICare InSmart</option>
+                                <option value="2">Mẫu T&amp;T Care</option>
+                                <option value="3">Mẫu BSH T&amp;T Group</option>
+                                <option value="4">Mẫu VNICare</option>
+                                <option value="5">Mẫu SHB ATACC</option>
+                                <option value="6">Mẫu LeapStack</option>
+                                <option value="7">Mẫu VNICare ATSK</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="c_code" class="col-sm-4 col-form-label">
+                            Chọn file Upload <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-sm-8">
+                            <input ref="fileInput" @change="handleFileUpload" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" aria-describedby="file_input_help" id="file_input" type="file" accept=".xlsx, .xls">
+                            <p class="mt-1 text-sm text-gray-500" id="file_input_help">Vui lòng chọn file định dạng theo mẫu Excel</p>
+                        </div>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(item, index) in items" :key="index">
+                                <td>{{ item.name }}</td>
+                                <td>{{ item.age }}</td>
+                                <td>{{ item.email }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="modal-footer bg-gray-50">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" @click.prevent="onUpload()" class="flex items-center btn text-sm text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium">Cập nhập</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="main" class="container">
 
         <div class="container">
             <div class="p-5">
 
                 <div class="gap-2 d-flex justify-content-center">
-                    <button @click="openModalUpdate(true)" class="flex items-center btn text-sm text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium">
+                    <button @click="openModalUpdate(true)" class="flex items-center py-1.5 px-3 rounded-md text-sm text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium">
                         <span class="material-symbols-outlined">
                             add
                         </span>
                         <span>Thêm mới</span>
                     </button>
 
-                    <button @click="" class="flex items-center btn text-sm font-semibold text-gray-900 border-solid border-1 border-gray-300 hover:bg-gray-50">
+                    <button @click="" class="flex items-center py-1.5 px-3 rounded-md text-sm font-semibold text-gray-900 border-solid border-1 border-gray-300 hover:bg-gray-50">
                         <span class="material-symbols-outlined text-red-700">
                             forward_to_inbox
                         </span>
                         <span>Gửi Email</span>
                     </button>
 
-                    <button @click="" class="flex items-center btn text-sm font-semibold text-gray-900 border-solid border-1 border-gray-300 hover:bg-gray-50">
+                    <button @click="" class="flex items-center py-1.5 px-3 rounded-md text-sm font-semibold text-gray-900 border-solid border-1 border-gray-300 hover:bg-gray-50">
                         <span class="material-symbols-outlined text-blue-700">
                             draw
                         </span>
                         <span>Kí điện tử</span>
                     </button>
 
-                    <button @click="" data-bs-toggle="modal" data-bs-target="#formUpload" class="flex items-center btn text-sm font-semibold text-gray-900 border-solid border-1 border-gray-300 hover:bg-gray-50">
+                    <button @click="" data-bs-toggle="modal" data-bs-target="#formUpload" class="flex items-center py-1.5 px-3 rounded-md text-sm font-semibold text-gray-900 border-solid border-1 border-gray-300 hover:bg-gray-50">
                         <span class="material-icons-sharp text-green-700">
                             upload
                         </span>
                         <span>Import bảng kê</span>
                     </button>
 
-                    <button @click="deleteItems()" class="flex items-center btn btn-outline-danger ">Xoá</button>
+                    <button @click="deleteItems()" class="flex items-center py-1.5 px-3 rounded-md  text-sm font-semibold text-red-700 border-solid border-1 border-red-700 hover:bg-gray-50 hover:text-red-700">Xoá</button>
                 </div>
-
-                <!-- data-bs-backdrop="static"
-                 data-bs-keyboard="false" -->
-
-
 
                 <!-- Modal Update-->
                 <div class="modal " id="formUpdate" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog">
-                        <form @submit.prevent="onSubmit" class="modal-content">
+                        <form @submit.prevent="onSubmit" class="modal-content" novalidate>
                             <div class="modal-header ">
                                 <h5 class="modal-title text-xl font-semibold text-gray-900">{{modalTitle}}</h5>
                                 <button class="btn-close text-sm text-gray-900" data-bs-dismiss="modal" aria-label="Close" v-on:click="dismissModal"></button>
                             </div>
                             <div class="modal-body">
-                                <custom-input ref="c_code" id="c_code" label="Mã bảng kê" v-model="c_code"></custom-input>
-                                <custom-input ref="c_ten_cong_ty" id="c_ten_cong_ty" label="Tên công ty" v-model="c_ten_cong_ty"></custom-input>
-                                <custom-input ref="c_so_hop_dong" id="c_so_hop_dong" label="Số hợp đồng" v-model="c_so_hop_dong"></custom-input>
-                                <custom-input ref="c_hieu_luc" id="c_hieu_luc" label="Hiệu lực" v-model="c_hieu_luc"></custom-input>
-                                <custom-input ref="c_name" id="c_name" label="Tên người được BH" v-model="c_name"></custom-input>
-                                <custom-input ref="c_nam_sinh" id="c_nam_sinh" label="Năm sinh" v-model="c_nam_sinh" data-type="date"></custom-input>
-                                <custom-input ref="c_email" id="c_email" label="Email" v-model="c_email" data-type="email"></custom-input>
+                                <custom-input ref="c_code" id="c_code" name="c_code" label="Mã bảng kê" v-model="c_code"></custom-input>
+                                <custom-input ref="c_ten_cong_ty" id="c_ten_cong_ty" name="c_ten_cong_ty" label="Tên công ty" v-model="c_ten_cong_ty"></custom-input>
+                                <custom-input ref="c_so_hop_dong" id="c_so_hop_dong" name="c_so_hop_dong" label="Số hợp đồng" v-model="c_so_hop_dong"></custom-input>
+                                <custom-input ref="c_hieu_luc" id="c_hieu_luc" name="c_hieu_luc" label="Hiệu lực" v-model="c_hieu_luc"></custom-input>
+                                <custom-input ref="c_name" id="c_name" name="c_name" label="Tên người được BH" v-model="c_name"></custom-input>
+                                <custom-input ref="c_nam_sinh" id="c_nam_sinh" name="c_nam_sinh" label="Năm sinh" v-model="c_nam_sinh" data-type="date"></custom-input>
+                                <custom-input ref="c_email" id="c_email" name="c_email" label="Email" v-model="c_email" data-type="email"></custom-input>
 
                                 <div class="row mb-3">
                                     <label class="col-sm-3 col-form-label" for="c_temp">Mẫu thẻ</label>
@@ -105,7 +171,7 @@
                                         </div> -->
                                         <div class="col-form-label">
                                             <label class="relative inline-flex items-center cursor-pointer">
-                                                <input type="checkbox" value="" class="sr-only peer" id="c_trang_thai" v-model="c_trang_thai">
+                                                <input type="checkbox" value="" class="sr-only peer" id="c_trang_thai" v-model="c_trang_thai" :checked="c_trang_thai === 0">
                                                 <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                                                 <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Hoạt động</span>
                                             </label>
@@ -123,62 +189,8 @@
                     </div>
                 </div>
 
-                <!-- Modal Upload-->
-                <div class="modal " id="formUpload" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <form @submit.prevent="onSubmit" class="modal-content">
-                            <div class="modal-header ">
-                                <h5 class="modal-title text-xl font-semibold text-gray-900">Import bảng kê Excel</h5>
-                                <button class="btn-close text-sm text-gray-900" data-bs-dismiss="modal" aria-label="Close" v-on:click="dismissModal"></button>
-                            </div>
-                            <div class="modal-body">
 
-                                <div class="row mb-3">
-                                    <label for="c_code" class="col-sm-4 col-form-label">
-                                        Mã bảng kê <span class="text-danger">*</span>
-                                    </label>
-                                    <div class="col-sm-8">
-                                        <input id="c_code" data-type="" required="required" type="text" class="form-control bg-gray-50 text-gray-900 border-gray-300 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2 ">
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <label class="col-sm-4 col-form-label" for="c_temp">Chọn mẫu thẻ</label>
-                                    <div class="col-sm-8">
-                                        <select class="form-select bg-gray-50 text-gray-900 border-gray-300 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2" name="c_temp" id="c_temp" v-model="c_temp">
-                                            <option value="1">Mẫu VNICare InSmart</option>
-                                            <option value="2">Mẫu T&amp;T Care</option>
-                                            <option value="3">Mẫu BSH T&amp;T Group</option>
-                                            <option value="4">Mẫu VNICare</option>
-                                            <option value="5">Mẫu SHB ATACC</option>
-                                            <option value="6">Mẫu LeapStack</option>
-                                            <option value="7">Mẫu VNICare ATSK</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <label for="c_code" class="col-sm-4 col-form-label">
-                                        Chọn file Upload <span class="text-danger">*</span>
-                                    </label>
-                                    <div class="col-sm-8">
-                                        <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none" aria-describedby="file_input_help" id="file_input" type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
-                                        <p class="mt-1 text-sm text-gray-500" id="file_input_help">Vui lòng chọn file định dạng theo mẫu Excel</p>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="modal-footer bg-gray-50">
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal" v-on:click="dismissModal">Đóng</button>
-                                <button type="button" @click.prevent="onSubmit()" class="flex items-center btn text-sm text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium">Cập nhập</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-
-
-                <h2 class="text-2xl font-bold leading-7 text-gray-900">Danh sách</h2>
+                <h2 class="text-2xl font-bold leading-7 text-gray-900 mb-3">Danh sách</h2>
                 <div class="" style="min-height: 250px;">
                     <table class="table table-striped table-hover">
                         <thead>
@@ -242,7 +254,7 @@
                         <ul class="pagination">
                             <li v-bind:class="[{ disabled: currentPage == 1 }, 'page-item']">
                                 <a class="page-link" href="#" aria-label="Previous" v-on:click.prevent="updatePage(currentPage - 1)">
-                                    <span aria-hidden="true"><span class="material-icons-outlined text-xs">arrow_back_ios</span> Trang trước</span>
+                                    <span aria-hidden="true"><span class="material-icons-round text-xs">arrow_back_ios</span> Trang trước</span>
                                 </a>
                             </li>
                             <li v-for="page in totalPages" v-bind:class="[{ active: currentPage == page }, 'page-item']">
@@ -250,7 +262,7 @@
                             </li>
                             <li v-bind:class="[{ disabled: currentPage == totalPages }, 'page-item']">
                                 <a class="page-link" href="#" aria-label="Next" v-on:click.prevent="updatePage(currentPage + 1)">
-                                    <span aria-hidden="true">Trang sau <span class="material-icons-outlined text-xs">arrow_forward_ios</span></span>
+                                    <span aria-hidden="true">Trang sau <span class="material-icons-round text-xs">arrow_forward_ios</span></span>
                                 </a>
                             </li>
                         </ul>
