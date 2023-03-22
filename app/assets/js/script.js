@@ -30,11 +30,11 @@ Vue.component("custom-input", {
         },
         "label-class": {
             type: String,
-            default: "col-sm-3 col-form-label",
+            default: "col-sm-4 col-form-label",
         },
         "content-class": {
             type: String,
-            default: "col-sm-9",
+            default: "col-sm-8",
         },
     },
     data() {
@@ -141,20 +141,10 @@ Vue.component("custom-input", {
     </div>`,
 });
 
-var formUpdate = new Vue({
-    el: "#main",
+var appEl = new Vue({
+    el: "#appEl",
     data: {
         items: [],
-        pk_id: "",
-        c_code: "",
-        c_ten_cong_ty: "",
-        c_name: "",
-        c_nam_sinh: "",
-        c_so_hop_dong: "",
-        c_hieu_luc: "",
-        c_email: "",
-        c_temp: 1,
-        c_trang_thai: 1,
         errors: {},
         modalTitle: "Thêm mới",
         isCheckedAll: false,
@@ -248,52 +238,7 @@ var formUpdate = new Vue({
 
         onSubmit: function () {
 
-            // Validate các component custom-input
-            let isValid = true;
-            Object.values(this.$refs).forEach((component) => {
-                if (component.validate && !component.validate()) {
-                    isValid = false;
-                }
-            });
-            // Nếu các giá trị nhập vào không hợp lệ thì không submit form
-            if (!isValid) {
-                return;
-            }
 
-
-            if (Object.keys(this.errors).length === 0) {
-                let data = new FormData();
-                data.append("c_code", this.$refs.c_code.inputValue);
-                data.append("c_ten_cong_ty", this.$refs.c_ten_cong_ty.inputValue);
-                data.append("c_name", this.$refs.c_name.inputValue);
-                data.append("c_nam_sinh", this.$refs.c_nam_sinh.inputValue);
-                data.append("c_so_hop_dong", this.$refs.c_so_hop_dong.inputValue);
-                data.append("c_hieu_luc", this.$refs.c_hieu_luc.inputValue);
-                data.append("c_email", this.$refs.c_email.inputValue);
-                data.append("c_temp", this.c_temp);
-                data.append("c_trang_thai", parseInt(this.c_trang_thai));
-
-                let url_action = "add";
-
-                if (this.pk_id.length > 0) {
-                    url_action = "udpate";
-                    data.append("pk_id", this.pk_id);
-                }
-
-                axios.post("http://localhost/repo-code/app/backend/api.php?action=" + url_action, data)
-                    .then((res) => {
-                        if (res.data.error) {
-                            alert("Error");
-                            return;
-                        }
-                        $("#formUpdate").modal("hide");
-                        this.getList();
-                        alert(res.data.message);
-
-                    }).catch((err) => {
-                        console.log(err);
-                    })
-            }
         },
 
         Delete: function (item) {
@@ -321,8 +266,8 @@ var formUpdate = new Vue({
         },
 
         Edit: function (id) {
-            this.modalTitle = "Cập nhập";
-            this.pk_id = id;
+            formUpdate.formTitle = "Cập nhập";
+            formUpdate.pk_id = id;
 
             let formData = new FormData();
             formData.append("id", id);
@@ -333,15 +278,15 @@ var formUpdate = new Vue({
                 data: formData,
             }).then((res) => {
                 if (res.data.error === false) {
-                    this.$refs.c_code.inputValue = res.data.body.c_code;
-                    this.$refs.c_ten_cong_ty.inputValue = res.data.body.c_ten_cong_ty;
-                    this.$refs.c_name.inputValue = res.data.body.c_name;
-                    this.$refs.c_nam_sinh.inputValue = res.data.body.c_nam_sinh;
-                    this.$refs.c_so_hop_dong.inputValue = res.data.body.c_so_hop_dong;
-                    this.$refs.c_hieu_luc.inputValue = res.data.body.c_hieu_luc;
-                    this.$refs.c_email.inputValue = res.data.body.c_email;
-                    this.c_temp = res.data.body.c_temp;
-                    this.c_trang_thai = parseInt(res.data.body.c_trang_thai);
+                    formUpdate.$refs.c_code.inputValue = res.data.body.c_code;
+                    formUpdate.$refs.c_ten_cong_ty.inputValue = res.data.body.c_ten_cong_ty;
+                    formUpdate.$refs.c_name.inputValue = res.data.body.c_name;
+                    formUpdate.$refs.c_nam_sinh.inputValue = res.data.body.c_nam_sinh;
+                    formUpdate.$refs.c_so_hop_dong.inputValue = res.data.body.c_so_hop_dong;
+                    formUpdate.$refs.c_hieu_luc.inputValue = res.data.body.c_hieu_luc;
+                    formUpdate.$refs.c_email.inputValue = res.data.body.c_email;
+                    formUpdate.c_temp = res.data.body.c_temp;
+                    formUpdate.c_trang_thai = parseInt(res.data.body.c_trang_thai);
                     $("#formUpdate").modal("show");
                 }
             }).catch((err) => {
@@ -408,48 +353,144 @@ var formUpdate = new Vue({
     mounted: function () {
         this.getList();
     },
-    created: function () { },
+    created: function () {},
 });
 
 
-$('#formUpdate').on('hidden.bs.modal', function (event) {
-    formUpdate.resetRef();
-});
+// $('#formUpdate').on('hidden.bs.modal', function (event) {
+//     formUpdate.resetRef();
+// });
 
-
-var formUpload = new Vue({
-    el: "#formUpload",
+var formSearch = new Vue({
+    el: "#formSearch",
     data: {
+        searchParams: {
+            c_code: '',
+            c_ten_cong_ty: '',
+            c_name: '',
+            c_trang_thai: '',
+        },
         items: [],
-        c_code: "",
-        c_temp: 1,
     },
     methods: {
-        onUpload: function () {
-
+        formSearch: function () {
+            axios.get('http://localhost/repo-code/app/backend/api.php?action=search', {
+                params: this.searchParams
+            }).then((res) => {
+                console.log(res)
+                appEl.items = res.data.body;
+            });
         },
-        handleFileUpload() {
-            const fileInput = this.$refs.fileInput;
-            const file = fileInput.files[0];
-            const formData = new FormData();
 
-            console.log(file)
-            console.log(formData)
-
-            formData.append('file', file);
-
-            fetch('http://localhost/repo-code/app/backend/process-excel.php', {
-                method: 'POST',
-                body: formData,
-            })
-                .then((response) => response.json())
-                .then((data) => {
-                    this.items = data;
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
-        },
     },
 });
 
+var formUpdate = new Vue({
+    el: "#formUpdate",
+    data: {
+        formTitle: "Thêm mới",
+        pk_id: '',
+        updateParams: {
+            c_code: '',
+            c_ten_cong_ty: '',
+            c_so_hop_dong: '',
+            c_hieu_luc: '',
+            c_name: '',
+            c_nam_sinh: '',
+            c_email: '',
+            c_temp: 1,
+            c_trang_thai: 1,
+        },
+        items: [],
+        errors: {},
+    },
+    methods: {
+        onSubmitFormUpdate: function () {
+            // Validate các component custom-input
+            let isValid = true;
+            Object.values(this.$refs).forEach((component) => {
+                if (component.validate && !component.validate()) {
+                    isValid = false;
+                }
+            });
+            // Nếu các giá trị nhập vào không hợp lệ thì không submit form
+            if (!isValid) {
+                return;
+            }
+
+            if (Object.keys(this.errors).length === 0) {
+                let data = new FormData();
+
+                data.append("c_code", this.$refs.c_code.inputValue);
+                data.append("c_ten_cong_ty", this.$refs.c_ten_cong_ty.inputValue);
+                data.append("c_name", this.$refs.c_name.inputValue);
+                data.append("c_nam_sinh", this.$refs.c_nam_sinh.inputValue);
+                data.append("c_so_hop_dong", this.$refs.c_so_hop_dong.inputValue);
+                data.append("c_hieu_luc", this.$refs.c_hieu_luc.inputValue);
+                data.append("c_email", this.$refs.c_email.inputValue);
+                data.append("c_temp", this.$refs.c_email.value);
+                data.append("c_trang_thai", this.$refs.c_trang_thai.value);
+
+                let url_action = "add";
+
+                if (this.pk_id.length > 0) {
+                    url_action = "udpate";
+                    data.append("pk_id", this.pk_id);
+                }
+
+                axios.post("http://localhost/repo-code/app/backend/api.php?action=" + url_action, data)
+                    .then((res) => {
+                        if (res.data.error) {
+                            alert("Error");
+                            return;
+                        }
+                        alert(res.data.message);
+                        $("#formUpdate").modal("hide");
+                        appEl.getList();
+
+                    }).catch((err) => {
+                        console.log(err);
+                    })
+            }
+        }
+
+    },
+});
+
+
+// var formUpload = new Vue({
+//     el: "#formUpload",
+//     data: {
+//         items: [],
+//         c_code: "",
+//         c_temp: 1,
+//         modalTitle: "Import bảng kê",
+//     },
+//     methods: {
+//         onUpload: function () {
+
+//         },
+//         handleFileUpload() {
+//             const fileInput = this.$refs.fileInput;
+//             const file = fileInput.files[0];
+//             const formData = new FormData();
+
+//             console.log(file)
+//             console.log(formData)
+
+//             formData.append('file', file);
+
+//             fetch('http://localhost/repo-code/app/backend/process-excel.php', {
+//                 method: 'POST',
+//                 body: formData,
+//             })
+//                 .then((response) => response.json())
+//                 .then((data) => {
+//                     this.items = data;
+//                 })
+//                 .catch((error) => {
+//                     console.error('Error:', error);
+//                 });
+//         },
+//     },
+// });

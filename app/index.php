@@ -14,28 +14,53 @@
 
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+
+    <script src="https://cdn.tailwindcss.com/3.2.4"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                fontFamily: {
+                    sans: ["Roboto", "sans-serif"],
+                    body: ["Roboto", "sans-serif"],
+                    mono: ["ui-monospace", "monospace"],
+                },
+            },
+            corePlugins: {
+                preflight: false,
+            },
+        };
+    </script>
 
     <title>Trang DM</title>
 
 </head>
 
-<body>
+<body class="bg-[#f5f8fb]">
 
-    <!-- Modal Upload-->
-    <div class="modal " id="formUpload" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <form @submit.prevent="" class="modal-content" novalidate>
-                <div class="modal-header ">
-                    <h5 class="modal-title text-xl font-semibold text-gray-900">Import bảng kê Excel</h5>
-                    <button class="btn-close text-sm text-gray-900" data-bs-dismiss="modal" aria-label="Close"></button>
+
+    <!-- Form Upload-->
+    <!-- <div id="formUpload" data-te-modal-init class="fixed top-0 left-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none" tabindex="-1" aria-labelledby="" aria-hidden="true">
+        <div data-te-modal-dialog-ref class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:max-w-[500px]">
+            <div class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
+                <div class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                    <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200" id="">
+                        {{modalTitle}}
+                    </h5>
+                    <button type="button" class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none" data-te-modal-dismiss aria-label="Close">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
                 </div>
-                <div class="modal-body">
 
+                <div class="relative flex-auto p-4" data-te-modal-body-ref>
                     <div class="row mb-3">
                         <label for="c_code" class="col-sm-4 col-form-label">
                             Mã bảng kê <span class="text-danger">*</span>
@@ -86,188 +111,272 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
 
+                <div class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                    <button type="button" class="inline-block rounded bg-primary-100 px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200" data-te-modal-dismiss data-te-ripple-init data-te-ripple-color="light">
+                        Đóng
+                    </button>
+                    <button type="button" @click.prevent="onSubmit()" class="ml-1 inline-block rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]" data-te-ripple-init data-te-ripple-color="light">
+                        Cập nhập
+                    </button>
                 </div>
-                <div class="modal-footer bg-gray-50">
-                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Đóng</button>
-                    <button type="button" @click.prevent="onUpload()" class="flex items-center btn text-sm text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium">Cập nhập</button>
+            </div>
+        </div>
+    </div> -->
+    <!-- Form Update-->
+    <div id="formUpdate" data-te-modal-init class="fixed top-0 left-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none" tabindex="-1" aria-labelledby="" aria-hidden="true">
+        <div data-te-modal-dialog-ref class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:max-w-[500px]">
+            <div class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
+                <div class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                    <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200" id="">
+                        {{formTitle}}
+                    </h5>
+                    <button type="button" class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none" data-te-modal-dismiss aria-label="Close">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
                 </div>
-            </form>
+
+                <div class="relative flex-auto p-4" data-te-modal-body-ref>
+
+                    <custom-input ref="c_code" id="c_code" name="c_code" label="Mã bảng kê" v-model="updateParams.c_code"></custom-input>
+                    <custom-input ref="c_ten_cong_ty" id="c_ten_cong_ty" name="c_ten_cong_ty" label="Tên công ty" v-model="updateParams.c_ten_cong_ty"></custom-input>
+                    <custom-input ref="c_so_hop_dong" id="c_so_hop_dong" name="c_so_hop_dong" label="Số hợp đồng" v-model="updateParams.c_so_hop_dong"></custom-input>
+                    <custom-input ref="c_hieu_luc" id="c_hieu_luc" name="c_hieu_luc" label="Hiệu lực" v-model="updateParams.c_hieu_luc"></custom-input>
+                    <custom-input ref="c_name" id="c_name" name="c_name" label="Tên người được BH" v-model="updateParams.c_name"></custom-input>
+                    <custom-input ref="c_nam_sinh" id="c_nam_sinh" name="c_nam_sinh" label="Năm sinh" v-model="updateParams.c_nam_sinh" data-type="date"></custom-input>
+                    <custom-input ref="c_email" id="c_email" name="c_email" label="Email" v-model="updateParams.c_email" data-type="email"></custom-input>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-4 col-form-label" for="c_temp">Mẫu thẻ</label>
+                        <div class="col-sm-8">
+                            <select ref="c_temp" name="c_temp" id="c_temp" v-model="updateParams.c_temp" class="form-select bg-gray-50 text-gray-900 border-gray-300 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-4 col-form-label" for="c_temp">
+                            Trạng thái
+                        </label>
+                        <div class="col-sm-8">
+                            <div class="col-form-label">
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input ref="c_trang_thai" id="c_trang_thai" v-model="updateParams.c_trang_thai" :checked="updateParams.c_trang_thai === 0" type="checkbox" value="" class="sr-only peer">
+                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                                    <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Hoạt động</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+                    <button type="button" class="inline-block rounded bg-primary-100 px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200" data-te-modal-dismiss data-te-ripple-init data-te-ripple-color="light">
+                        Đóng
+                    </button>
+                    <button type="button" @click.prevent="onSubmitFormUpdate()" class="ml-1 inline-block rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]" data-te-ripple-init data-te-ripple-color="light">
+                        Cập nhập
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div id="main" class="container">
+    <div class="container">
 
         <div class="container">
             <div class="p-5">
 
-                <div class="gap-2 d-flex justify-content-center">
-                    <button @click="openModalUpdate(true)" class="flex items-center py-1.5 px-3 rounded-md text-sm text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium">
+                <h2 class="h3">Danh sách</h2>
+
+                <div class="gap-2 d-flex justify-content-start mb-3">
+                    <button @click="openModalUpdate(true)" data-te-toggle="modal" data-te-target="#formUpdate" data-te-ripple-init data-te-ripple-color="light" class="inline-flex items-center rounded bg-primary py-1.5 px-3 text-sm font-medium leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
                         <span class="material-symbols-outlined">
                             add
                         </span>
                         <span>Thêm mới</span>
                     </button>
 
-                    <button @click="" class="flex items-center py-1.5 px-3 rounded-md text-sm font-semibold text-gray-900 border-solid border-1 border-gray-300 hover:bg-gray-50">
+                    <button @click="" class="inline-flex items-center rounded bg-[#ffffff] border border-primary-100 py-1.5 px-3 text-sm font-medium leading-normal text-dark-700 transition duration-150 ease-in-out hover:border-primary-accent-100 hover:bg-neutral-500 hover:bg-opacity-10 focus:border-primary-accent-100 focus:outline-none focus:ring-0 active:border-primary-accent-200 dark:text-primary-100 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10">
                         <span class="material-symbols-outlined text-red-700">
                             forward_to_inbox
                         </span>
                         <span>Gửi Email</span>
                     </button>
 
-                    <button @click="" class="flex items-center py-1.5 px-3 rounded-md text-sm font-semibold text-gray-900 border-solid border-1 border-gray-300 hover:bg-gray-50">
+                    <button @click="" class="inline-flex items-center rounded bg-[#ffffff] border border-primary-100 py-1.5 px-3 text-sm font-medium leading-normal text-dark-700 transition duration-150 ease-in-out hover:border-primary-accent-100 hover:bg-neutral-500 hover:bg-opacity-10 focus:border-primary-accent-100 focus:outline-none focus:ring-0 active:border-primary-accent-200 dark:text-primary-100 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10">
                         <span class="material-symbols-outlined text-blue-700">
                             draw
                         </span>
                         <span>Kí điện tử</span>
                     </button>
 
-                    <button @click="" data-bs-toggle="modal" data-bs-target="#formUpload" class="flex items-center py-1.5 px-3 rounded-md text-sm font-semibold text-gray-900 border-solid border-1 border-gray-300 hover:bg-gray-50">
+                    <button @click="" data-te-toggle="modal" data-te-target="#formUpload" data-te-ripple-init data-te-ripple-color="light" class="inline-flex items-center rounded bg-[#ffffff] border border-primary-100 py-1.5 px-3 text-sm font-medium leading-normal text-dark-700 transition duration-150 ease-in-out hover:border-primary-accent-100 hover:bg-neutral-500 hover:bg-opacity-10 focus:border-primary-accent-100 focus:outline-none focus:ring-0 active:border-primary-accent-200 dark:text-primary-100 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10">
                         <span class="material-icons-sharp text-green-700">
                             upload
                         </span>
                         <span>Import bảng kê</span>
                     </button>
 
-                    <button @click="deleteItems()" class="flex items-center py-1.5 px-3 rounded-md  text-sm font-semibold text-red-700 border-solid border-1 border-red-700 hover:bg-gray-50 hover:text-red-700">Xoá</button>
+                    <button @click="deleteItems()" class="inline-flex items-center rounded bg-[#ffffff] border border-primary-100 py-1.5 px-3 text-sm font-medium leading-normal text-red-700 transition duration-150 ease-in-out hover:border-primary-accent-100 hover:bg-neutral-500 hover:bg-opacity-10 focus:border-primary-accent-100 focus:outline-none focus:ring-0 active:border-primary-accent-200 dark:text-primary-100 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10">Xoá</button>
                 </div>
 
-                <!-- Modal Update-->
-                <div class="modal " id="formUpdate" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <form @submit.prevent="onSubmit" class="modal-content" novalidate>
-                            <div class="modal-header ">
-                                <h5 class="modal-title text-xl font-semibold text-gray-900">{{modalTitle}}</h5>
-                                <button class="btn-close text-sm text-gray-900" data-bs-dismiss="modal" aria-label="Close" v-on:click="dismissModal"></button>
-                            </div>
-                            <div class="modal-body">
-                                <custom-input ref="c_code" id="c_code" name="c_code" label="Mã bảng kê" v-model="c_code"></custom-input>
-                                <custom-input ref="c_ten_cong_ty" id="c_ten_cong_ty" name="c_ten_cong_ty" label="Tên công ty" v-model="c_ten_cong_ty"></custom-input>
-                                <custom-input ref="c_so_hop_dong" id="c_so_hop_dong" name="c_so_hop_dong" label="Số hợp đồng" v-model="c_so_hop_dong"></custom-input>
-                                <custom-input ref="c_hieu_luc" id="c_hieu_luc" name="c_hieu_luc" label="Hiệu lực" v-model="c_hieu_luc"></custom-input>
-                                <custom-input ref="c_name" id="c_name" name="c_name" label="Tên người được BH" v-model="c_name"></custom-input>
-                                <custom-input ref="c_nam_sinh" id="c_nam_sinh" name="c_nam_sinh" label="Năm sinh" v-model="c_nam_sinh" data-type="date"></custom-input>
-                                <custom-input ref="c_email" id="c_email" name="c_email" label="Email" v-model="c_email" data-type="email"></custom-input>
 
-                                <div class="row mb-3">
-                                    <label class="col-sm-3 col-form-label" for="c_temp">Mẫu thẻ</label>
-                                    <div class="col-sm-9">
-                                        <select class="form-select bg-gray-50 text-gray-900 border-gray-300 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2" name="c_temp" id="c_temp" v-model="c_temp">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
+                <div class="block rounded-sm bg-white shadow-sm dark:bg-neutral-700">
+
+                    <form id="formSearch" @submit.prevent="formSearch">
+                        <div class="border-b-2 border-neutral-100 py-3 px-6 dark:border-neutral-600 dark:text-neutral-50 text-sm">
+                            <div class="row">
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <label for="" class="mb-1 font-medium">Mã bảng kê</label>
+                                        <input type="text" v-model="searchParams.c_code" class="form-control bg-gray-50 text-gray-900 border-gray-300 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-1">
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="" class="mb-1 font-medium">Tên công ty</label>
+                                        <input type="text" v-model="searchParams.c_ten_cong_ty" placeholder="" class="form-control bg-gray-50 text-gray-900 border-gray-300 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-1">
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="" class="mb-1 font-medium">Tên người ĐBH</label>
+                                        <input type="text" v-model="searchParams.c_name" placeholder="" class="form-control bg-gray-50 text-gray-900 border-gray-300 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-1">
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <label for="" class="mb-1 font-medium">Trạng thái</label>
+                                        <select v-model="searchParams.c_trang_thai" class="form-select bg-gray-50 text-gray-900 border-gray-300 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-1" name="c_temp" id="c_temp" v-model="c_temp">
+                                            <option value="">Chọn</option>
+                                            <option value="1">Hoạt động</option>
+                                            <option value="0">Không hoạt động</option>
                                         </select>
                                     </div>
                                 </div>
-
-                                <div class="row mb-3">
-                                    <label class="col-sm-3 col-form-label" for="c_temp">
-                                        Trạng thái
-                                    </label>
-                                    <div class="col-sm-9">
-                                        <!-- <div class="form-check form-switch col-form-label mb-0">
-                                            <input class="form-check-input" checked type="checkbox" id="c_trang_thai" v-model="c_trang_thai">
-                                            <label class="form-check-label" for="c_trang_thai">Hoạt động</label>
-                                        </div> -->
-                                        <div class="col-form-label">
-                                            <label class="relative inline-flex items-center cursor-pointer">
-                                                <input type="checkbox" value="" class="sr-only peer" id="c_trang_thai" v-model="c_trang_thai" :checked="c_trang_thai === 0">
-                                                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                                                <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Hoạt động</span>
-                                            </label>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <label class="mb-1">&nbsp;</label>
+                                        <div>
+                                            <button type="submit" data-te-ripple-init="" data-te-ripple-color="light" class="max-h-[30px] inline-flex items-center rounded bg-[#ffffff] border border-primary-100 py-1.5 px-3 text-sm font-medium leading-normal text-dark-700 transition duration-150 ease-in-out hover:border-primary-accent-100 hover:bg-neutral-500 hover:bg-opacity-10 focus:border-primary-accent-100 focus:outline-none focus:ring-0 active:border-primary-accent-200 dark:text-primary-100 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10">
+                                                <span class="material-icons-sharp text-base">
+                                                    search
+                                                </span>
+                                                <span>Tìm kiếm</span>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
-                            <div class="modal-footer bg-gray-50">
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal" v-on:click="dismissModal">Đóng</button>
-                                <button type="button" @click.prevent="onSubmit()" class="flex items-center btn text-sm text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium">Cập nhập</button>
+                        </div>
+                    </form>
+
+                    <div id="appEl" class="p-6">
+
+                        <div class="flex flex-col min-h-[250px]">
+                            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                                    <div class="overflow-hidden">
+                                        <table class="min-w-full text-left text-sm font-light table table-striped table-hover">
+                                            <thead class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                                                <tr>
+                                                    <th scope="col" class="p-2"></th>
+                                                    <th scope="col" class="p-2">
+                                                        <div class="mb-[0.125rem] block min-h-[1.5rem] pl-[1.5rem]">
+                                                            <input v-bind:checked="isCheckedAll" v-on:change="toggleCheckedAll" 
+                                                            class="relative float-left mt-[0.15rem] mr-[6px] -ml-[1.5rem] h-[1.125rem] w-[1.125rem] appearance-none rounded-[0.25rem] border-[0.125rem] border-solid border-neutral-300 dark:border-neutral-600 outline-none before:pointer-events-none before:absolute before:h-[0.875rem] before:w-[0.875rem] before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] checked:border-primary dark:checked:border-primary checked:bg-primary dark:checked:bg-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:ml-[0.25rem] checked:after:-mt-px checked:after:block checked:after:h-[0.8125rem] checked:after:w-[0.375rem] checked:after:rotate-45 checked:after:border-[0.125rem] checked:after:border-t-0 checked:after:border-l-0 checked:after:border-solid checked:after:border-white checked:after:bg-transparent checked:after:content-[''] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:transition-[border-color_0.2s] focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-[0.875rem] focus:after:w-[0.875rem] focus:after:rounded-[0.125rem] focus:after:content-[''] checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:after:ml-[0.25rem] checked:focus:after:-mt-px checked:focus:after:h-[0.8125rem] checked:focus:after:w-[0.375rem] checked:focus:after:rotate-45 checked:focus:after:rounded-none checked:focus:after:border-[0.125rem] checked:focus:after:border-t-0 checked:focus:after:border-l-0 checked:focus:after:border-solid checked:focus:after:border-white checked:focus:after:bg-transparent" type="checkbox" id="checkboxNoLabel" value="" aria-label="..." />
+                                                        </div>
+                                                    </th>
+                                                    <th scope="col" class="p-2">Mã bảng kê</th>
+                                                    <th scope="col" class="p-2">Tên công ty</th>
+                                                    <th scope="col" class="p-2">Số hợp đồng</th>
+                                                    <th scope="col" class="p-2">Hiệu lực</th>
+                                                    <th scope="col" class="p-2">Tên người ĐBH</th>
+                                                    <th scope="col" class="p-2">Năm sinh</th>
+                                                    <th scope="col" class="p-2">Email</th>
+                                                    <th scope="col" class="p-2">Xem thẻ</th>
+                                                    <th scope="col" class="p-2">Mẫu thẻ</th>
+                                                    <th scope="col" class="p-2">Trạng thái</th>
+                                                    <th scope="col" class="p-2"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="font-normal">
+                                                <tr v-for="(item, i) in paginate(items)" :key="item.pk_id" class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
+                                                    <td class="whitespace-nowrap p-2 font-medium">{{i+1}}</td>
+                                                    <td class="whitespace-nowrap p-2">
+                                                        <div class="mb-[0.125rem] block min-h-[1.5rem] pl-[1.5rem]">
+                                                            <input v-model="item.isChecked" v-on:change="toggleChecked" 
+                                                            class="relative float-left mt-[0.15rem] mr-[6px] -ml-[1.5rem] h-[1.125rem] w-[1.125rem] appearance-none rounded-[0.25rem] border-[0.125rem] border-solid border-neutral-300 dark:border-neutral-600 outline-none before:pointer-events-none before:absolute before:h-[0.875rem] before:w-[0.875rem] before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] checked:border-primary dark:checked:border-primary checked:bg-primary dark:checked:bg-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:ml-[0.25rem] checked:after:-mt-px checked:after:block checked:after:h-[0.8125rem] checked:after:w-[0.375rem] checked:after:rotate-45 checked:after:border-[0.125rem] checked:after:border-t-0 checked:after:border-l-0 checked:after:border-solid checked:after:border-white checked:after:bg-transparent checked:after:content-[''] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:transition-[border-color_0.2s] focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-[0.875rem] focus:after:w-[0.875rem] focus:after:rounded-[0.125rem] focus:after:content-[''] checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:after:ml-[0.25rem] checked:focus:after:-mt-px checked:focus:after:h-[0.8125rem] checked:focus:after:w-[0.375rem] checked:focus:after:rotate-45 checked:focus:after:rounded-none checked:focus:after:border-[0.125rem] checked:focus:after:border-t-0 checked:focus:after:border-l-0 checked:focus:after:border-solid checked:focus:after:border-white checked:focus:after:bg-transparent" type="checkbox" id="checkboxNoLabel" value="" aria-label="..." />
+                                                        </div>
+                                                    </td>
+                                                    <td class="whitespace-nowrap p-2">{{item.c_code}}</td>
+                                                    <td class="whitespace-nowrap p-2">{{item.c_ten_cong_ty}}</td>
+                                                    <td class="whitespace-nowrap p-2">{{item.c_so_hop_dong}}</td>
+                                                    <td class="whitespace-nowrap p-2">{{item.c_hieu_luc}}</td>
+                                                    <td class="whitespace-nowrap p-2">{{item.c_name}}</td>
+                                                    <td class="whitespace-nowrap p-2">{{item.c_nam_sinh}}</td>
+                                                    <td class="whitespace-nowrap p-2">{{item.c_email}}</td>
+                                                    <td class="whitespace-nowrap p-2">
+                                                        <a href="" class="text-info">
+                                                            <span class="material-icons-outlined">
+                                                                badge
+                                                            </span>
+                                                        </a>
+                                                    </td>
+                                                    <td class="whitespace-nowrap p-2">{{item.c_temp}}</td>
+                                                    <td class="whitespace-nowrap p-2">{{item.c_trang_thai}}</td>
+                                                    <td class="whitespace-nowrap p-2">
+                                                        <div class="d-flex gap-2">
+                                                            <a href="" class="link-primary text-decoration-none d-flex" @click.prevent="Edit(item.pk_id)">
+                                                                <span class="material-symbols-outlined text-warning">edit</span>Sửa
+                                                            </a>
+                                                            <a href="" class="link-primary text-decoration-none d-flex" @click.prevent="Delete(item)">
+                                                                <span class="material-symbols-outlined text-danger">delete</span>Xoá
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
-                        </form>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center text-sm">
+                            <p>
+                                Hiển thị {{ (currentPage - 1) * perPage + 1 }} đến {{ (currentPage - 1) * perPage + paginate(items).length }} của {{ totalItems }} mục
+                            </p>
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination">
+                                    <li v-bind:class="[{ disabled: currentPage == 1 }, 'page-item']">
+                                        <a class="page-link" href="#" aria-label="Previous" v-on:click.prevent="updatePage(currentPage - 1)">
+                                            <span class="flex items-center" aria-hidden="true"><span class="material-icons-round text-xs">arrow_back_ios</span> Trang trước</span>
+                                        </a>
+                                    </li>
+                                    <li v-for="page in totalPages" v-bind:class="[{ active: currentPage == page }, 'page-item']">
+                                        <a class="page-link" href="#" v-on:click.prevent="updatePage(page)">{{ page }}</a>
+                                    </li>
+                                    <li v-bind:class="[{ disabled: currentPage == totalPages }, 'page-item']">
+                                        <a class="page-link" href="#" aria-label="Next" v-on:click.prevent="updatePage(currentPage + 1)">
+                                            <span class="flex items-center" aria-hidden="true">Trang sau <span class="material-icons-round text-xs">arrow_forward_ios</span></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
                 </div>
 
 
-                <h2 class="text-2xl font-bold leading-7 text-gray-900 mb-3">Danh sách</h2>
-                <div class="" style="min-height: 250px;">
-                    <table class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th><input class="form-check-input" type="checkbox" v-bind:checked="isCheckedAll" v-on:change="toggleCheckedAll"></th>
 
-                                <th>Mã bảng kê</th>
-                                <th>Tên công ty</th>
-                                <th>Số hợp đồng</th>
-                                <th>Hiệu lực</th>
-                                <th>Tên người ĐBH</th>
-                                <th>Năm sinh</th>
-                                <th>Email</th>
-                                <th>Xem thẻ</th>
-                                <th>Mẫu thẻ</th>
-                                <th>Trạng thái</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="(item, i) in paginate(items)" :key="item.pk_id">
-                                <td>{{i+1}}</td>
-                                <td><input class="form-check-input" type="checkbox" v-model="item.isChecked" v-on:change="toggleChecked"></td>
 
-                                <td>{{item.c_code}}</td>
-                                <td>{{item.c_ten_cong_ty}}</td>
-                                <td>{{item.c_so_hop_dong}}</td>
-                                <td>{{item.c_hieu_luc}}</td>
-                                <td>{{item.c_name}}</td>
-                                <td>{{item.c_nam_sinh}}</td>
-                                <td>{{item.c_email}}</td>
-                                <td>
-                                    <a href="" class="text-info">
-                                        <span class="material-icons-outlined">
-                                            badge
-                                        </span>
-                                    </a>
-                                </td>
-                                <td>{{item.c_temp}}</td>
-                                <td>{{item.c_trang_thai}}</td>
-                                <td>
-                                    <div class="d-flex gap-2">
-                                        <a href="" class="link-primary text-decoration-none d-flex" @click.prevent="Edit(item.pk_id)">
-                                            <span class="material-symbols-outlined text-warning">edit</span>Sửa
-                                        </a>
-                                        <a href="" class="link-primary text-decoration-none d-flex" @click.prevent="Delete(item)">
-                                            <span class="material-symbols-outlined text-danger">delete</span>Xoá
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p>
-                        Hiển thị {{ (currentPage - 1) * perPage + 1 }} đến {{ (currentPage - 1) * perPage + paginate(items).length }} của {{ totalItems }} mục
-                    </p>
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination">
-                            <li v-bind:class="[{ disabled: currentPage == 1 }, 'page-item']">
-                                <a class="page-link" href="#" aria-label="Previous" v-on:click.prevent="updatePage(currentPage - 1)">
-                                    <span aria-hidden="true"><span class="material-icons-round text-xs">arrow_back_ios</span> Trang trước</span>
-                                </a>
-                            </li>
-                            <li v-for="page in totalPages" v-bind:class="[{ active: currentPage == page }, 'page-item']">
-                                <a class="page-link" href="#" v-on:click.prevent="updatePage(page)">{{ page }}</a>
-                            </li>
-                            <li v-bind:class="[{ disabled: currentPage == totalPages }, 'page-item']">
-                                <a class="page-link" href="#" aria-label="Next" v-on:click.prevent="updatePage(currentPage + 1)">
-                                    <span aria-hidden="true">Trang sau <span class="material-icons-round text-xs">arrow_forward_ios</span></span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
 
             </div>
         </div>
@@ -275,7 +384,7 @@
 
 
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
     <script src=" https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

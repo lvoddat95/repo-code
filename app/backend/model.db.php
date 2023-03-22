@@ -157,4 +157,37 @@ class ModelDB
 
         return $data;
     }
+
+
+    public function search($c_code,  $c_ten_cong_ty, $c_name, $c_trang_thai)
+    {
+        $data = [];
+
+
+        // Xây dựng câu truy vấn SQL
+        $sql = 'SELECT * FROM t_test WHERE 1=1';
+        $params = array();
+        if ($c_code) {
+            $sql .= ' AND c_code LIKE :c_code';
+            $params[':c_code'] = '%' . $c_code . '%';
+        }
+        if ($c_ten_cong_ty) {
+            $sql .= ' AND c_ten_cong_ty LIKE :c_ten_cong_ty';
+            $params[':c_ten_cong_ty'] = '%' . $c_ten_cong_ty . '%';
+        }
+        if ($c_name) {
+            $sql .= ' AND c_name LIKE :c_name';
+            $params[':c_name'] = '%' . $c_name . '%';
+        }
+        if ($c_trang_thai) {
+            $sql .= ' AND c_trang_thai = :c_trang_thai';
+            $params[':c_trang_thai'] = $c_trang_thai;
+        }
+
+        // Thực hiện truy vấn và trả về kết quả dưới dạng JSON
+        $stmt = $this->conn->prepare($sql);
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $data;
+    }
 }

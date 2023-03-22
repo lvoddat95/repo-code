@@ -176,6 +176,26 @@ if ($action == 'edit') {
 }
 
 
+if ($action == 'search') {
+
+	// Lấy thông tin tìm kiếm từ yêu cầu GET
+	$c_code = $_GET['c_code'] ?? '';
+	$c_ten_cong_ty = $_GET['c_ten_cong_ty'] ?? '';
+	$c_name = $_GET['c_name'] ?? '';
+	$c_trang_thai = $_GET['c_trang_thai'] ?? '';
+
+	$data = $modelDB->search($c_code, $c_ten_cong_ty, $c_name, $c_trang_thai);
+	
+	if (!empty($data)) {
+		$res['error'] = false;
+		$res['body'] = $data;
+	} else {
+		$res['error'] = true;
+		$res['message'] = "No Data Found!";
+	}
+}
+
+
 
 
 header("Content-type: application/json");
