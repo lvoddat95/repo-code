@@ -110,7 +110,7 @@ Vue.component("custom-input", {
         resetInput() {
             this.inputValue = null;
         },
-        reset() {
+        reset: function() {
             // Reset giá trị của inputValue và error về giá trị ban đầu
             this.inputValue = this.initialValue;
             this.error = null;

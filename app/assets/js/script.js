@@ -93,7 +93,7 @@ var appEl = new Vue({
             };
         },
 
-        onSubmit: function () {},
+        onSubmit: function () { },
 
         Delete: function (item) {
             if (window.confirm("Xoá nha? \n" + item.c_name)) {
@@ -148,45 +148,7 @@ var appEl = new Vue({
             });
         },
 
-        resetRef: function () {
-            for (let refName in this.$refs) {
-                const ref = this.$refs[refName];
-                if (ref.$options.name === 'custom-input') {
-                    ref.reset();
-                }
-            }
-        },
 
-        resetRefError: function () {
-            for (let refName in this.$refs) {
-                const ref = this.$refs[refName];
-                if (ref.$options.name === 'custom-input') {
-                    ref.resetError();
-                }
-            }
-        },
-
-        setRefError: function (message) {
-            for (let refName in this.$refs) {
-                const ref = this.$refs[refName];
-                if (ref.$options.name === 'custom-input') {
-                    ref.setError(message);
-                }
-            }
-        },
-
-        openModalUpdate: function (resetData = false) {
-            this.modalActionAdd = true;
-            $("#formUpdate").modal("show");
-            console.log(resetData)
-            if (resetData) {
-                this.resetRef();
-            }
-        },
-
-        dismissModal: function () {
-            this.resetRef();
-        },
 
         getList: _.debounce(
             function () {
@@ -207,13 +169,11 @@ var appEl = new Vue({
     mounted: function () {
         this.getList();
     },
-    created: function () {},
+    created: function () { },
 });
 
 
-// $('#formUpdate').on('hidden.bs.modal', function (event) {
-//     formUpdate.resetRef();
-// });
+
 
 var formSearch = new Vue({
     el: "#formSearch",
@@ -316,7 +276,29 @@ var formUpdate = new Vue({
                         console.log(err);
                     })
             }
-        }
+        },
+
+        resetRef: function () {
+            for (let refName in this.$refs) {
+                const ref = this.$refs[refName];
+                if (typeof ref.$options !== "undefined") {
+                    // console.log(ref)
+                    ref.reset();
+                }
+            }
+        },
+
+        openModalUpdate: function (resetData = false) {
+            this.modalActionAdd = true;
+            $("#formUpdate").modal("show");
+            if (resetData) {
+                this.resetRef();
+            }
+        },
+
+        dismissModal: function () {
+            this.resetRef();
+        },
 
     },
 });
@@ -326,6 +308,7 @@ var formUpload = new Vue({
     el: "#uploadEl",
     data: {
         items: [],
+        error: null,
         isLoading: false,
         isShowList: false,
         c_code: "",
@@ -350,23 +333,37 @@ var formUpload = new Vue({
                 const range = 'A3:H' + (worksheet['!ref'].split(':')[1]);
                 const decodedRange = XLSX.utils.decode_range(range);
                 const header = ['A_ten_cong_ty', 'B_ten_ndbh', 'C_ngay', 'D_thang', 'E_nam', 'F_so_hop_dong', 'G_hieu_luc', 'H_email'];
+
                 const jsonDatatable = XLSX.utils.sheet_to_json(worksheet, {
                     range: decodedRange,
                     header: 1
                 });
-                const json = XLSX.utils.sheet_to_json(worksheet, {
+
+                const jsonData = XLSX.utils.sheet_to_json(worksheet, {
                     range: decodedRange,
                     header: header
                 });
 
-                this.items = json;
-                // let da = {
-                //     "data": json
-                // };
-                // console.log(da)
+                // Thêm cột đầu tiên chứa giá trị index tăng dần
+                const jsonDataWithIndex = jsonData.map((row, index) => {
+                    return { index: index + 1, ...row };
+                });
+
+
+                this.items = jsonData;
+
+                console.log(jsonDataWithIndex)
+
                 $('#tableList').DataTable({
-                    data: json,
-                    columns: [{
+                    language: {
+                        url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/vi.json',
+                    },
+                    data: jsonDataWithIndex,
+                    columns: [
+                        {
+                            data: 'index'
+                        },
+                        {
                             data: 'A_ten_cong_ty'
                         },
                         {
@@ -388,9 +385,9 @@ var formUpload = new Vue({
                             data: 'G_hieu_luc'
                         },
                         {
-                            data: 'Hiệu H_email'
+                            data: 'H_email'
                         },
-                       
+
                     ]
                 });
             };
@@ -413,4 +410,9 @@ var formUpload = new Vue({
             this.items = response.data;
         },
     },
+});
+
+$('#formUpdate').on('hidden.te.modal', function (event) {
+    // console.log(event)
+    // formUpdate.resetRef();
 });
