@@ -186,6 +186,7 @@ class ModelDB
 
         // Thực hiện truy vấn và trả về kết quả dưới dạng JSON
         $stmt = $this->conn->prepare($sql);
+        $stmt->execute($params);
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return $data;
