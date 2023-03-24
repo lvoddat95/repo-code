@@ -1,173 +1,3 @@
-var appEl = new Vue({
-    el: "#appEl",
-    data: {
-        items: [],
-        errors: {},
-        modalTitle: "Thêm mới",
-        isCheckedAll: false,
-        isChecked: false,
-        currentPage: 1,
-        perPage: 5,
-        // totalPages: 0,
-        // totalItems: 0
-    },
-    watch: {},
-    computed: {
-        totalItems: {
-            get: function () {
-                return this.items.length;
-            },
-            set: function (value) {
-                this.totalItems = value;
-            }
-        },
-        totalPages: function () {
-            return Math.ceil(this.totalItems / this.perPage);
-        }
-    },
-    methods: {
-
-        paginate: function (items) {
-            let start = (this.currentPage - 1) * this.perPage;
-            let end = start + this.perPage;
-
-            return items.slice(start, end);
-        },
-
-        updatePage: function (page) {
-            this.currentPage = page;
-        },
-
-        toggleCheckedAll() {
-            this.isCheckedAll = !this.isCheckedAll;
-            this.items.forEach(item => {
-                item.isChecked = this.isCheckedAll;
-            });
-        },
-
-        toggleChecked(item) {
-            item.isChecked = !item.isChecked;
-            this.isCheckedAll = this.items.every(item => item.isChecked);
-        },
-
-        deleteItems: function () {
-            let hasChecked = true;
-            for (let prop in this.items) {
-                if (this.items[prop].isChecked) {
-                    hasChecked = false;
-                    break;
-                }
-            }
-
-            if (hasChecked) {
-                alert("Chưa chọn");
-            }
-
-            let ids = [];
-            this.items.forEach(item => {
-                if (item.isChecked) {
-                    // this.DeleteIds(item);
-                    ids.push(item.pk_id);
-                }
-            });
-            if (window.confirm("Xoá nha? \n")) {
-                let formData = new FormData();
-                formData.append("ids", ids);
-
-                axios({
-                    url: "http://localhost/repo-code/app/backend/api.php?action=deleteItems",
-                    method: "post",
-                    data: formData,
-                }).then((res) => {
-                    if (res.data.error) {
-                        alert("Error");
-                        return;
-                    }
-
-                    alert("Đã xoá thành công");
-                    this.getList();
-
-                }).catch((err) => {
-                    console.log(err);
-                });
-            };
-        },
-
-        Delete: function (item) {
-            if (window.confirm("Xoá nha? \n" + item.c_name)) {
-                let formData = new FormData();
-                formData.append("id", item.pk_id);
-
-                axios({
-                    url: "http://localhost/repo-code/app/backend/api.php?action=delete",
-                    method: "post",
-                    data: formData,
-                }).then((res) => {
-                    if (res.data.error) {
-                        alert("Error");
-                        return;
-                    }
-
-                    alert("Đã xoá thành công");
-                    this.getList();
-
-                }).catch((err) => {
-                    console.log(err);
-                });
-            };
-        },
-
-        Edit: function (id) {
-            formUpdate.formTitle = "Cập nhập";
-            formUpdate.pk_id = id;
-
-            let formData = new FormData();
-            formData.append("id", id);
-
-            axios({
-                url: "http://localhost/repo-code/app/backend/api.php?action=edit",
-                method: "post",
-                data: formData,
-            }).then((res) => {
-                if (res.data.error === false) {
-                    formUpdate.$refs.c_code.inputValue = res.data.body.c_code;
-                    formUpdate.$refs.c_ten_cong_ty.inputValue = res.data.body.c_ten_cong_ty;
-                    formUpdate.$refs.c_name.inputValue = res.data.body.c_name;
-                    formUpdate.$refs.c_nam_sinh.inputValue = res.data.body.c_nam_sinh;
-                    formUpdate.$refs.c_so_hop_dong.inputValue = res.data.body.c_so_hop_dong;
-                    formUpdate.$refs.c_hieu_luc.inputValue = res.data.body.c_hieu_luc;
-                    formUpdate.$refs.c_email.inputValue = res.data.body.c_email;
-                    formUpdate.c_temp = res.data.body.c_temp;
-                    formUpdate.c_trang_thai = parseInt(res.data.body.c_trang_thai);
-                    $("#formUpdate").modal("show");
-                }
-            }).catch((err) => {
-                console.log(err);
-            });
-        },
-
-        getList: _.debounce(
-            function () {
-                axios.get('http://localhost/repo-code/app/backend/api.php?action=getall')
-                    .then(function (res) {
-                        this.items = res.data.body;
-                        this.totalItems = res.data.body.length;
-                        this.totalPages = Math.ceil(this.totalItems / this.perPage);
-                    }.bind(this)) // Ràng buộc ngữ cảnh của từ khoá 'this' với đối tượng Vue
-                    .catch(function (error) {
-                        this.error = 'Lỗi! Không thể truy cập API. ' + error
-                    })
-            },
-            100
-        ),
-
-    },
-    mounted: function () {
-        this.getList();
-    },
-    created: function () {},
-});
-
 var formSearch = new Vue({
     el: "#formSearch",
     data: {
@@ -305,14 +135,22 @@ var formUpload = new Vue({
         c_code: "",
         c_temp: 1,
         formTitle: "Import bảng kê",
+        controlClass: "form-control bg-gray-50 text-gray-900 border-gray-300 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2",
     },
+
+    watch:{
+        c_code: function(e){
+            console.log(e)
+        }
+    },
+
     methods: {
         resetFormUpload: function () {
             this.items = [];
             this.error = null;
             this.c_code = "";
             this.c_file = "";
-            this.c_temp = 1;
+            this.c_temp = "";
             this.$refs.formFile.value = "";
             this.isShowList = false;
         },
@@ -418,6 +256,93 @@ var formUpload = new Vue({
 
             this.items = response.data;
         },
+
+        onInputChange(event) {
+            const filteredInput = this.filterInput(event.target.value);
+            this.c_code = filteredInput;
+        },
+
+        filterInput(inputString) {
+            const uppercaseString = inputString.toUpperCase();
+            const filteredString = uppercaseString.replace(/[^A-Z0-9]/g, '');
+            return filteredString;
+        },
+
+        validateInput(value, rules) {
+            this.error = null;
+            // Loop through the rules array
+            console.log(value)
+            return;
+            for (let i = 0; i < rules.length; i++) {
+                // Split each rule into its individual parts (e.g. "minLength:5" becomes ["minLength", "5"])
+                let ruleParts = rules[i].split(':');
+                let ruleName = ruleParts[0];
+                let ruleParam = ruleParts[1];
+
+                // Call the appropriate rule validation function based on the rule name
+                switch (ruleName) {
+                    case 'required':
+                        if (!value || value.length === 0) {
+                            return this.error = 'Thông tin bắt buộc nhập.';
+                        }
+                        break;
+
+                    case 'minLength':
+                        if (value.length < ruleParam) {
+                            return this.error = `This field must be at least ${ruleParam} characters long.`;
+                        }
+                        break;
+
+                    case 'email':
+                        let emailRegex = /\S+@\S+\.\S+/;
+                        if (!emailRegex.test(value)) {
+                            return this.error = 'Please enter a valid email address.';
+                        }
+                        break;
+
+                    case 'noSpace':
+                        if (/\s/.test(value)) {
+                            return this.error = 'This field cannot contain spaces.';
+                        }
+                        break;
+
+                    case 'excel':
+                        let fileExtension = value.split('.').pop().toLowerCase();
+                        if (fileExtension !== 'xlsx' && fileExtension !== 'xls') {
+                            return this.error = 'Please upload an Excel file (XLSX or XLS format).';
+                        }
+                        break;
+
+                    case 'code':
+                        if (!value || value.length === 0) {
+
+                            return this.error = 'Thông tin bắt buộc nhập.';
+                        }
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+
+            // If all rules pass, return null (no error message)
+            return null;
+        },
+
+        onSubmitFormUpload: function () {
+            // this.validateInput(this.c_code);
+            // // Validate các component custom-input
+            // let isValid = true;
+            // Object.values(this.$refs).forEach((component) => {
+            //     if (component.validate && !component.validate()) {
+            //         isValid = false;
+            //     }
+            // });
+            // // Nếu các giá trị nhập vào không hợp lệ thì không submit form
+            // if (!isValid) {
+            //     return;
+            // }
+        }
     },
 });
 

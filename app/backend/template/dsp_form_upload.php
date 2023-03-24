@@ -24,17 +24,18 @@
                             Mã bảng kê <span class="text-danger">*</span>
                         </label>
                         <div class="col-sm-8">
-                            <input id="c_code" v-model="c_code" required="required" type="text" class="form-control bg-gray-50 text-gray-900 border-gray-300 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 ">
-                            <div v-if="error" class="invalid-feedback">
+                            <input id="c_code" v-model="c_code" @input="onInputChange" @blur="validateInput($event.target.value, ['code'])" required="required" type="text" v-bind:class="[{ 'is-invalid': error }, controlClass]">
+                            <div v-if="error" class="invalid-feedback position-static">
                                 {{ error }}
                             </div>
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label class="col-sm-4 col-form-label" for="c_temp">Chọn mẫu thẻ</label>
+                        <label class="col-sm-4 col-form-label" for="c_temp">Chọn mẫu thẻ <span class="text-danger">*</span></label>
                         <div class="col-sm-8">
-                            <select id="c_temp" v-model="c_temp" class="form-select bg-gray-50 text-gray-900 border-gray-300 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2">
+                            <select id="c_temp" v-model="c_temp" @change="validateInput($event, ['required'])" class="form-select bg-gray-50 text-gray-900 border-gray-300 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2">
+                                <option value="">Chọn</option>
                                 <option value="1">Mẫu VNICare InSmart</option>
                                 <option value="2">Mẫu T&amp;T Care</option>
                                 <option value="3">Mẫu BSH T&amp;T Group</option>
@@ -43,6 +44,9 @@
                                 <option value="6">Mẫu LeapStack</option>
                                 <option value="7">Mẫu VNICare ATSK</option>
                             </select>
+                            <div v-if="error" class="invalid-feedback position-static">
+                                {{ error }}
+                            </div>
                         </div>
                     </div>
 
@@ -54,7 +58,7 @@
                             <div class="flex justify-center">
                                 <div class="w-100">
                                     <input id="formFile" ref="formFile" @change="handleFileUploadXLSX" type="file" accept=".xlsx, .xls" class="form-control text-base" type="file" />
-                                    <div v-if="error" class="invalid-feedback">
+                                    <div v-if="error" class="invalid-feedback position-static">
                                         {{ error }}
                                     </div>
                                     <p class="mt-1 text-sm text-gray-500" id="file_input_help">Vui lòng chọn file định dạng theo mẫu Excel</p>
@@ -71,7 +75,7 @@
                     <button type="button" data-mdb-dismiss="modal" aria-label="Close" class="btn btn-light ripple-surface-dark" data-mdb-ripple-color="dark">
                         Đóng
                     </button>
-                    <button type="button" @click.prevent="onSubmit()" class="btn btn-primary me-1">
+                    <button type="button" @click.prevent="onSubmitFormUpload()" class="btn btn-primary me-1">
                         Cập nhập
                     </button>
                 </div>

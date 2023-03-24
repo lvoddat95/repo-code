@@ -1,39 +1,3 @@
-// // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-// if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-//     document.documentElement.classList.add('dark');
-// } else {
-//     document.documentElement.classList.remove('dark');
-// };
-
-// function setDarkTheme() {
-//     document.documentElement.classList.add("dark");
-//     localStorage.theme = "dark";
-// };
-
-// function setLightTheme() {
-//     document.documentElement.classList.remove("dark");
-//     localStorage.theme = "light";
-// };
-
-// function onThemeSwitcherItemClick(event) {
-//     const theme = event.target.dataset.theme;
-
-//     if (theme === "system") {
-//         localStorage.removeItem("theme");
-//         setSystemTheme();
-//     } else if (theme === "dark") {
-//         setDarkTheme();
-//     } else {
-//         setLightTheme();
-//     }
-// };
-
-// const themeSwitcherItems = document.querySelectorAll("#theme-switcher");
-// themeSwitcherItems.forEach((item) => {
-//     item.addEventListener("click", onThemeSwitcherItemClick);
-// });
-
-
 Vue.component("custom-input", {
     props: {
         id: {
@@ -110,7 +74,7 @@ Vue.component("custom-input", {
         resetInput() {
             this.inputValue = null;
         },
-        reset: function() {
+        reset: function () {
             // Reset giá trị của inputValue và error về giá trị ban đầu
             this.inputValue = this.initialValue;
             this.error = null;
@@ -176,3 +140,176 @@ Vue.component("custom-input", {
         </div>
     </div>`,
 });
+
+
+var appEl = new Vue({
+    el: "#appEl",
+    data: {
+        items: [],
+        errors: {},
+        modalTitle: "Thêm mới",
+        isCheckedAll: false,
+        isChecked: false,
+        currentPage: 1,
+        perPage: 5,
+        // totalPages: 0,
+        // totalItems: 0
+    },
+    watch: {},
+    computed: {
+        totalItems: {
+            get: function () {
+                return this.items.length;
+            },
+            set: function (value) {
+                this.totalItems = value;
+            }
+        },
+        totalPages: function () {
+            return Math.ceil(this.totalItems / this.perPage);
+        }
+    },
+    methods: {
+
+        paginate: function (items) {
+            let start = (this.currentPage - 1) * this.perPage;
+            let end = start + this.perPage;
+
+            return items.slice(start, end);
+        },
+
+        updatePage: function (page) {
+            this.currentPage = page;
+        },
+
+        toggleCheckedAll() {
+            this.isCheckedAll = !this.isCheckedAll;
+            this.items.forEach(item => {
+                item.isChecked = this.isCheckedAll;
+            });
+        },
+
+        toggleChecked(item) {
+            item.isChecked = !item.isChecked;
+            this.isCheckedAll = this.items.every(item => item.isChecked);
+        },
+
+        deleteItems: function () {
+            let hasChecked = true;
+            for (let prop in this.items) {
+                if (this.items[prop].isChecked) {
+                    hasChecked = false;
+                    break;
+                }
+            }
+
+            if (hasChecked) {
+                alert("Chưa chọn");
+            }
+
+            let ids = [];
+            this.items.forEach(item => {
+                if (item.isChecked) {
+                    // this.DeleteIds(item);
+                    ids.push(item.pk_id);
+                }
+            });
+            if (window.confirm("Xoá nha? \n")) {
+                let formData = new FormData();
+                formData.append("ids", ids);
+
+                axios({
+                    url: "http://localhost/repo-code/app/backend/api.php?action=deleteItems",
+                    method: "post",
+                    data: formData,
+                }).then((res) => {
+                    if (res.data.error) {
+                        alert("Error");
+                        return;
+                    }
+
+                    alert("Đã xoá thành công");
+                    this.getList();
+
+                }).catch((err) => {
+                    console.log(err);
+                });
+            };
+        },
+
+        Delete: function (item) {
+            if (window.confirm("Xoá nha? \n" + item.c_name)) {
+                let formData = new FormData();
+                formData.append("id", item.pk_id);
+
+                axios({
+                    url: "http://localhost/repo-code/app/backend/api.php?action=delete",
+                    method: "post",
+                    data: formData,
+                }).then((res) => {
+                    if (res.data.error) {
+                        alert("Error");
+                        return;
+                    }
+
+                    alert("Đã xoá thành công");
+                    this.getList();
+
+                }).catch((err) => {
+                    console.log(err);
+                });
+            };
+        },
+
+        Edit: function (id) {
+            formUpdate.formTitle = "Cập nhập";
+            formUpdate.pk_id = id;
+
+            let formData = new FormData();
+            formData.append("id", id);
+
+            axios({
+                url: "http://localhost/repo-code/app/backend/api.php?action=edit",
+                method: "post",
+                data: formData,
+            }).then((res) => {
+                if (res.data.error === false) {
+                    formUpdate.$refs.c_code.inputValue = res.data.body.c_code;
+                    formUpdate.$refs.c_ten_cong_ty.inputValue = res.data.body.c_ten_cong_ty;
+                    formUpdate.$refs.c_name.inputValue = res.data.body.c_name;
+                    formUpdate.$refs.c_nam_sinh.inputValue = res.data.body.c_nam_sinh;
+                    formUpdate.$refs.c_so_hop_dong.inputValue = res.data.body.c_so_hop_dong;
+                    formUpdate.$refs.c_hieu_luc.inputValue = res.data.body.c_hieu_luc;
+                    formUpdate.$refs.c_email.inputValue = res.data.body.c_email;
+                    formUpdate.c_temp = res.data.body.c_temp;
+                    formUpdate.c_trang_thai = parseInt(res.data.body.c_trang_thai);
+                    $("#formUpdate").modal("show");
+                }
+            }).catch((err) => {
+                console.log(err);
+            });
+        },
+
+        getList: _.debounce(
+            function () {
+                axios.get('http://localhost/repo-code/app/backend/api.php?action=getall')
+                    .then(function (res) {
+                        this.items = res.data.body;
+                        this.totalItems = res.data.body.length;
+                        this.totalPages = Math.ceil(this.totalItems / this.perPage);
+                    }.bind(this)) // Ràng buộc ngữ cảnh của từ khoá 'this' với đối tượng Vue
+                    .catch(function (error) {
+                        this.error = 'Lỗi! Không thể truy cập API. ' + error
+                    })
+            },
+            100
+        ),
+
+    },
+    mounted: function () {
+        this.getList();
+    },
+    created: function () {},
+});
+
+
