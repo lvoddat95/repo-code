@@ -170,7 +170,7 @@ Vue.component("custom-input", {
         <div :class="[contentClass]">
             <input :id="id" :type="type" :name="name" :data-type="dataType" v-model="inputValue" :required="isRequired" 
             v-bind:class="[{ 'is-invalid': error }, controlClass]" >
-            <div v-if="error" class="invalid-feedback">
+            <div v-if="error" class="invalid-feedback position-static">
                 {{ error }}
             </div>
         </div>

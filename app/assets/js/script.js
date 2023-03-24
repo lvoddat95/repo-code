@@ -93,8 +93,6 @@ var appEl = new Vue({
             };
         },
 
-        onSubmit: function () { },
-
         Delete: function (item) {
             if (window.confirm("Xoá nha? \n" + item.c_name)) {
                 let formData = new FormData();
@@ -148,8 +146,6 @@ var appEl = new Vue({
             });
         },
 
-
-
         getList: _.debounce(
             function () {
                 axios.get('http://localhost/repo-code/app/backend/api.php?action=getall')
@@ -169,11 +165,8 @@ var appEl = new Vue({
     mounted: function () {
         this.getList();
     },
-    created: function () { },
+    created: function () {},
 });
-
-
-
 
 var formSearch = new Vue({
     el: "#formSearch",
@@ -278,7 +271,7 @@ var formUpdate = new Vue({
             }
         },
 
-        resetRef: function () {
+        resetInput: function () {
             for (let refName in this.$refs) {
                 const ref = this.$refs[refName];
                 if (typeof ref.$options !== "undefined") {
@@ -289,20 +282,18 @@ var formUpdate = new Vue({
         },
 
         openModalUpdate: function (resetData = false) {
-            this.modalActionAdd = true;
             $("#formUpdate").modal("show");
             if (resetData) {
-                this.resetRef();
+                this.resetInput();
             }
         },
 
         dismissModal: function () {
-            this.resetRef();
+            this.resetInput();
         },
 
     },
 });
-
 
 var formUpload = new Vue({
     el: "#uploadEl",
@@ -316,9 +307,16 @@ var formUpload = new Vue({
         formTitle: "Import bảng kê",
     },
     methods: {
-        dismissModal: function () {
-
+        resetFormUpload: function () {
+            this.items = [];
+            this.error = null;
+            this.c_code = "";
+            this.c_file = "";
+            this.c_temp = 1;
+            this.$refs.formFile.value = "";
+            this.isShowList = false;
         },
+
         handleFileUploadXLSX(event) {
             this.isLoading = true;
             const file = event.target.files[0];
@@ -346,46 +344,56 @@ var formUpload = new Vue({
 
                 // Thêm cột đầu tiên chứa giá trị index tăng dần
                 const jsonDataWithIndex = jsonData.map((row, index) => {
-                    return { index: index + 1, ...row };
+                    return {
+                        index: index + 1,
+                        ...row
+                    };
                 });
 
-
                 this.items = jsonData;
-
-                console.log(jsonDataWithIndex)
-
+                console.log(jsonData)
+                $('#tableList').DataTable().destroy();
                 $('#tableList').DataTable({
                     language: {
                         url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/vi.json',
                     },
                     data: jsonDataWithIndex,
-                    columns: [
-                        {
-                            data: 'index'
+                    columns: [{
+                            data: 'index',
+                            className: "whitespace-nowrap p-2 text-center font-medium"
                         },
                         {
-                            data: 'A_ten_cong_ty'
+                            data: 'A_ten_cong_ty',
+                            className: "whitespace-nowrap p-2",
                         },
                         {
-                            data: 'B_ten_ndbh'
+                            data: 'B_ten_ndbh',
+                            className: "whitespace-nowrap p-2",
+
                         },
                         {
-                            data: 'C_ngay'
+                            data: 'C_ngay',
+                            className: "whitespace-nowrap p-2",
                         },
                         {
-                            data: 'D_thang'
+                            data: 'D_thang',
+                            className: "whitespace-nowrap p-2",
                         },
                         {
-                            data: 'E_nam'
+                            data: 'E_nam',
+                            className: "whitespace-nowrap p-2",
                         },
                         {
-                            data: 'F_so_hop_dong'
+                            data: 'F_so_hop_dong',
+                            className: "whitespace-nowrap p-2",
                         },
                         {
-                            data: 'G_hieu_luc'
+                            data: 'G_hieu_luc',
+                            className: "whitespace-nowrap p-2",
                         },
                         {
-                            data: 'H_email'
+                            data: 'H_email',
+                            className: "whitespace-nowrap p-2",
                         },
 
                     ]
@@ -396,8 +404,9 @@ var formUpload = new Vue({
 
             reader.readAsBinaryString(file);
         },
+
         async handleFileUpload() {
-            const file = this.$refs.fileInput.files[0];
+            const file = this.$refs.c_file.files[0];
             const formData = new FormData();
             formData.append('file', file);
 
@@ -412,7 +421,26 @@ var formUpload = new Vue({
     },
 });
 
-$('#formUpdate').on('hidden.te.modal', function (event) {
-    // console.log(event)
-    // formUpdate.resetRef();
+var openModalUpload = function () {
+    formUpload.resetFormUpload();
+    $('#tableList').DataTable().clear().draw();
+}
+var deleteItems = function () {
+    appEl.deleteItems();
+}
+
+$(function () {
+
+    const formUpdateModal = new mdb.Modal($('#formUpdate'))
+    $('#formUpdate').on('hidden.mdb.modal', function (event) {
+        formUpdate.resetInput();
+    });
+
+    const formUploadModal = new mdb.Modal($('#formUpload'))
+    $('#formUpload').on('hide.mdb.modal', function (event) {});
+
+    $('#formUpload').on('hidden.mdb.modal', function (event) {});
+
+    console.log("ready!");
+
 });
