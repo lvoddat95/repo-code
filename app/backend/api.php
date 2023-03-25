@@ -37,6 +37,7 @@ if ($action == 'getall') {
 		$res['body'] = $data;
 	} else {
 		$res['error'] = true;
+		$res['body'] = $data;
 		$res['message'] = "No Data Found!";
 	}
 }

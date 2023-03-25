@@ -81,7 +81,7 @@
                     <span>Kí điện tử</span>
                 </button>
 
-                <button onclick="openModalUpload()" data-mdb-toggle="modal" href="#formUpload" role="button" data-te-ripple-init data-te-ripple-color="light" class="inline-flex items-center rounded bg-[#ffffff] border border-primary-100 py-1.5 px-3 text-sm font-medium leading-normal text-dark-700 transition duration-150 ease-in-out hover:border-primary-accent-100 hover:bg-neutral-500 hover:bg-opacity-10 focus:border-primary-accent-100 focus:outline-none focus:ring-0 active:border-primary-accent-200 dark:text-primary-100 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10">
+                <button onclick="openModalUpload()" role="button" data-te-ripple-init data-te-ripple-color="light" class="inline-flex items-center rounded bg-[#ffffff] border border-primary-100 py-1.5 px-3 text-sm font-medium leading-normal text-dark-700 transition duration-150 ease-in-out hover:border-primary-accent-100 hover:bg-neutral-500 hover:bg-opacity-10 focus:border-primary-accent-100 focus:outline-none focus:ring-0 active:border-primary-accent-200 dark:text-primary-100 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10">
                     <span class="material-icons-sharp text-green-700">
                         upload
                     </span>
@@ -152,7 +152,7 @@
                             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                                 <div class="overflow-hidden">
                                     <table class="min-w-full text-left text-sm font-light table table-striped table-hover">
-                                        <thead class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                                        <thead class="align-middle border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
                                             <tr>
                                                 <th scope="col" class="p-2"></th>
                                                 <th scope="col" class="p-2">

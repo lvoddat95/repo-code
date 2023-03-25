@@ -24,17 +24,17 @@
                             Mã bảng kê <span class="text-danger">*</span>
                         </label>
                         <div class="col-sm-8">
-                            <input id="c_code" v-model="c_code" @input="onInputChange" @blur="validateInput($event.target.value, ['code'])" required="required" type="text" v-bind:class="[{ 'is-invalid': error }, controlClass]">
-                            <div v-if="error" class="invalid-feedback position-static">
-                                {{ error }}
+                            <input id="c_code" v-model="c_code" ref="c_code" type="text" v-bind:class="[{ 'is-invalid': errors.c_code }, controlClass]">
+                            <div v-if="errors.c_code" class="invalid-feedback position-static">
+                                {{ errors.c_code }}
                             </div>
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label class="col-sm-4 col-form-label" for="c_temp">Chọn mẫu thẻ <span class="text-danger">*</span></label>
+                        <label for="c_temp" class="col-sm-4 col-form-label">Chọn mẫu thẻ <span class="text-danger">*</span></label>
                         <div class="col-sm-8">
-                            <select id="c_temp" v-model="c_temp" @change="validateInput($event, ['required'])" class="form-select bg-gray-50 text-gray-900 border-gray-300 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2">
+                            <select id="c_temp" v-model="c_temp" ref="c_temp" v-bind:class="[{ 'is-invalid': errors.c_temp }, controlClass]" class="form-select">
                                 <option value="">Chọn</option>
                                 <option value="1">Mẫu VNICare InSmart</option>
                                 <option value="2">Mẫu T&amp;T Care</option>
@@ -44,24 +44,24 @@
                                 <option value="6">Mẫu LeapStack</option>
                                 <option value="7">Mẫu VNICare ATSK</option>
                             </select>
-                            <div v-if="error" class="invalid-feedback position-static">
-                                {{ error }}
+                            <div v-if="errors.c_temp" class="invalid-feedback position-static">
+                                {{ errors.c_temp }}
                             </div>
                         </div>
                     </div>
 
-                    <div class="row mb-3">
+                    <div class="row">
                         <label for="formFile" class="col-sm-4 col-form-label">
                             Chọn file Upload <span class="text-danger">*</span>
                         </label>
                         <div class="col-sm-8">
                             <div class="flex justify-center">
                                 <div class="w-100">
-                                    <input id="formFile" ref="formFile" @change="handleFileUploadXLSX" type="file" accept=".xlsx, .xls" class="form-control text-base" type="file" />
-                                    <div v-if="error" class="invalid-feedback position-static">
-                                        {{ error }}
+                                    <input id="formFile" ref="formFile" @change="handleFileUploadXLSX" type="file" accept=".xlsx, .xls" v-bind:class="[{ 'is-invalid': errors.formFile }, 'form-control']" type="file" />
+                                    <div v-if="errors.formFile" class="invalid-feedback position-static">
+                                        {{ errors.formFile }}
                                     </div>
-                                    <p class="mt-1 text-sm text-gray-500" id="file_input_help">Vui lòng chọn file định dạng theo mẫu Excel</p>
+                                    <p class="mt-1 mb-0 text-sm text-gray-500" id="file_input_help">Vui lòng chọn file định dạng theo mẫu Excel</p>
                                 </div>
                             </div>
                             <button v-if="isShowList" data-mdb-toggle="modal" href="#ListItemUpload" role="button" data-te-ripple-init data-te-ripple-color="light" class="flex items-center text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline">

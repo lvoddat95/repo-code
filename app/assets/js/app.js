@@ -151,9 +151,7 @@ var appEl = new Vue({
         isCheckedAll: false,
         isChecked: false,
         currentPage: 1,
-        perPage: 5,
-        // totalPages: 0,
-        // totalItems: 0
+        perPage: 2,
     },
     watch: {},
     computed: {
@@ -165,15 +163,24 @@ var appEl = new Vue({
                 this.totalItems = value;
             }
         },
+
         totalPages: function () {
+            if (this.perPage == 0) {
+                return this.totalItems > 0 ? 1 : 0;
+            }
             return Math.ceil(this.totalItems / this.perPage);
         }
     },
     methods: {
 
         paginate: function (items) {
+            if (!items || !Array.isArray(items)) {
+                return [];
+            }
+
             let start = (this.currentPage - 1) * this.perPage;
             let end = start + this.perPage;
+            end = Math.min(end, items.length); // Kiểm tra và giới hạn giá trị của end
 
             return items.slice(start, end);
         },
@@ -184,7 +191,10 @@ var appEl = new Vue({
 
         toggleCheckedAll() {
             this.isCheckedAll = !this.isCheckedAll;
-            this.items.forEach(item => {
+            const start = (this.currentPage - 1) * this.perPage;
+            const end = start + this.perPage;
+            const currentPageItems = this.items.slice(start, end);
+            currentPageItems.forEach(item => {
                 item.isChecked = this.isCheckedAll;
             });
         },
@@ -193,7 +203,6 @@ var appEl = new Vue({
             item.isChecked = !item.isChecked;
             this.isCheckedAll = this.items.every(item => item.isChecked);
         },
-
         deleteItems: function () {
             let hasChecked = true;
             for (let prop in this.items) {
@@ -290,13 +299,17 @@ var appEl = new Vue({
             });
         },
 
+
         getList: _.debounce(
             function () {
                 axios.get('http://localhost/repo-code/app/backend/api.php?action=getall')
                     .then(function (res) {
+                        console.log(res)
                         this.items = res.data.body;
-                        this.totalItems = res.data.body.length;
-                        this.totalPages = Math.ceil(this.totalItems / this.perPage);
+                        if (this.items && this.perPage > 0) {
+                            this.totalItems = this.items.length;
+                            this.totalPages = Math.ceil(this.totalItems / this.perPage);
+                        }
                     }.bind(this)) // Ràng buộc ngữ cảnh của từ khoá 'this' với đối tượng Vue
                     .catch(function (error) {
                         this.error = 'Lỗi! Không thể truy cập API. ' + error
@@ -309,7 +322,7 @@ var appEl = new Vue({
     mounted: function () {
         this.getList();
     },
-    created: function () {},
+    created: function () { },
 });
 
 
