@@ -1,130 +1,4 @@
-var formSearch = new Vue({
-    el: "#formSearch",
-    data: {
-        searchParams: {
-            c_code: '',
-            c_ten_cong_ty: '',
-            c_name: '',
-            c_trang_thai: '',
-        },
-        items: [],
-    },
-    methods: {
-        resetSearch: function () {
-            this.searchParams.c_code = '';
-            this.searchParams.c_ten_cong_ty = '';
-            this.searchParams.c_name = '';
-            this.searchParams.c_trang_thai = '';
-        },
-        formSearch: function () {
-            axios.get('http://localhost/repo-code/app/backend/api.php?action=search', {
-                params: this.searchParams
-            }).then((res) => {
-                console.log(res)
-                if (!res.data.error) {
-                    appEl.items = res.data.body;
-                } else {
-                    appEl.items = [];
-                }
-            });
-        },
 
-    },
-});
-
-var formUpdate = new Vue({
-    el: "#formUpdate",
-    data: {
-        formTitle: "Thêm mới",
-        pk_id: '',
-        updateParams: {
-            c_code: '',
-            c_ten_cong_ty: '',
-            c_so_hop_dong: '',
-            c_hieu_luc: '',
-            c_name: '',
-            c_nam_sinh: '',
-            c_email: '',
-            c_temp: 1,
-            c_trang_thai: 1,
-        },
-        items: [],
-        errors: {},
-    },
-    methods: {
-
-        onSubmitFormUpdate: function () {
-            // Validate các component custom-input
-            let isValid = true;
-            Object.values(this.$refs).forEach((component) => {
-                if (component.validate && !component.validate()) {
-                    isValid = false;
-                }
-            });
-            // Nếu các giá trị nhập vào không hợp lệ thì không submit form
-            if (!isValid) {
-                return;
-            }
-
-            if (Object.keys(this.errors).length === 0) {
-                let data = new FormData();
-
-                data.append("c_code", this.$refs.c_code.inputValue);
-                data.append("c_ten_cong_ty", this.$refs.c_ten_cong_ty.inputValue);
-                data.append("c_name", this.$refs.c_name.inputValue);
-                data.append("c_nam_sinh", this.$refs.c_nam_sinh.inputValue);
-                data.append("c_so_hop_dong", this.$refs.c_so_hop_dong.inputValue);
-                data.append("c_hieu_luc", this.$refs.c_hieu_luc.inputValue);
-                data.append("c_email", this.$refs.c_email.inputValue);
-                data.append("c_temp", this.$refs.c_email.value);
-                data.append("c_trang_thai", this.$refs.c_trang_thai.value);
-
-                let url_action = "add";
-
-                if (this.pk_id.length > 0) {
-                    url_action = "udpate";
-                    data.append("pk_id", this.pk_id);
-                }
-
-                axios.post("http://localhost/repo-code/app/backend/api.php?action=" + url_action, data)
-                    .then((res) => {
-                        if (res.data.error) {
-                            alert("Error");
-                            return;
-                        }
-                        alert(res.data.message);
-                        $("#formUpdate").modal("hide");
-                        appEl.getList();
-
-                    }).catch((err) => {
-                        console.log(err);
-                    })
-            }
-        },
-
-        resetInput: function () {
-            for (let refName in this.$refs) {
-                const ref = this.$refs[refName];
-                if (typeof ref.$options !== "undefined") {
-                    // console.log(ref)
-                    ref.reset();
-                }
-            }
-        },
-
-        openModalUpdate: function (resetData = false) {
-            $("#formUpdate").modal("show");
-            if (resetData) {
-                this.resetInput();
-            }
-        },
-
-        dismissModal: function () {
-            this.resetInput();
-        },
-
-    },
-});
 
 var formUpload = new Vue({
     el: "#uploadEl",
@@ -137,6 +11,8 @@ var formUpload = new Vue({
         isShowList: false,
         formTitle: "Import bảng kê",
         controlClass: "form-control",
+        uploading: false, // biến lưu trạng thái tiến trình
+        progressPercentage: 0, // biến lưu phần trăm tiến trình
     },
 
     watch: {
@@ -190,6 +66,7 @@ var formUpload = new Vue({
             }
             return true;
         },
+
         resetFileUpload: function () {
             this.dataListDestroy();
             this.items = [];
@@ -197,6 +74,7 @@ var formUpload = new Vue({
             this.isShowList = false;
             return;
         },
+
         async handleFileUploadXLSX(event) {
             const file = event.target.files[0];
             this.isLoading = true;
@@ -219,7 +97,7 @@ var formUpload = new Vue({
                 const range = 'A3:H' + (worksheet['!ref'].split(':')[1]);
                 const decodedRange = await XLSX.utils.decode_range(range);
                 const header = ['A_ten_cong_ty', 'B_ten_ndbh', 'C_ngay', 'D_thang', 'E_nam', 'F_so_hop_dong', 'G_hieu_luc', 'H_email'];
-                const jsonData = await XLSX.utils.sheet_to_json(worksheet, { range: decodedRange, header: header });
+                const jsonData = await XLSX.utils.sheet_to_json(worksheet, { range: decodedRange, header: header, defval: "", });
 
                 this.items = jsonData.map((row, index) => ({ index: index + 1, ...row }));
 
@@ -233,6 +111,8 @@ var formUpload = new Vue({
                 }
 
                 this.dataListDestroy();
+
+                // console.log(this.items)
 
                 $('#tableList').DataTable({
                     language: {
@@ -370,40 +250,60 @@ var formUpload = new Vue({
         },
 
         onSubmitFormUpload: function () {
-            this.validateInput(this.$refs.c_code.value, "c_code", ['required']);
-            this.validateInput(this.$refs.c_temp.value, "c_temp", ['required']);
 
-            if (this.items.length === 0) {
-                this.errors.formFile = "Thông tin bắt buộc nhập.";
-            }
+            // this.validateInput(this.$refs.c_code.value, "c_code", ['required']);
+            // this.validateInput(this.$refs.c_temp.value, "c_temp", ['required']);
 
-            if (Object.keys(this.errors).length > 0 && this.items.length === 0) {
-                console.log("Có lỗi xảy ra");
-                // Hiển thị các lỗi đó cho người dùng
-                return;
-            }
+            // if (this.items.length === 0) {
+            //     this.errors.formFile = "Thông tin bắt buộc nhập.";
+            // }
+
+            // if (Object.keys(this.errors).length > 0 && this.items.length === 0) {
+            //     console.log("Có lỗi xảy ra");
+            //     // Hiển thị các lỗi đó cho người dùng
+            //     return;
+            // }
+
+            let formData = new FormData();
+            formData.append("data", JSON.stringify(this.items));
+            formData.append("c_code", this.$refs.c_code.value);
+            formData.append("c_temp", this.$refs.c_temp.value);
+
+            axios.post('http://localhost/repo-code/app/backend/api.php?action=updateSheet', formData, {
+                onUploadProgress: progressEvent => {
+                    console.log(progressEvent);
+                    // cập nhật phần trăm tiến trình
+                    this.progressPercentage = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+                },
+            }).then(() => {
+                // xử lý khi upload hoàn thành
+                this.uploading = false; // kết thúc tiến trình
+                console.log(response.data);
+            }).catch(() => {
+                // xử lý khi có lỗi xảy ra
+                this.uploading = false; // kết thúc tiến trình
+            });
+
         }
     },
 });
 
-var openModalUpload = function () {
+function openModalUpload() {
     formUpload.resetFormUpload();
     $('#formUpload').modal("show");
 }
-var deleteItems = function () {
+function deleteItems() {
     appEl.deleteItems();
 }
 
-$(function () {
 
-    const formUpdateModal = new mdb.Modal($('#formUpdate'))
-    $('#formUpdate').on('hidden.mdb.modal', function (event) {
-        formUpdate.resetInput();
-    });
 
-    const formUploadModal = new mdb.Modal($('#formUpload'))
-    $('#formUpload').on('hidden.mdb.modal', function (event) { });
-
-    console.log("ready!");
-
+const formUpdateModal = new mdb.Modal($('#formUpdate'))
+$('#formUpdate').on('hidden.mdb.modal', function (event) {
+    formUpdate.resetInput();
 });
+
+const formUploadModal = new mdb.Modal($('#formUpload'))
+$('#formUpload').on('hidden.mdb.modal', function (event) { });
+
+console.log("ready!");

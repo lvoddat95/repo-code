@@ -15,10 +15,12 @@
                             <path fill="#FFF" d="M19.129,31l-2.411-4.561c-0.092-0.171-0.186-0.483-0.284-0.938h-0.037c-0.046,0.215-0.154,0.541-0.324,0.979L13.652,31H9.895l4.462-7.001L10.274,17h3.837l2.001,4.196c0.156,0.331,0.296,0.725,0.42,1.179h0.04c0.078-0.271,0.224-0.68,0.439-1.22L19.237,17h3.515l-4.199,6.939l4.316,7.059h-3.74V31z" />
                         </svg>
                         {{formTitle}}
+
                     </h5>
                     <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+
                     <div class="row mb-3">
                         <label for="c_code" class="col-sm-4 col-form-label">
                             Mã bảng kê <span class="text-danger">*</span>
@@ -55,7 +57,7 @@
                             Chọn file Upload <span class="text-danger">*</span>
                         </label>
                         <div class="col-sm-8">
-                            <div class="flex justify-center">
+                            <div class="flex justify-center mb-2">
                                 <div class="w-100">
                                     <input id="formFile" ref="formFile" @change="handleFileUploadXLSX" type="file" accept=".xlsx, .xls" v-bind:class="[{ 'is-invalid': errors.formFile }, 'form-control']" type="file" />
                                     <div v-if="errors.formFile" class="invalid-feedback position-static">
@@ -69,6 +71,11 @@
                                     subdirectory_arrow_right
                                 </span>Kiểm tra danh sách {{items.length}} bản ghi</button>
                         </div>
+                    </div>
+
+
+                    <div class="progress" :style="{ display: (uploading ? 'block' : 'none') }">
+                        <div class="progress-bar" role="progressbar" :style="{ width: progressPercentage + '%' }" :aria-valuenow="progressPercentage" aria-valuemin="0" aria-valuemax="100">{{ progressPercentage }}%</div>
                     </div>
                 </div>
                 <div class="modal-footer">

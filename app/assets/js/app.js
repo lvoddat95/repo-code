@@ -40,7 +40,7 @@ Vue.component("custom-input", {
     data() {
         return {
             error: null,
-            controlClass: "form-control bg-gray-50 text-gray-900 border-gray-300 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 ",
+            controlClass: "form-control",
             // Thêm một data property mới để giữ giá trị của prop "value"
             inputValue: this.value,
             initialValue: this.value, // Giá trị ban đầu của prop "value"
@@ -141,6 +141,21 @@ Vue.component("custom-input", {
     </div>`,
 });
 
+Vue.directive('format-date', {
+    bind: function (el) {
+        el.addEventListener('input', function (e) {
+            if (e.target.value.length === 2 || e.target.value.length === 5) {
+                e.target.value += '/';
+            }
+        });
+        el.addEventListener('keypress', function (e) {
+            var charCode = (e.which) ? e.which : e.keyCode;
+            if (charCode < 48 || charCode > 57) {
+                e.preventDefault();
+            }
+        });
+    }
+});
 
 var appEl = new Vue({
     el: "#appEl",
@@ -151,7 +166,7 @@ var appEl = new Vue({
         isCheckedAll: false,
         isChecked: false,
         currentPage: 1,
-        perPage: 2,
+        perPage: 5,
     },
     watch: {},
     computed: {
@@ -203,6 +218,7 @@ var appEl = new Vue({
             item.isChecked = !item.isChecked;
             this.isCheckedAll = this.items.every(item => item.isChecked);
         },
+
         deleteItems: function () {
             let hasChecked = true;
             for (let prop in this.items) {
@@ -299,12 +315,11 @@ var appEl = new Vue({
             });
         },
 
-
         getList: _.debounce(
             function () {
                 axios.get('http://localhost/repo-code/app/backend/api.php?action=getall')
                     .then(function (res) {
-                        console.log(res)
+                        // console.log(res)
                         this.items = res.data.body;
                         if (this.items && this.perPage > 0) {
                             this.totalItems = this.items.length;
@@ -326,3 +341,130 @@ var appEl = new Vue({
 });
 
 
+var formSearch = new Vue({
+    el: "#formSearch",
+    data: {
+        searchParams: {
+            c_code: '',
+            c_ten_cong_ty: '',
+            c_name: '',
+            c_trang_thai: '',
+        },
+        items: [],
+    },
+    methods: {
+        resetSearch: function () {
+            this.searchParams.c_code = '';
+            this.searchParams.c_ten_cong_ty = '';
+            this.searchParams.c_name = '';
+            this.searchParams.c_trang_thai = '';
+        },
+        formSearch: function () {
+            axios.get('http://localhost/repo-code/app/backend/api.php?action=search', {
+                params: this.searchParams
+            }).then((res) => {
+                console.log(res)
+                if (!res.data.error) {
+                    appEl.items = res.data.body;
+                } else {
+                    appEl.items = [];
+                }
+            });
+        },
+
+    },
+});
+
+var formUpdate = new Vue({
+    el: "#formUpdate",
+    data: {
+        formTitle: "Thêm mới",
+        pk_id: '',
+        updateParams: {
+            c_code: '',
+            c_ten_cong_ty: '',
+            c_so_hop_dong: '',
+            c_hieu_luc: '',
+            c_name: '',
+            c_nam_sinh: '',
+            c_email: '',
+            c_temp: 1,
+            c_trang_thai: 1,
+        },
+        items: [],
+        errors: {},
+    },
+    methods: {
+
+        onSubmitFormUpdate: function () {
+            // Validate các component custom-input
+            let isValid = true;
+            Object.values(this.$refs).forEach((component) => {
+                if (component.validate && !component.validate()) {
+                    isValid = false;
+                }
+            });
+            // Nếu các giá trị nhập vào không hợp lệ thì không submit form
+            if (!isValid) {
+                return;
+            }
+
+            if (Object.keys(this.errors).length === 0) {
+                let data = new FormData();
+
+                data.append("c_code", this.$refs.c_code.inputValue);
+                data.append("c_ten_cong_ty", this.$refs.c_ten_cong_ty.inputValue);
+                data.append("c_name", this.$refs.c_name.inputValue);
+                data.append("c_nam_sinh", this.$refs.c_nam_sinh.inputValue);
+                data.append("c_so_hop_dong", this.$refs.c_so_hop_dong.inputValue);
+                data.append("c_hieu_luc", this.$refs.c_hieu_luc.inputValue);
+                data.append("c_email", this.$refs.c_email.inputValue);
+                data.append("c_temp", this.$refs.c_email.value);
+                data.append("c_trang_thai", this.$refs.c_trang_thai.value);
+
+                let url_action = "add";
+
+                if (this.pk_id.length > 0) {
+                    url_action = "udpate";
+                    data.append("pk_id", this.pk_id);
+                }
+
+                axios.post("http://localhost/repo-code/app/backend/api.php?action=" + url_action, data)
+                    .then((res) => {
+                        if (res.data.error) {
+                            alert("Error");
+                            return;
+                        }
+                        alert(res.data.message);
+                        $("#formUpdate").modal("hide");
+                        appEl.getList();
+
+                    }).catch((err) => {
+                        console.log(err);
+                    })
+            }
+        },
+
+        resetInput: function () {
+            for (let refName in this.$refs) {
+                const ref = this.$refs[refName];
+                if (typeof ref.$options !== "undefined") {
+                    // console.log(ref)
+                    ref.reset();
+                }
+            }
+        },
+
+        openModalUpdate: function (resetData = false) {
+            $("#formUpdate").modal("show");
+            if (resetData) {
+                this.resetInput();
+            }
+        },
+
+        dismissModal: function () {
+            this.resetInput();
+        },
+
+    },
+});

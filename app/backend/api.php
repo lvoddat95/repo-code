@@ -115,6 +115,60 @@ if ($action == 'udpate') {
 	}
 }
 
+function format_date($day, $month, $year)
+{
+	if (!empty($year)) {
+		// Xử lý khi có năm
+		if (!empty($month)) {
+			// Xử lý khi có tháng
+			if (!empty($day)) {
+				// Xử lý khi có cả ngày
+				return date('d/m/Y', strtotime($year . '-' . $month . '-' . $day));
+			} else {
+				// Xử lý khi chỉ có tháng và năm
+				return date('m/Y', strtotime($year . '-' . $month . '-01'));
+			}
+		} else {
+			// Xử lý khi chỉ có năm
+			return $year;
+		}
+	} else {
+		// Trả về chuỗi rỗng nếu không có năm
+		return '';
+	}
+}
+
+if ($action == 'updateSheet') {
+
+	if (isset($_POST['data']) && isset($_POST['c_code']) && isset($_POST['c_temp'])) {
+
+		$c_code = $_POST['c_code'];
+		$c_temp = $_POST['c_temp'];
+		$data = json_decode($_POST['data']);
+
+		foreach ($data as $row) {
+			$index = $row->index;
+			$A_ten_cong_ty = $row->A_ten_cong_ty;
+			$B_ten_ndbh = $row->B_ten_ndbh;
+			$C_ngay = $row->C_ngay;
+			$D_thang = $row->D_thang;
+			$E_nam = $row->E_nam;
+			$F_so_hop_dong = $row->F_so_hop_dong;
+			$G_hieu_luc = $row->G_hieu_luc;
+			$H_email = $row->H_email;
+			$trang_thai = 1;
+
+			$nam_sinh = format_date($C_ngay, $D_thang, $E_nam);
+
+			sleep(3);
+
+			// $result = $modelDB->add($c_code, $A_ten_cong_ty, $B_ten_ndbh, $nam_sinh, $F_so_hop_dong, $G_hieu_luc, $H_email, $c_temp, $trang_thai);
+		}
+
+		$res['error'] = false;
+		$res['message'] = "Thêm mới thành công";
+	}
+}
 
 if ($action == 'delete') {
 
@@ -186,7 +240,7 @@ if ($action == 'search') {
 	$c_trang_thai = $_GET['c_trang_thai'] ?? '';
 
 	$data = $modelDB->search($c_code, $c_ten_cong_ty, $c_name, $c_trang_thai);
-	
+
 	if (!empty($data)) {
 		$res['error'] = false;
 		$res['body'] = $data;
