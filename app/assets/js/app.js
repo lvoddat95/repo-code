@@ -1,4 +1,3 @@
-$(function () {
     Vue.component("custom-input", {
         props: {
             id: {
@@ -757,10 +756,12 @@ $(function () {
                         // cập nhật phần trăm tiến trình
                         this.progressPercentage = Math.round((progressEvent.loaded * 100) / progressEvent.total);
                     },
-                }).then(() => {
+                }).then((res) => {
                     // xử lý khi upload hoàn thành
                     this.uploading = false; // kết thúc tiến trình
-                    console.log(response.data);
+                    console.log(res.data);
+                    $("#formUpdate").modal("hide");
+                    appEl.getList();
                 }).catch(() => {
                     // xử lý khi có lỗi xảy ra
                     this.uploading = false; // kết thúc tiến trình
@@ -769,17 +770,6 @@ $(function () {
             }
         },
     });
-
-
-    function openModalUpload() {
-        formUpload.resetFormUpload();
-        $('#formUpload').modal("show");
-    }
-
-    function deleteItems() {
-        appEl.deleteItems();
-    }
-
 
 
     const formUpdateModal = new mdb.Modal($('#formUpdate'))
@@ -791,4 +781,12 @@ $(function () {
     $('#formUpload').on('hidden.mdb.modal', function (event) {});
 
 
-});
+
+    function openModalUpload() {
+        formUpload.resetFormUpload();
+        $('#formUpload').modal("show");
+    }
+
+    function deleteItems() {
+        appEl.deleteItems();
+    }

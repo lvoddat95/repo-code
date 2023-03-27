@@ -1,60 +1,114 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
-// get data from client
-$companyName = 123;
-$firstName = 456;
-$lastName = 759;
-$email = "xxx";
+function callApi($url, $data, $method = "POST")
+{
+    $options = array(
+        'http' => array(
+            'header' => "Content-Type: application/json\r\n",
+            'method' => $method,
+            'content' => json_encode($data)
+        )
+    );
+    $context = stream_context_create($options);
+    $result = file_get_contents($url, false, $context);
+    return $result;
+}
 
-// create new PDF document
-$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+define('API_APPCODE', 'app1');
+define('API_PASSWORD', 'aBc@1234569');
+define('API_CHUNGTHUSO', '54010ac8bf864a15a659f3eda6d89fdd');
+define('API_URL', "https://api.bhhk.com.vn/ApiEbhhk/SignPdfBase64NoCheck");
+
+// Khởi tạo đối tượng TCPDF
+$pdf = new TCPDF('V', 'px', array(800, 1200), true, 'UTF-8', false);
+
+$Roboto = TCPDF_FONTS::addTTFfont('C:\xampp\htdocs\repo-code\app\assets\fonts\Roboto\Roboto-Regular.ttf', 'TrueTypeUnicode', '', 32);
+$RobotoMedium = TCPDF_FONTS::addTTFfont('C:\xampp\htdocs\repo-code\app\assets\fonts\Roboto\Roboto-Medium.ttf', 'TrueTypeUnicode', '', 32);
+$RobotoBold = TCPDF_FONTS::addTTFfont('C:\xampp\htdocs\repo-code\app\assets\fonts\Roboto\Roboto-Bold.ttf', 'TrueTypeUnicode', '', 32);
+
+// Đặt font chữ
+$pdf->SetFont($RobotoMedium, 'B', 16);
 
 // set document information
-$pdf->SetCreator('Your Name');
-$pdf->SetAuthor('Your Name');
-$pdf->SetTitle('Test PDF Document');
-$pdf->SetSubject('Test PDF Document');
+$pdf->SetCreator("VNICare");
+$pdf->SetAuthor('Datlv');
+$pdf->SetTitle('Thẻ bảo lãnh điện tử');
+$pdf->SetSubject('Thẻ bảo lãnh điện tử VNI Care');
+$pdf->SetKeywords('VNI, VNI Care, Thẻ bảo lãnh, Điện tử, Bảo hiểm hàng không VNI');
 
-// add a page
+// Thêm trang
 $pdf->AddPage();
 
-// load image
-$imagePath = 'https://kttt.bhhk.vn:4433/vni-re/Data/Files/The_Dien_Tu/Template/images/card11.jpg';
-$image = new Imagick($imagePath);
+// Giảm chất lượng ảnh
+$pdf->setImageScale(0.5);
 
-// set font
-$pdf->SetFont('helvetica', '', 14);
+// remove default header/footer
+$pdf->setPrintHeader(false);
+$pdf->setPrintFooter(false);
 
-// set color
-$pdf->SetTextColor(255, 255, 255);
 
-// set position
-$x = 40;
-$y = 90;
+// set some text to print
+$txt = <<<EOD
 
-// output CompanyName
-$pdf->SetXY($x, $y);
-$pdf->Write(0, $companyName);
+Thẻ bảo lãnh điện tử VNICare
 
-// set position
-$x = 40;
-$y = 115;
+EOD;
 
-// output FirstName and LastName
-$pdf->SetXY($x, $y);
-$pdf->Write(0, $firstName . ' ' . $lastName);
+// print a block of text using Write()
+$pdf->Write(0, $txt, '', 0, 'C', true, 0, false, false, 0);
 
-// set position
-$x = 40;
-$y = 140;
+// Chèn hình ảnh
+$pdf->Image('C:\xampp\htdocs\repo-code\app\assets\img\card11.jpg', 100, 100, 600, 378, '', '', 'center', false, 300, '', false, false, 0);
 
-// output Email
-$pdf->SetXY($x, $y);
-$pdf->Write(0, $email);
+// Thêm nội dung văn bản
+$pdf->SetTextColor(255, 255, 255); // Đặt màu chữ là màu trắng
+$pdf->SetXY(255, 243); // Đặt tọa độ nội dung
+$pdf->Cell(0, 0, 'Công THHH Một Thành Viện', 0, 1, 'L', false, '', 0, false, 'T', 'C'); // Thêm nội dung
 
-// output image
-$pdf->Image('@'.$image, 0, 0, $pdf->getPageWidth(), $pdf->getPageHeight());
+$pdf->SetXY(255, 287);
+$pdf->Cell(0, 0, 'Nguyễn Văn A', 0, 1, 'L', false, '', 0, false, 'T', 'C');
 
-// output PDF to file
-$pdf->Output('test.pdf', 'F');
+$pdf->SetXY(255, 333);
+$pdf->Cell(0, 0, '1990', 0, 1, 'L', false, '', 0, false, 'T', 'C');
+
+$pdf->SetXY(255, 378);
+$pdf->Cell(0, 0, '123456', 0, 1, 'L', false, '', 0, false, 'T', 'C');
+
+$pdf->SetXY(255, 422);
+$pdf->Cell(0, 0, '01/01/2022 - 31/12/2022', 0, 1, 'L', false, '', 0, false, 'T', 'C');
+
+// Chèn hình ảnh
+$pdf->Image('C:\xampp\htdocs\repo-code\app\assets\img\card12.jpg', 100, 600, 600, 378, '', '', 'center', false, 300, '', false, false, 0);
+
+
+// Xuất file PDF
+$pdfData = $pdf->Output('', 'S');
+$pdfBase64 = base64_encode($pdfData);
+
+$data = array(
+    "contentBase64" => $pdfBase64,
+    "AppCode" => API_APPCODE,
+    "Password" => API_PASSWORD,
+    "ChungThuSo" => API_CHUNGTHUSO,
+);
+
+$response = json_decode(callApi(API_URL, $data));
+
+$Data = $response->Data;
+$Code = $response->ResponseCode;
+
+if ($Code != '000') {
+    echo ('Lỗi API kí điện tử đối tượng. ' . 'ResponseCode: ' . $Code);
+    die;
+}
+
+
+var_dump($Data);
+
+// Lưu kết quả ký vào một tệp tin mới
+$signedPdfData = base64_decode($Data);
+file_put_contents('C:/xampp/htdocs/repo-code/app/output/test.pdf', $signedPdfData);
+
+// output PDF document
+// $pdf->Output('C:\xampp\htdocs\repo-code\app\test4.pdf', 'D');

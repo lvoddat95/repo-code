@@ -192,3 +192,23 @@ class ModelDB
         return $data;
     }
 }
+
+
+function callApi($url, $data, $method = "POST")
+{
+    $options = array(
+        'http' => array(
+            'header' => "Content-Type: application/json\r\n",
+            'method' => $method,
+            'content' => json_encode($data)
+        )
+    );
+    $context = stream_context_create($options);
+    $result = file_get_contents($url, false, $context);
+    return $result;
+}
+
+define('API_APPCODE', 'app1');
+define('API_PASSWORD', 'aBc@1234569');
+define('API_CHUNGTHUSO', '54010ac8bf864a15a659f3eda6d89fdd');
+define('API_URL', "https://api.bhhk.com.vn/ApiEbhhk/SignPdfBase64NoCheck");

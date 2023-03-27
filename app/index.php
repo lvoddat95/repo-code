@@ -141,15 +141,6 @@
 
                 <div id="appEl" class="p-6">
 
-                    <div id="app">
-                        <img src="https://kttt.bhhk.vn:4433/vni-re/Data/Files/The_Dien_Tu/Template/images/card11.jpg" style="position:absolute; z-index:-1; width:100%; height:100%">
-                        <div style="position:absolute; top:100px; left:200px">
-                            <p>Company Name: {{ companyName }}</p>
-                            <p>Address: {{ address }}</p>
-                            <p>Phone: {{ phone }}</p>
-                        </div>
-                    </div>
-
                     <div class="flex flex-col min-h-[250px]">
                         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">

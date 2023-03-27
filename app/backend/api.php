@@ -160,9 +160,9 @@ if ($action == 'updateSheet') {
 
 			$nam_sinh = format_date($C_ngay, $D_thang, $E_nam);
 
-			sleep(3);
+			// sleep(3);
 
-			// $result = $modelDB->add($c_code, $A_ten_cong_ty, $B_ten_ndbh, $nam_sinh, $F_so_hop_dong, $G_hieu_luc, $H_email, $c_temp, $trang_thai);
+			$result = $modelDB->add($c_code, $A_ten_cong_ty, $B_ten_ndbh, $nam_sinh, $F_so_hop_dong, $G_hieu_luc, $H_email, $c_temp, $trang_thai);
 		}
 
 		$res['error'] = false;
