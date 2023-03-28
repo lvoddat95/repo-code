@@ -119,7 +119,8 @@
                         <div class="alert alert-danger mb-3" role="alert" v-if="errors.listItemError.length !== 0" >
                             <div class="mb-1 font-medium">Vui lòng cập nhập các thông tin sau:</div>
                             <div v-for="(itemError, index) in errors.listItemError" :key="index">
-                                {{itemError}}
+                                
+                                <span v-html="itemError"></span>
                             </div>
                         </div>
                         <table v-if="isShowList" id="tableList" class="table table-striped w-100 align-middle table-hover">

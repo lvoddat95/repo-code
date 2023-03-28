@@ -213,7 +213,7 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <tr v-if="items.length === 0">
+                                            <tr v-if="!items">
                                                 <td colspan="20" class="text-center">Không tìm thấy bản ghi!</td>
                                             </tr>
                                         </tbody>
@@ -223,7 +223,7 @@
                         </div>
                     </div>
 
-                    <div v-if="items.length !== 0" class="d-flex justify-content-between align-items-center text-sm">
+                    <div v-if="items && items.length === 0" class="d-flex justify-content-between align-items-center text-sm">
                         <p>
                             Hiển thị {{ (currentPage - 1) * perPage + 1 }} đến {{ (currentPage - 1) * perPage + paginate(items).length }} của {{ totalItems }} mục
                         </p>

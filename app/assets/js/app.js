@@ -786,49 +786,26 @@ var formUpload = new Vue({
             // }
 
             this.errors.listItemError = [];
-            let emptyFields = [];
             for (let i = 0; i < this.items.length; i++) {
-                if (this.items[i]["A_ten_cong_ty"] === "" || this.items[i]["C_ngay"] === "") {
-                  emptyFields.push(`Dòng ${i+1} có ${this.items[i]["A_ten_cong_ty"] === "" ? "A_ten_cong_ty" : ""}${this.items[i]["A_ten_cong_ty"] === "" && this.items[i]["C_ngay"] === "" ? ", " : ""}${this.items[i]["C_ngay"] === "" ? "C_ngay" : ""} trống`);
-                }
-              }
+                let errorFields = [];
 
-            for (let index = 0; index < this.items.length; index++) {
-                const element = this.items[index];
-
-                let emptyFields = [];
-
-                for (let prop in element) {
-
-                    if (element["A_ten_cong_ty"] === "") {
-                        emptyFields.push("Tên công ty");
-                    }
-                    else if (element["B_ten_ndbh"] === "") {
-                        emptyFields.push("Tên người ĐBH");
-                    }
-                    else if (element["F_so_hop_dong"] === "") {
-                        emptyFields.push("Số hợp đồng");
-                    }
-                    else if (element["G_hieu_luc"] === "") {
-                        emptyFields.push("Hiệu lực");
-                    }
-                    else if (element["H_email"] === "") {
-                        emptyFields.push("Email");
-                    }
+                if (this.items[i]["A_ten_cong_ty"] === "") {
+                    errorFields.push("<b>Công ty</b>");
                 }
 
-                if (emptyFields.length > 0) {
-                    this.errors.listItemError.push(`Dòng <b>${index + 1}</b> có ${emptyFields.join(", ")} trống`);
+                if (this.items[i]["E_nam"] === "") {
+                    errorFields.push("<b>Năm sinh</b>");
                 }
 
+                if (this.items[i]["H_email"] === "") {
+                    errorFields.push("<b>Email</b>");
+                }
+
+                if (errorFields.length > 0) {
+                    this.errors.listItemError.push(`Dòng ${this.items[i].index}: ${errorFields.join(", ")} đang để trống.`);
+                }
             }
-
-
-            // if (this.errors.listItemError.length > 0) {
-            //     console.log(this.errors.listItemError.join("\n"));
-            // }
-
-            console.log(this.errors.listItemError);
+            console.log(this.errors.listItemError.join(". \n"));
             return;
 
 
@@ -838,6 +815,9 @@ var formUpload = new Vue({
     created: function () {
         this.errors.listItemError = [];
     },
+    mounted: function () {
+        this.items = []
+    }
 });
 
 const formUpdateModal = new mdb.Modal($("#formUpdate"));
