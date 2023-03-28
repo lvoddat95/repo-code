@@ -1,24 +1,13 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
-function callApi($url, $data, $method = "POST")
-{
-    $options = array(
-        'http' => array(
-            'header' => "Content-Type: application/json\r\n",
-            'method' => $method,
-            'content' => json_encode($data)
-        )
-    );
-    $context = stream_context_create($options);
-    $result = file_get_contents($url, false, $context);
-    return $result;
-}
+include "model.db.php";
 
-define('API_APPCODE', 'app1');
-define('API_PASSWORD', 'aBc@1234569');
-define('API_CHUNGTHUSO', '54010ac8bf864a15a659f3eda6d89fdd');
-define('API_URL', "https://api.bhhk.com.vn/ApiEbhhk/SignPdfBase64NoCheck");
+// Nhận dữ liệu từ client
+// $ten_cong_ty = $_POST['companyName'];
+// $ten_ndbh = $_POST['firstName'];
+// $ngay_sinh = $_POST['lastName'];
+// $so_hop_dong = $_POST['so_hop_dong'];
 
 // Khởi tạo đối tượng TCPDF
 $pdf = new TCPDF('V', 'px', array(800, 1200), true, 'UTF-8', false);
@@ -64,7 +53,7 @@ $pdf->Image('C:\xampp\htdocs\repo-code\app\assets\img\card11.jpg', 100, 100, 600
 // Thêm nội dung văn bản
 $pdf->SetTextColor(255, 255, 255); // Đặt màu chữ là màu trắng
 $pdf->SetXY(255, 243); // Đặt tọa độ nội dung
-$pdf->Cell(0, 0, 'Công THHH Một Thành Viện', 0, 1, 'L', false, '', 0, false, 'T', 'C'); // Thêm nội dung
+$pdf->Cell(0, 0, 'Công THHH Một Thành Viên', 0, 1, 'L', false, '', 0, false, 'T', 'C'); // Thêm nội dung
 
 $pdf->SetXY(255, 287);
 $pdf->Cell(0, 0, 'Nguyễn Văn A', 0, 1, 'L', false, '', 0, false, 'T', 'C');
@@ -84,31 +73,23 @@ $pdf->Image('C:\xampp\htdocs\repo-code\app\assets\img\card12.jpg', 100, 600, 600
 
 // Xuất file PDF
 $pdfData = $pdf->Output('', 'S');
+
 $pdfBase64 = base64_encode($pdfData);
 
-$data = array(
-    "contentBase64" => $pdfBase64,
-    "AppCode" => API_APPCODE,
-    "Password" => API_PASSWORD,
-    "ChungThuSo" => API_CHUNGTHUSO,
-);
-
-$response = json_decode(callApi(API_URL, $data));
+$response = json_decode(api_sign_pdf($pdfBase64));
 
 $Data = $response->Data;
 $Code = $response->ResponseCode;
 
-if ($Code != '000') {
-    echo ('Lỗi API kí điện tử đối tượng. ' . 'ResponseCode: ' . $Code);
-    die;
-}
-
-
-var_dump($Data);
+// if ($Code != '000') {
+//     echo ('Lỗi API kí điện tử đối tượng. ' . 'ResponseCode: ' . $Code);
+//     die;
+// }
 
 // Lưu kết quả ký vào một tệp tin mới
 $signedPdfData = base64_decode($Data);
-file_put_contents('C:/xampp/htdocs/repo-code/app/output/test.pdf', $signedPdfData);
+
+// file_put_contents('C:/xampp/htdocs/repo-code/app/output/test.pdf', $signedPdfData);
 
 // output PDF document
 // $pdf->Output('C:\xampp\htdocs\repo-code\app\test4.pdf', 'D');

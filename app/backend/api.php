@@ -1,5 +1,8 @@
 <?php
+require __DIR__ . '/vendor/autoload.php';
+
 include "model.db.php";
+
 $modelDB = new ModelDB();
 
 if (isset($_SERVER['HTTP_ORIGIN'])) {
@@ -66,9 +69,22 @@ if ($action == 'add') {
 		$c_temp = $_POST['c_temp'];
 		$c_trang_thai = $_POST['c_trang_thai'];
 
+		$data = [
+			"c_code" => $c_code,
+			"c_ten_cong_ty" => $c_ten_cong_ty,
+			"c_name" => $c_name,
+			"c_nam_sinh" => $c_nam_sinh,
+			"c_so_hop_dong" => $c_so_hop_dong,
+			"c_hieu_luc" => $c_hieu_luc,
+			"c_email" => $c_email,
+			"c_temp" => $c_temp,
+			"c_trang_thai" => $c_trang_thai,
+		];
+
 		$result = $modelDB->add($c_code, $c_ten_cong_ty, $c_name, $c_nam_sinh, $c_so_hop_dong, $c_hieu_luc, $c_email, $c_temp, $c_trang_thai);
 
 		if ($result === true) {
+			gen_file_pdf($data);
 			$res['error'] = false;
 			$res['message'] = "Thêm mới thành công";
 		} else {
@@ -103,7 +119,22 @@ if ($action == 'udpate') {
 		$c_temp = $_POST['c_temp'];
 		$c_trang_thai = $_POST['c_trang_thai'];
 
+		$data = [
+			"pk_id" => $pk_id,
+			"c_code" => $c_code,
+			"c_ten_cong_ty" => $c_ten_cong_ty,
+			"c_name" => $c_name,
+			"c_nam_sinh" => $c_nam_sinh,
+			"c_so_hop_dong" => $c_so_hop_dong,
+			"c_hieu_luc" => $c_hieu_luc,
+			"c_email" => $c_email,
+			"c_temp" => $c_temp,
+			"c_trang_thai" => $c_trang_thai,
+		];
+
 		$result = $modelDB->update($pk_id, $c_code, $c_ten_cong_ty, $c_name, $c_nam_sinh, $c_so_hop_dong, $c_hieu_luc, $c_email, $c_temp, $c_trang_thai);
+
+
 
 		if ($result === true) {
 			$res['error'] = false;
@@ -115,28 +146,7 @@ if ($action == 'udpate') {
 	}
 }
 
-function format_date($day, $month, $year)
-{
-	if (!empty($year)) {
-		// Xử lý khi có năm
-		if (!empty($month)) {
-			// Xử lý khi có tháng
-			if (!empty($day)) {
-				// Xử lý khi có cả ngày
-				return date('d/m/Y', strtotime($year . '-' . $month . '-' . $day));
-			} else {
-				// Xử lý khi chỉ có tháng và năm
-				return date('m/Y', strtotime($year . '-' . $month . '-01'));
-			}
-		} else {
-			// Xử lý khi chỉ có năm
-			return $year;
-		}
-	} else {
-		// Trả về chuỗi rỗng nếu không có năm
-		return '';
-	}
-}
+
 
 if ($action == 'updateSheet') {
 
@@ -160,9 +170,14 @@ if ($action == 'updateSheet') {
 
 			$nam_sinh = format_date($C_ngay, $D_thang, $E_nam);
 
-			// sleep(3);
+		
 
 			$result = $modelDB->add($c_code, $A_ten_cong_ty, $B_ten_ndbh, $nam_sinh, $F_so_hop_dong, $G_hieu_luc, $H_email, $c_temp, $trang_thai);
+				// if ($result === true) {
+			// 	gen_file_pdf($data);
+			// } else {
+	
+			// }
 		}
 
 		$res['error'] = false;
@@ -249,7 +264,6 @@ if ($action == 'search') {
 		$res['message'] = "No Data Found!";
 	}
 }
-
 
 
 

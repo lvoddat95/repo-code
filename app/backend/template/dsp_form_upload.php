@@ -66,6 +66,12 @@
                                     <p class="mt-1 mb-0 text-sm text-gray-500" id="file_input_help">Vui lòng chọn file định dạng theo mẫu Excel</p>
                                 </div>
                             </div>
+
+                            <!-- Note: class .show is used for demo purposes. Remove it when using it in the real project. -->
+                            <div v-if="errors.listItemError.length !== 0" class="alert alert-danger mb-0 p-2 px-3" role="alert">
+                                <i class="fa-solid fa-triangle-exclamation me-2"></i>
+                                Có <span>{{errors.listItemError.length}}</span> lỗi cần sửa
+                            </div>
                             <button v-if="isShowList" data-mdb-toggle="modal" href="#ListItemUpload" role="button" data-te-ripple-init data-te-ripple-color="light" class="flex items-center text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline">
                                 <span class="material-icons-round">
                                     subdirectory_arrow_right
@@ -73,8 +79,10 @@
                         </div>
                     </div>
 
+                    <div v-if="uploading">{{ progressPercentage }}% Đang tải lên...</div>
 
-                    <div class="progress" :style="{ display: (uploading ? 'block' : 'none') }">
+
+                    <div class="progress" v-if="uploading">
                         <div class="progress-bar" role="progressbar" :style="{ width: progressPercentage + '%' }" :aria-valuenow="progressPercentage" aria-valuemin="0" aria-valuemax="100">{{ progressPercentage }}%</div>
                     </div>
                 </div>
@@ -108,6 +116,12 @@
                 </div>
                 <div class="modal-body">
                     <div class="relative text-sm">
+                        <div class="alert alert-danger mb-3" role="alert" v-if="errors.listItemError.length !== 0" >
+                            <div class="mb-1 font-medium">Vui lòng cập nhập các thông tin sau:</div>
+                            <div v-for="(itemError, index) in errors.listItemError" :key="index">
+                                {{itemError}}
+                            </div>
+                        </div>
                         <table v-if="isShowList" id="tableList" class="table table-striped w-100 align-middle table-hover">
                             <thead class="table-light">
                                 <tr class="align-middle">

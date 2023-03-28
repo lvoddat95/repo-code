@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
@@ -183,14 +183,25 @@
                                                 <td class="p-2">{{item.c_nam_sinh}}</td>
                                                 <td class="p-2">{{item.c_email}}</td>
                                                 <td class="p-2">
-                                                    <a href="" class="text-info">
-                                                        <span class="material-icons-outlined">
-                                                            badge
+                                                    <a href="" class="text-info" data-mdb-toggle="tooltip" title="Xem thẻ">
+                                                        <span class="material-icons-round">
+                                                            picture_as_pdf
                                                         </span>
                                                     </a>
                                                 </td>
-                                                <td class="p-2">{{item.c_temp}}</td>
-                                                <td class="p-2">{{item.c_trang_thai}}</td>
+                                                <td class="p-2">
+                                                    <span v-if="item.c_temp == 1">Mẫu VNICare InSmart</span>
+                                                    <span v-if="item.c_temp == 2">Mẫu T&amp;T Care</span>
+                                                    <span v-if="item.c_temp == 3">Mẫu BSH T&amp;T Group</span>
+                                                    <span v-if="item.c_temp == 4">Mẫu VNICare</span>
+                                                    <span v-if="item.c_temp == 5">Mẫu SHB ATACC</span>
+                                                    <span v-if="item.c_temp == 6">Mẫu LeapStack</span>
+                                                    <span v-if="item.c_temp == 7">Mẫu VNICare ATSK</span>
+                                                </td>
+                                                <td class="p-2">
+                                                    <span v-if="item.c_trang_thai == 0" class="badge badge-secondary">Không hoạt động</span>
+                                                    <span v-if="item.c_trang_thai == 1" class="badge badge-success">Hoạt động</span>
+                                                </td>
                                                 <td class="p-2">
                                                     <div class="d-flex gap-2">
                                                         <a href="" class="link-primary text-decoration-none d-flex" @click.prevent="Edit(item.pk_id)">
