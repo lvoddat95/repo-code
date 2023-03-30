@@ -1,6 +1,5 @@
 <?php
-require __DIR__ . '/vendor/autoload.php';
-
+include "helper.php";
 include "model.db.php";
 
 $modelDB = new ModelDB();
@@ -134,9 +133,8 @@ if ($action == 'udpate') {
 
 		$result = $modelDB->update($pk_id, $c_code, $c_ten_cong_ty, $c_name, $c_nam_sinh, $c_so_hop_dong, $c_hieu_luc, $c_email, $c_temp, $c_trang_thai);
 
-
-
 		if ($result === true) {
+			gen_file_pdf($data);
 			$res['error'] = false;
 			$res['message'] = "Cập nhập thành công";
 		} else {
@@ -145,8 +143,6 @@ if ($action == 'udpate') {
 		}
 	}
 }
-
-
 
 if ($action == 'updateSheet') {
 
@@ -169,8 +165,6 @@ if ($action == 'updateSheet') {
 			$trang_thai = 1;
 
 			$nam_sinh = format_date($C_ngay, $D_thang, $E_nam);
-
-		
 
 			$result = $modelDB->add($c_code, $A_ten_cong_ty, $B_ten_ndbh, $nam_sinh, $F_so_hop_dong, $G_hieu_luc, $H_email, $c_temp, $trang_thai);
 				// if ($result === true) {
@@ -265,6 +259,24 @@ if ($action == 'search') {
 	}
 }
 
+if ($action == 'sendMail') {
+
+	// Lấy thông tin tìm kiếm từ yêu cầu GET
+	$c_code = $_GET['c_code'] ?? '';
+	$c_ten_cong_ty = $_GET['c_ten_cong_ty'] ?? '';
+	$c_name = $_GET['c_name'] ?? '';
+	$c_trang_thai = $_GET['c_trang_thai'] ?? '';
+
+	$data = $modelDB->search($c_code, $c_ten_cong_ty, $c_name, $c_trang_thai);
+
+	if (!empty($data)) {
+		$res['error'] = false;
+		$res['body'] = $data;
+	} else {
+		$res['error'] = true;
+		$res['message'] = "No Data Found!";
+	}
+}
 
 
 header("Content-type: application/json");

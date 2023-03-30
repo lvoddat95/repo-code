@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'cbf353b3562a2387531d22861a67101df6a9fc08',
+        'reference' => '0c86c5bd0cd8be45a56647298e727e04b4945eb8',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'cbf353b3562a2387531d22861a67101df6a9fc08',
+            'reference' => '0c86c5bd0cd8be45a56647298e727e04b4945eb8',
             'dev_requirement' => false,
         ),
         'cboden/ratchet' => array(
@@ -89,6 +89,15 @@
             'install_path' => __DIR__ . '/../myclabs/php-enum',
             'aliases' => array(),
             'reference' => 'a867478eae49c9f59ece437ae7f9506bfaa27483',
+            'dev_requirement' => false,
+        ),
+        'phpmailer/phpmailer' => array(
+            'pretty_version' => 'v6.8.0',
+            'version' => '6.8.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpmailer/phpmailer',
+            'aliases' => array(),
+            'reference' => 'df16b615e371d81fb79e506277faea67a1be18f1',
             'dev_requirement' => false,
         ),
         'phpoffice/phpspreadsheet' => array(

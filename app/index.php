@@ -21,8 +21,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
 
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <script src="https://cdn.tailwindcss.com/3.2.4"></script>
     <script>
@@ -56,36 +56,76 @@
 
             <h2 class="h3">Danh sách</h2>
 
-            <div class="gap-2 d-flex justify-content-start mb-3">
-                <button @click="openModalUpdate(true)" data-mdb-toggle="modal" data-mdb-target="#formUpdate" data-te-ripple-init data-te-ripple-color="light" class="inline-flex items-center rounded bg-primary px-4 pt-[6px] pb-[5px] text-sm font-medium leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
-                    <span class="material-symbols-outlined">
-                        add
-                    </span>
-                    <span>Thêm mới</span>
-                </button>
+            <div class="flex justify-between">
+                <div class="gap-2 d-flex justify-content-start mb-3">
+                    <button @click="openModalUpdate(true)" data-mdb-toggle="modal" data-mdb-target="#formUpdate" data-te-ripple-init data-te-ripple-color="light" class="inline-flex items-center rounded bg-primary px-4 pt-[6px] pb-[5px] text-sm font-medium leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
+                        <span class="material-symbols-outlined">
+                            add
+                        </span>
+                        <span>Thêm mới</span>
+                    </button>
 
-                <button @click="" class="d-none inline-flex items-center rounded bg-[#ffffff] border border-primary-100 py-1.5 px-3 text-sm font-medium leading-normal text-dark-700 transition duration-150 ease-in-out hover:border-primary-accent-100 hover:bg-neutral-500 hover:bg-opacity-10 focus:border-primary-accent-100 focus:outline-none focus:ring-0 active:border-primary-accent-200 dark:text-primary-100 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10">
-                    <span class="material-symbols-outlined text-red-700">
-                        forward_to_inbox
-                    </span>
-                    <span>Gửi Email</span>
-                </button>
+                    <button @click="" class="inline-flex items-center rounded bg-[#ffffff] border border-primary-100 py-1.5 px-3 text-sm font-medium leading-normal text-dark-700 transition duration-150 ease-in-out hover:border-primary-accent-100 hover:bg-neutral-500 hover:bg-opacity-10 focus:border-primary-accent-100 focus:outline-none focus:ring-0 active:border-primary-accent-200 dark:text-primary-100 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10">
+                        <span class="material-symbols-outlined text-red-700">
+                            forward_to_inbox
+                        </span>
+                        <span>Gửi Email</span>
+                    </button>
 
-                <button @click="" class="d-none inline-flex items-center rounded bg-[#ffffff] border border-primary-100 py-1.5 px-3 text-sm font-medium leading-normal text-dark-700 transition duration-150 ease-in-out hover:border-primary-accent-100 hover:bg-neutral-500 hover:bg-opacity-10 focus:border-primary-accent-100 focus:outline-none focus:ring-0 active:border-primary-accent-200 dark:text-primary-100 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10">
-                    <span class="material-symbols-outlined text-blue-700">
-                        draw
-                    </span>
-                    <span>Kí điện tử</span>
-                </button>
+                    <button @click="" class="d-none inline-flex items-center rounded bg-[#ffffff] border border-primary-100 py-1.5 px-3 text-sm font-medium leading-normal text-dark-700 transition duration-150 ease-in-out hover:border-primary-accent-100 hover:bg-neutral-500 hover:bg-opacity-10 focus:border-primary-accent-100 focus:outline-none focus:ring-0 active:border-primary-accent-200 dark:text-primary-100 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10">
+                        <span class="material-symbols-outlined text-blue-700">
+                            draw
+                        </span>
+                        <span>Kí điện tử</span>
+                    </button>
 
-                <button onclick="openModalUpload()" role="button" data-te-ripple-init data-te-ripple-color="light" class="inline-flex items-center rounded bg-[#ffffff] border border-primary-100 py-1.5 px-3 text-sm font-medium leading-normal text-dark-700 transition duration-150 ease-in-out hover:border-primary-accent-100 hover:bg-neutral-500 hover:bg-opacity-10 focus:border-primary-accent-100 focus:outline-none focus:ring-0 active:border-primary-accent-200 dark:text-primary-100 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10">
-                    <span class="material-icons-sharp text-green-700">
-                        upload
-                    </span>
-                    <span>Import bảng kê</span>
-                </button>
+                    <button onclick="openModalUpload()" role="button" data-te-ripple-init data-te-ripple-color="light" class="inline-flex items-center rounded bg-[#ffffff] border border-primary-100 py-1.5 px-3 text-sm font-medium leading-normal text-dark-700 transition duration-150 ease-in-out hover:border-primary-accent-100 hover:bg-neutral-500 hover:bg-opacity-10 focus:border-primary-accent-100 focus:outline-none focus:ring-0 active:border-primary-accent-200 dark:text-primary-100 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10">
+                        <span class="material-icons-sharp text-green-700">
+                            upload
+                        </span>
+                        <span>Import bảng kê</span>
+                    </button>
 
-                <button onclick="deleteItems()" class="inline-flex items-center rounded bg-[#ffffff] border border-primary-100 py-1.5 px-3 text-sm font-medium leading-normal text-red-700 transition duration-150 ease-in-out hover:border-primary-accent-100 hover:bg-neutral-500 hover:bg-opacity-10 focus:border-primary-accent-100 focus:outline-none focus:ring-0 active:border-primary-accent-200 dark:text-primary-100 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10">Xoá</button>
+                    <button onclick="deleteItems()" class="inline-flex items-center rounded bg-[#ffffff] border border-primary-100 py-1.5 px-3 text-sm font-medium leading-normal text-red-700 transition duration-150 ease-in-out hover:border-primary-accent-100 hover:bg-neutral-500 hover:bg-opacity-10 focus:border-primary-accent-100 focus:outline-none focus:ring-0 active:border-primary-accent-200 dark:text-primary-100 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10">Xoá</button>
+                </div>
+
+                <div class="btn-group btn-group-sm shadow-0 mb-3" role="group" aria-label="Basic example">
+                    <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1" type="button" class="flex items-center btn btn-outline-secondary dropdown-toggle" data-mdb-toggle="dropdown" aria-expanded="false">
+                            <span class="material-symbols-outlined me-1">
+                                view_carousel
+                            </span>
+                            Xem mẫu thẻ
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                            <li><a class="dropdown-item" href="#" data-mdb-toggle="modal" data-mdb-target="#exampleModal">Mẫu VNICare InSmart</a></li>
+                            <!-- <li><a class="dropdown-item" href="#">Dropdown link</a></li> -->
+                        </ul>
+                    </div>
+                    <button type="button" class="flex items-center btn btn-outline-secondary" data-mdb-color="dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="14px" class="fill-green-700 me-1">
+                            <path d="M48 448V64c0-8.8 7.2-16 16-16H224v80c0 17.7 14.3 32 32 32h80V448c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16zM64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V154.5c0-17-6.7-33.3-18.7-45.3L274.7 18.7C262.7 6.7 246.5 0 229.5 0H64zm90.9 233.3c-8.1-10.5-23.2-12.3-33.7-4.2s-12.3 23.2-4.2 33.7L161.6 320l-44.5 57.3c-8.1 10.5-6.3 25.5 4.2 33.7s25.5 6.3 33.7-4.2L192 359.1l37.1 47.6c8.1 10.5 23.2 12.3 33.7 4.2s12.3-23.2 4.2-33.7L222.4 320l44.5-57.3c8.1-10.5 6.3-25.5-4.2-33.7s-25.5-6.3-33.7 4.2L192 280.9l-37.1-47.6z" />
+                        </svg>
+                        <span>Tải file mẫu</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Mẫu VNICare InSmart</h5>
+                            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="\repo-code\app\assets\img\card11.jpg" alt="" class="mb-2">
+                            <img src="\repo-code\app\assets\img\card12.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
             </div>
 
 
@@ -183,7 +223,8 @@
                                                 <td class="p-2">{{item.c_nam_sinh}}</td>
                                                 <td class="p-2">{{item.c_email}}</td>
                                                 <td class="p-2">
-                                                    <a href="" class="text-info" data-mdb-toggle="tooltip" title="Xem thẻ">
+                                                    
+                                                    <a v-if="item.c_file_name.length > 0" href="#" @click.prevent="openPdfModal(item.c_file_name)" class="badge badge-primary p-1 px-3 rounded-4 text-red-500" data-mdb-toggle="tooltip" title="Xem thẻ">
                                                         <span class="material-icons-round">
                                                             picture_as_pdf
                                                         </span>
@@ -223,6 +264,24 @@
                         </div>
                     </div>
 
+                    <div id="pdfModal" class="modal fade" aria-hidden="true" tabindex="-1">
+                        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div id="pdf-container" style="height: 80vh;"></div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" data-mdb-dismiss="modal" aria-label="Close" class="btn btn-light ripple-surface-dark" data-mdb-ripple-color="dark">
+                                        Đóng
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <embed src="/repo-code/app/backend/file_put_contents.pdf" type="application/pdf" width="100%" height="100%"> -->
+
                     <div v-if="items && items.length === 0" class="d-flex justify-content-between align-items-center text-sm">
                         <p>
                             Hiển thị {{ (currentPage - 1) * perPage + 1 }} đến {{ (currentPage - 1) * perPage + paginate(items).length }} của {{ totalItems }} mục
@@ -254,6 +313,7 @@
 
         </div>
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
@@ -264,6 +324,7 @@
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+    <script src="https://unpkg.com/pdfobject@2.2.8/pdfobject.min.js"></script>
 
     <script src="assets/js/app.js"></script>
     <script src="assets/js/script.js"></script>

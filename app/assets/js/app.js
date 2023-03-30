@@ -243,6 +243,7 @@ var appEl = new Vue({
 
             if (hasChecked) {
                 alert("Chưa chọn");
+                return;
             }
 
             let ids = [];
@@ -316,22 +317,41 @@ var appEl = new Vue({
                 .then((res) => {
                     if (res.data.error === false) {
                         formUpdate.$refs.c_code.inputValue = res.data.body.c_code;
+
                         formUpdate.$refs.c_ten_cong_ty.inputValue =
                             res.data.body.c_ten_cong_ty;
+
                         formUpdate.$refs.c_name.inputValue = res.data.body.c_name;
+                        
                         formUpdate.$refs.c_nam_sinh.inputValue = res.data.body.c_nam_sinh;
+
                         formUpdate.$refs.c_so_hop_dong.inputValue =
                             res.data.body.c_so_hop_dong;
+
                         formUpdate.$refs.c_hieu_luc.inputValue = res.data.body.c_hieu_luc;
+
                         formUpdate.$refs.c_email.inputValue = res.data.body.c_email;
-                        formUpdate.c_temp = res.data.body.c_temp;
-                        formUpdate.c_trang_thai = parseInt(res.data.body.c_trang_thai);
+
+                        formUpdate.updateParams.c_temp.value = parseInt(res.data.body.c_temp);
+
+                        formUpdate.updateParams.c_trang_thai = parseInt(res.data.body.c_trang_thai);
+
                         $("#formUpdate").modal("show");
                     }
                 })
                 .catch((err) => {
                     console.log(err);
                 });
+        },
+        openPdfModal(pdfUrl) {
+            this.embedPdf(pdfUrl);
+            $('#pdfModal').modal('show');
+        },
+        embedPdf(pdfUrl) {
+            var options = {
+                fallbackLink: '<p>Trình duyệt này không hỗ trợ các tệp PDF. Vui lòng tải bản PDF để xem: <a href="' + pdfUrl + '">Tải xuống PDF</a>.</p>'
+            };
+            PDFObject.embed("/repo-code/app/output/" + pdfUrl, '#pdf-container', options);
         },
 
         getList: _.debounce(function () {
@@ -414,6 +434,7 @@ var formUpdate = new Vue({
     },
     methods: {
         onSubmitFormUpdate: function () {
+       
             // Validate các component custom-input
             let isValid = true;
             Object.values(this.$refs).forEach((component) => {
@@ -428,6 +449,7 @@ var formUpdate = new Vue({
 
             if (Object.keys(this.errors).length === 0) {
                 let data = new FormData();
+                let trang_thai = (this.updateParams.c_trang_thai || this.updateParams.c_trang_thai === 1) ? 1 : 0;
 
                 data.append("c_code", this.$refs.c_code.inputValue);
                 data.append("c_ten_cong_ty", this.$refs.c_ten_cong_ty.inputValue);
@@ -436,8 +458,8 @@ var formUpdate = new Vue({
                 data.append("c_so_hop_dong", this.$refs.c_so_hop_dong.inputValue);
                 data.append("c_hieu_luc", this.$refs.c_hieu_luc.inputValue);
                 data.append("c_email", this.$refs.c_email.inputValue);
-                data.append("c_temp", this.$refs.c_email.value);
-                data.append("c_trang_thai", this.$refs.c_trang_thai.value);
+                data.append("c_temp", this.$refs.c_temp.value);
+                data.append("c_trang_thai", trang_thai);
 
                 let url_action = "add";
 
@@ -630,9 +652,6 @@ var formUpload = new Vue({
                 }
 
                 this.dataListDestroy();
-
-                // console.log(this.items)
-
                 $("#tableList").DataTable({
                     language: {
                         url: "//cdn.datatables.net/plug-ins/1.13.4/i18n/vi.json",
@@ -677,9 +696,39 @@ var formUpload = new Vue({
                         },
                     ],
                 });
+
+                this.errors.listItemError = [];
+                for (let i = 0; i < this.items.length; i++) {
+                    let errorFields = [];
+
+                    if (this.items[i]["A_ten_cong_ty"] === "") {
+                        errorFields.push("<b class='font-medium'>Công ty</b>");
+                    }
+
+                    if (this.items[i]["E_nam"] === "") {
+                        errorFields.push("<b class='font-medium'>Năm sinh</b>");
+                    }
+
+                    if (this.items[i]["H_email"] === "") {
+                        errorFields.push("<b class='font-medium'>Email</b>");
+                    }
+
+                    if (errorFields.length > 0) {
+                        this.errors.listItemError.push(`Dòng ${this.items[i].index}: ${errorFields.join(", ")} đang để trống.`);
+                    }
+                }
+
+                // console.log(this.items)
+
+                if (this.errors.listItemError.length > 0) {
+                    this.errors.formFile = "Danh sách tải lên có lỗi. Kiểm tra lại!";
+                    // return;
+                }
             };
 
             this.isShowList = true;
+
+
 
             reader.onerror = () => {
                 reader.abort();
@@ -690,6 +739,8 @@ var formUpload = new Vue({
             if (file instanceof Blob) {
                 reader.readAsBinaryString(file);
             }
+
+
         },
 
         async handleFileUploadPHP() {
@@ -771,42 +822,23 @@ var formUpload = new Vue({
         },
 
         onSubmitFormUpload: function () {
-            console.log(this.items)
-            // this.validateInput(this.$refs.c_code.value, "c_code", ['required']);
-            // this.validateInput(this.$refs.c_temp.value, "c_temp", ['required']);
+            this.validateInput(this.$refs.c_code.value, "c_code", ['required']);
+            this.validateInput(this.$refs.c_temp.value, "c_temp", ['required']);
 
-            // if (this.items.length === 0) {
-            //     this.errors.formFile = "Thông tin bắt buộc nhập.";
-            // }
-
-            // if (Object.keys(this.errors).length > 0 && this.items.length === 0) {
-            //     console.log("Có lỗi xảy ra");
-            //     // Hiển thị các lỗi đó cho người dùng
-            //     return;
-            // }
-
-            this.errors.listItemError = [];
-            for (let i = 0; i < this.items.length; i++) {
-                let errorFields = [];
-
-                if (this.items[i]["A_ten_cong_ty"] === "") {
-                    errorFields.push("<b>Công ty</b>");
-                }
-
-                if (this.items[i]["E_nam"] === "") {
-                    errorFields.push("<b>Năm sinh</b>");
-                }
-
-                if (this.items[i]["H_email"] === "") {
-                    errorFields.push("<b>Email</b>");
-                }
-
-                if (errorFields.length > 0) {
-                    this.errors.listItemError.push(`Dòng ${this.items[i].index}: ${errorFields.join(", ")} đang để trống.`);
-                }
+            if (this.items.length === 0) {
+                this.errors.formFile = "Thông tin bắt buộc nhập.";
             }
-            console.log(this.errors.listItemError.join(". \n"));
-            return;
+
+            if (
+                this.errors.c_code !== "" ||
+                this.errors.c_temp !== "" ||
+                this.errors.formFile !== "" ||
+                this.errors.listItemError.length !== 0
+            ) {
+                console.log(123);
+            }
+
+
 
 
         },

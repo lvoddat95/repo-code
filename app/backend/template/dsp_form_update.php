@@ -40,7 +40,7 @@
                     <div class="col-sm-8">
                         <div class="col-form-label">
                             <div class="form-check form-switch">
-                                <input class="form-check-input" ref="c_trang_thai" id="c_trang_thai" v-model="updateParams.c_trang_thai" :checked="updateParams.c_trang_thai === 0" type="checkbox" role="switch" />
+                                <input class="form-check-input" ref="c_trang_thai" id="c_trang_thai" v-model="updateParams.c_trang_thai" :checked="updateParams.c_trang_thai === 1" type="checkbox" role="switch" />
                                 <label class="form-check-label" for="c_trang_thai">Hoạt động</label>
                             </div>
                         </div>

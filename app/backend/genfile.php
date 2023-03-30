@@ -75,21 +75,38 @@ $pdf->Image('C:\xampp\htdocs\repo-code\app\assets\img\card12.jpg', 100, 600, 600
 $pdfData = $pdf->Output('', 'S');
 
 $pdfBase64 = base64_encode($pdfData);
+$filePath = "C:/xampp/htdocs/repo-code/app/output/";
+$filename = "nguyenvana_29032023.pdf";
+$tt = file_exists($filePath.$filename);
+var_dump($filePath.$filename);
+var_dump($tt);
 
-$response = json_decode(api_sign_pdf($pdfBase64));
+// $response = json_decode(api_sign_pdf($pdfBase64));
 
-$Data = $response->Data;
-$Code = $response->ResponseCode;
+// $Data = $response->Data;
+// $Code = $response->ResponseCode;
 
-// if ($Code != '000') {
-//     echo ('Lỗi API kí điện tử đối tượng. ' . 'ResponseCode: ' . $Code);
-//     die;
-// }
+// // if ($Code != '000') {
+// //     echo ('Lỗi API kí điện tử đối tượng. ' . 'ResponseCode: ' . $Code);
+// //     die;
+// // }
 
-// Lưu kết quả ký vào một tệp tin mới
-$signedPdfData = base64_decode($Data);
+// // Lưu kết quả ký vào một tệp tin mới
+// $signedPdfData = base64_decode($Data);
 
 // file_put_contents('C:/xampp/htdocs/repo-code/app/output/test.pdf', $signedPdfData);
 
 // output PDF document
 // $pdf->Output('C:\xampp\htdocs\repo-code\app\test4.pdf', 'D');
+
+?>
+
+
+<!-- <div id="my-pdf"></div>
+
+<script src="https://unpkg.com/pdfobject@2.2.8/pdfobject.min.js"></script>
+<script>
+let b64 = "data:application/pdf;base64, <?php echo $pdfBase64;?>";
+
+PDFObject.embed(b64, "#my-pdf");
+</script> -->
