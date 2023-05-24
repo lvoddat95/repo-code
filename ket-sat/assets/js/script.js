@@ -58,6 +58,12 @@ $(function () {
 		});
 	}
 
+	if ($('[data-fancybox="video"]').length > 0) {
+		Fancybox.bind('[data-fancybox="video"]', {
+			// Your custom options
+		});
+	}
+
 	if ($(".ks-adv-slider").length > 0) {
 		var main_slider = new Swiper(".ks-adv-slider", {
 			slidesPerView: 1,
