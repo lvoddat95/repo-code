@@ -1,5 +1,5 @@
 $(function () {
-	
+
 	if ($("#menu-nav").length > 0) {
 		if (typeof hcOffcanvasNav == "undefined") {
 			console.warn("Warning - hcOffcanvasNav Js is not loaded.");
@@ -116,8 +116,8 @@ $(function () {
 	// Len dau trang
 	$(".back-to-top").on("click", function () {
 		$("html, body").animate({
-				scrollTop: 0,
-			},
+			scrollTop: 0,
+		},
 			500
 		);
 	});
@@ -132,4 +132,38 @@ $(function () {
 	});
 
 
+});
+
+$(function () {
+	var $window = $(window);
+	var lastScrollTop = 0;
+	var $header = $("#header");
+	var $footer = $("#footer");
+	var headerHeight = $header.outerHeight();
+
+	$(window).on("scroll", function () {
+		var windowTop = $window.scrollTop();
+
+		if (windowTop >= headerHeight) {
+			$header.addClass("sticky");
+		} else {
+			$header.removeClass("sticky").removeClass("show");
+			$footer.removeClass("show");
+		}
+		if ($header.hasClass("sticky")) {
+			if (windowTop < lastScrollTop) {
+				$header.addClass("show");
+				$footer.addClass("show");
+			} else {
+				$header.removeClass("show");
+				$footer.removeClass("show");
+			}
+		}
+		if (windowTop < lastScrollTop) {
+			$footer.addClass("show");
+		} else {
+			$footer.removeClass("show");
+		}
+		lastScrollTop = windowTop;
+	});
 });

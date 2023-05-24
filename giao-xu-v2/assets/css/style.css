@@ -706,7 +706,7 @@ input[type="radio"] {
   left: 0 !important;
   right: 0 !important;
   width: 100% !important;
-  top: 5px;
+  top: 0px;
   background: #ffffff;
   z-index: 0;
   border-bottom: 1px solid #e8f1f7;
@@ -2011,6 +2011,10 @@ input:checked+label.rdo-tile-label {
   color: #ccfded;
 }
 
+.header.sticky .header-top {
+  display: none;
+}
+
 .header-top {
   background: var(--sub-color);
   border-bottom: 1px;
@@ -2366,7 +2370,7 @@ input:checked+label.rdo-tile-label {
   margin-bottom: 5px;
 }
 
-.single-meta li span{
+.single-meta li span {
   display: inline-block;
   vertical-align: middle;
 }
